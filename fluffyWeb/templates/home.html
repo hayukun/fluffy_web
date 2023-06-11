@@ -1,0 +1,119 @@
+<!-- templates/fluffyLogin.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block script %}
+{% endblock script %}
+{% block main %}
+
+    <div class="container-main">
+        <div class="container-sub-350px" style="position: relative;">
+            <div class="wrap_yoko" style="display: flex; justify-content: flex-end;">
+
+                <div class="wrap_tate">
+            
+                    <!-- Fluffyのロゴ -->
+                    <div>
+                        <a href="{% url 'home' %}">
+                            <!-- caption-logo変えると画像の大きさ変わる -->
+                            <img src="/static/view_materials/title_logo.png" alt="titleLogo" class="caption-logo" style="z-index: 1;" >
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="wrap_tate caption-logo2">
+                    <!-- 雲のぶらさがってる画像 -->
+                    <div>
+                        <img src="/static/view_materials/header_logo.png" class="responsive-Max-image" alt="headerLogo" width="100%">
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div class="wrap_tate">
+            <div style="position: relative;">
+                <img src="/static/view_materials/board_home2.png" alt="boardMain" class="responsive-image" style="z-index: 2;">
+                <div class="caption-main">
+                    <h1 style="color:#696969;" class="coolfont">
+                        世界にたった１つの<br>
+                        文字パネルを作成
+                    </h1>
+                    <h3 style="color:#888686;" class="coolfont">
+                        ぜひ推し活のお手伝いをお任せください♡
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_tate margin-top-100">
+            <div style="text-align: center;">
+                <a href="{% url 'home' %}" class="cute-button coolfont" style=" width:552px; font-weight: bold;">詳しくはこちら</a>
+            </div>
+            <div class="wrap_yoko_centering margin-top-50">
+                <a href="{% url 'signin' %}" class="cute-button coolfont" style="margin-right: 80px; font-weight: bold;">フルオーダー受付はこちら</a>
+                <a href="{% url 'signin' %}" class="cute-button coolfont" style="font-weight: bold;">セミオーダー受付はこちら</a>
+            </div>
+
+        </div>
+    
+
+        <div class="margin-top-100 container-center">
+            <div class="wrap_yoko">
+                <div class="wrap_tate_no_centering">
+                    <img src="/static/view_materials/buttons/うちわ1.png" id="title1" width="300px">
+                    <p class="fuchidori_shiro" style="font-size: 50px;">うちわ</p>
+                    <div class="group1 wrap_tate_no_centering" style="display: none;">
+                        <img src="/static/view_materials/buttons/顔うちわ文字 ¥690.png" class="margin-top-10 padding-2 select1" id="image1" width="300px">
+                        <img src="/static/view_materials/buttons/うちわ文字 ¥1480.png" class="margin-top-10 padding-2 select1" id="image2" width="300px">
+                    </div>
+                </div>
+                <div class="wrap_tate_no_centering" >
+                    <img src="/static/view_materials/buttons/ボード1.png" id="title2" width="300px">
+                    <p class="fuchidori_shiro" style="font-size: 50px;">ボード</p>
+                    <div class="group2 wrap_tate_no_centering" style="display: none;">
+                        <img src="/static/view_materials/buttons/ボードB6 ¥990.png" class="margin-top-10 padding-2 select1" id="image3" width="300px">
+                        <img src="/static/view_materials/buttons/ボードB5 ¥1380.png" class="margin-top-10 padding-2 select1" id="image4" width="300px">
+                        <img src="/static/view_materials/buttons/ボードA4 ¥1500.png" class="margin-top-10 padding-2 select1" id="image5" width="300px">
+                        <img src="/static/view_materials/buttons/ボードB4 ¥1800.png" class="margin-top-10 padding-2 select1" id="image6" width="300px">
+                        <img src="/static/view_materials/buttons/ボードA3 ¥2100.png" class="margin-top-10 padding-2 select1" id="image7" width="300px">
+                        <img src="/static/view_materials/buttons/サイズ指定 ¥720～.png" class="margin-top-10 padding-2 select1" id="image8" width="300px">
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="selectedImageInfo" value="0" class="margin-top-50"></div>
+
+
+
+        <!-- ログインフォーム -->
+        <h2 class="fuchidori_shiro margin-top-100">Login</h2>
+        <form method="POST" action="{% url 'login' %}" >
+            {% csrf_token %}
+            <div style="display: flex; justify-content: center;" class="margin-top-50">
+                <div class="wrap_yoko">
+                    <div class="wrap_tate right_alignment">
+                        <label for="username" class="fuchidori_shiro child_title_size">ユーザーID：</label>
+                        <label for="password" class="fuchidori_shiro child_title_size margin-top-20">パスワード：</label>
+                    </div>
+                    <div class="wrap_tate">
+                        <input type="text" id="username" name="username" value="">
+                        <input type="password" id="password" class="margin-top-20" name="password" value="">
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="margin-top-50 wrap_tate margin-yoko-80per">
+                <a href="{% url 'signin' %}" class="cute-button">ログイン</a>
+                <a href="{% url 'signin' %}" class="cute-button margin-top-20">サインイン</a>
+            </div>
+
+        </form>
+    </div>
+    <script src="{% static 'js/fluffy_script.js' %}"></script>
+{% endblock main %}

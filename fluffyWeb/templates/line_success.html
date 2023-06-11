@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ログインDone</title>
+    <style>
+        body {
+            /* font-family: 'Arial', sans-serif; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 65vh;
+            background-image: url('/static/view_materials/bg_image_rainbow.png');
+            background-size: cover;
+            /* background-position: center; */
+            padding-top: 20px;
+        }
+
+        .container{
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .cute-button{
+            background-color: #FF6CC4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .green-button{
+            background-color: #00BA00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #00BA00;
+            cursor: pointer;
+            margin: 20px;
+            text-decoration: none;
+        }
+
+        .green-button:hover{
+            background-color: white;
+            color: #00BA00;
+        }
+
+        .cute-input{
+            outline: none;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 2px 5px #FF6CC4;
+            margin: inherit;
+        }
+
+
+        .title_size {
+            font-size:x-large;
+        }
+
+        .child_title_size {
+            font-size: large;
+            margin: 5px 0 5px 0;
+        }
+
+        .fuchidori_pink {
+        color: #FFF;
+        text-shadow:1px 1px 0 rgb(250, 116, 138), -1px -1px 0 rgb(250, 116, 138),
+                    -1px 1px 0 rgb(250, 116, 138), 1px -1px 0 rgb(250, 116, 138),
+                    0px 1px 0 rgb(250, 116, 138),  0 -1px 0 rgb(250, 116, 138),
+                    -1px 0 0 rgb(250, 116, 138), 1px 0 0 rgb(250, 116, 138);
+        }
+
+        .fuchidori_shiro {
+            
+            color: #FF6CC4;
+            text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+                        -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+                        0px 1px 0 #FFF,  0-1px 0 #FFF,
+                        -1px 0 0 #FFF, 1px 0 0 #FFF;
+        }
+
+        .wrap_yoko {
+            display: flex;
+            justify-content: flex-start;
+            /* margin: 0 0 5px 0; */
+        }
+
+        .wrap_tate {
+            display: flex;
+            flex-flow: column;
+            margin: 0 0 5px 0;
+        }
+        
+        .right_alignment {
+            text-align: right;
+        }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var loginButton = document.getElementById('login-button')
+            loginButton.addEventListener('mouseover', function(){
+
+                loginButton.style.backgroundColor = 'pink';
+                loginButton.style.color = '#FF6CC4';
+                
+
+            });
+            loginButton.addEventListener('mouseout', function(){
+
+                loginButton.style.backgroundColor = '#FF6CC4';
+                loginButton.style.color = 'white';
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <link rel="stylesheet" href="{% static 'css/custom_font.css' %}">
+        <div>
+            <img src="/static/view_materials/header_logo.png" alt="headerLogo" width="80%">
+        </div>
+        <img src="/static/view_materials/title_logo.png" alt="titleLogo" width="450px">
+        <h2 class="fuchidori_shiro" style="margin:30px;">Login</h2>
+        <form method="POST" action="{% url 'login' %}" >
+            {% csrf_token %}
+            <div style="display: flex; justify-content: center;">
+                <div class="wrap_yoko">
+                    <div class="wrap_tate right_alignment">
+                        <label for="username" class="fuchidori_shiro child_title_size">ゆーざーねーむ：</label>
+                        <label for="password" class="fuchidori_shiro child_title_size">ぱすわーど：</label>
+                    </div>
+                    <div class="wrap_tate">
+                        <input type="text" id="username" class="cute-input" name="username">
+                        <input type="password" id="password" class="cute-input" name="password">
+                    </div>
+
+                </div>
+                
+            </div>
+            <div>
+                <input type="submit" id="login-button" class="cute-button" value="Login">
+            </div>
+
+        </form>
+        {% if user.is_authenticated %}
+            <label for="username" class="fuchidori_shiro child_title_size">ゆーざーねーむ：{{ user.username }}</label>
+            <img src="{{ user.icon_url }}">
+            <a href="{% url 'logout' %}" class="green-button">ログアウト</a>
+        {% else %}
+            <a href="{% url 'social:begin' 'line' %}" class="green-button">LINEでログイン</a>
+        {% endif %}
+    </div>
+</body>
+</html>
