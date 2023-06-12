@@ -142,6 +142,20 @@ h3 {
         font-size: 15px;
     }
 
+    .imagehover-container {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    .imagehover-container img {
+        transition: transform 0.3s ease;
+    }
+  
+    .imagehover-container:hover img {
+    transform: scale(1.05);
+    }
+
   }
 
 html {scroll-behavior: smooth;}
@@ -233,9 +247,9 @@ input[type="password"] {
   }
 
 .inner-big{
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 550px;
 }
 
 
@@ -454,6 +468,15 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
                 -2.5px 2.5px 0 #FFF, 2.5px -2.5px 0 #FFF,
                 0px 2.5px 0 #FFF,  0 -2.5px 0 #FFF,
                 -2.5px 0 0 #FFF, 2.5px 0 0 #FFF;
+}
+
+.fuchidori_kuro {
+    
+    color: #FFF !important; 
+    text-shadow:4px 4px 4px #000000, 4px 4px 4px #000000,
+                4px 4px 4px #000000, 4px 4px 4px #000000,
+                4px 4px 4px #000000,  4px 4px 4px #000000,
+                4px 4px 4px #000000, 4px 4px 4px #000000;
 }
 
 .wrap_yoko {
