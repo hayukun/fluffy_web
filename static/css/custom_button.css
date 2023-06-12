@@ -1,0 +1,126 @@
+.Button-wrapper {
+    position: relative;
+  }
+
+  @keyframes explode {
+    from { opacity: 0; }
+    to {
+      top: 50%;
+      left: 50%;
+      opacity: 1;
+    }
+  }
+
+
+/* パソコン用のスタイル */
+  @media (min-width: 769px) {
+
+  
+  .Button {
+    font-family: "Gilroy ExtraBold", system-ui, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-size: 20px;
+    line-height: 50px;
+    text-transform: uppercase;
+    background: #FF6CC4;
+    color: #F8FAFF;
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+    /* min-width: 280px; */
+    padding: 0 6vw;
+    box-shadow: 0 10px 60px -10px #EC59A2;
+    cursor: pointer;
+    -webkit-tap-highlight-color: #FFFFFF;
+    user-select:none;
+    transform-style: preserve-3d;
+    transform: perspective(250px) scale3d(1,1,1);
+    transition: all 1s cubic-bezier(0.03,0.98,0.52,0.99);
+    will-change: transform, box-shadow, background;
+    outline: none;
+    position: relative;
+    z-index:5;
+    
+    .Button:hover {
+      background: lighten(#FF6CC4, 2%);
+      box-shadow: 0 8px 65px -5px #EC59A2;
+    }
+    
+    .Button:active {
+      background: #EC59A2;  
+      box-shadow: 0 10px 60px -10px #EC59A2;
+      transform: perspective(250px) scale3d(1, 1, 1) translateY(5%) !important;
+    }
+  }
+  
+
+  .Symbol {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: 4;
+    animation: explode .8s reverse forwards ease-in;
+  }
+  
+
+
+}
+
+
+  /* スマートフォン用のスタイル */
+  @media (max-width: 768px) {
+
+    .Button {
+        font-family: "Gilroy ExtraBold", system-ui, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        letter-spacing: 2px;
+        font-size: 22px;
+        line-height: 50px;
+        text-transform: uppercase;
+        background: #FF6CC4;
+        color: #F8FAFF;
+        appearance: none;
+        border: none;
+        border-radius: 10px;
+        width: 280px;
+        padding: 0 2px;
+        box-shadow: 0 10px 60px -10px #EC59A2;
+        cursor: pointer;
+        -webkit-tap-highlight-color: #FFFFFF;
+        user-select:none;
+        transform-style: preserve-3d;
+        transform: perspective(250px) scale3d(1,1,1);
+        transition: all 1s cubic-bezier(0.03,0.98,0.52,0.99);
+        will-change: transform, box-shadow, background;
+        outline: none;
+        position: relative;
+        z-index:5;
+        
+        .Button:hover {
+          background: lighten(#FF6CC4, 2%);
+          box-shadow: 0 8px 65px -5px #EC59A2;
+        }
+        
+        .Button:active {
+          background: #EC59A2;  
+          box-shadow: 0 10px 60px -10px #EC59A2;
+          transform: perspective(250px) scale3d(1, 1, 1) translateY(5%) !important;
+        }
+      }
+      
+    
+      .Symbol {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        z-index: 4;
+        animation: explode .8s reverse forwards ease-in;
+      }
+      
+    
+
+
+  }

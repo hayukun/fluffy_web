@@ -1,0 +1,121 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block script %}
+<style>
+    #hero-slider .slide {
+      background-size: cover;
+      background-position: center;
+    }
+</style>
+{% endblock script %}
+{% block main %}
+    <div class="container-main">
+        <div class="container-justifyMonitor">
+            <div style="width: 100%; height:50px;">
+
+            </div>
+            <div class="wrap_tate" style="position:relative">
+                    <!-- Fluffyのロゴ -->
+                    <a href="{% url 'home' %}">
+                        <!-- caption-logo-title変えると画像の大きさ変わる -->
+                        <img src="/static/images/home/company_logo.png" class="caption-logo-title" alt="titleLogo">
+                    </a>
+                    <div class="main-description margin-top-50">
+                
+                        <h1 style="color:#696969;" class="coolfont">
+                            世界にたった１つの<br>
+                            文字パネルを作成
+                        </h1>
+                        <h3 style="color:#888686;" class="coolfont">
+                            ♡ぜひ推し活のお手伝いをお任せください♡
+                        </h3>
+                        <div class="Button-wrapper" style="text-align: center;">
+                            <button class="Button margin-top-20" onclick="location.href='#jumpToAbout'">詳しくはこちら</button>
+                        </div>
+                    </div>
+                    <!-- 背景のボード -->
+                    <div class="position_center">
+                        <img src="/static/images/home/board_home.png" class="responsive-image" alt="boardMain" style="z-index: -1;">
+                    </div>
+
+            </div>
+
+
+            <div class="wrap_tate margin-top-100">
+                <div class="wrap_yoko_centering margin-top-50">
+                    <a href="{% url 'fullorder' %}" class="cute-button coolfont" style="margin-right: 80px; font-weight: bold;">フルオーダー受付はこちら</a>
+                    <a href="{% url 'signin' %}" class="cute-button coolfont" style="font-weight: bold;">セミオーダー受付はこちら</a>
+                </div>
+
+            </div>
+
+            <!-- <form method="POST" action="{% url 'fullorder' %}" >
+                {% csrf_token %}
+                <div class="Button-wrapper">
+                    <button class="Button">Deploy</button>
+                </div>
+            </form> -->
+            <!-- 背景で横に流れる画像 -->
+            <div class="loopSlide margin-top-70">
+                <img src="{% static 'images/home/slide-anime/カメラロール.png' %}">
+                <img src="{% static 'images/home/slide-anime/カメラロール.png' %}">
+            </div>            
+        </div>
+
+        <div class="container-justifyMonitor bg_about" id="jumpToAbout">
+            <div class="padding-20">
+                <div class="main-description">
+                    
+                    <h2 class="fuchidori_shiro margin-top-100">
+                        About
+                    </h2>
+                    <h3 class="coolfont margin-top-20" style="color:#696969; font-weight: bolder;">
+                        ぷちぇ屋さんFluffyとは
+                    </h3>
+                    <h4 class="jkfont" style="color:#696969;">
+                        ぜひ推し活のお手伝いをお任せください♡<br>
+                        ぜひ推し活のお手伝いをお任せください♡<br>
+                        ぜひ推し活のお手伝いをお任せください♡<br><br>
+                        ぜひ推し活のお手伝いをお任せください♡<br>
+                        ぜひ推し活のお手伝いをお任せください♡<br>
+                        ぜひ推し活のお手伝いをお任せください♡<br><br><br>
+                        ぜひ推し活のお手伝いをお任せください♡<br>
+                        ぜひ推し活のお手伝いをお任せください♡<br>
+                        ぜひ推し活のお手伝いをお任せください♡<br>
+                    </h4>
+                </div>
+
+
+                <!-- ログインフォーム -->
+                <h2 class="fuchidori_shiro margin-top-100">Login</h2>
+                <form method="POST" action="{% url 'login' %}" >
+                    {% csrf_token %}
+                    <div style="display: flex; justify-content: center;" class="margin-top-50">
+                        <div class="wrap_yoko">
+                            <div class="wrap_tate right_alignment">
+                                <label for="username" class="fuchidori_shiro child_title_size">ユーザーID：</label>
+                                <label for="password" class="fuchidori_shiro child_title_size margin-top-20">パスワード：</label>
+                            </div>
+                            <div class="wrap_tate">
+                                <input type="text" id="username" name="username" value="">
+                                <input type="password" id="password" class="margin-top-20" name="password" value="">
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    <div class="margin-top-50 wrap_center">
+                        <div class="wrap_tate_no_centering">
+                            <a href="{% url 'signin' %}" class="cute-button" style="justify-content: center;">ログイン</a>
+                            <a href="{% url 'signin' %}" class="cute-button margin-top-20" style="justify-content: center;">サインイン</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="{% static 'js/fluffy_button.js' %}"></script>
+{% endblock main %}

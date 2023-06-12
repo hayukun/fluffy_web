@@ -1,0 +1,558 @@
+/* static/css/custom_all.css */
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/07NikumaruFont.ttf');
+}
+
+@font-face {
+    font-family: 'CustomFont2';
+    src: url('../fonts/MPLUS1p-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'CustomFont3';
+    src: url('../fonts/JK-Maru-Gothic-M.otf');
+}
+
+
+/* 共通のスタイル */
+.container {
+    width: 100%;
+    padding: 20px;
+  }
+  
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 25px;
+}
+  /* スマートフォン用のスタイル */
+  @media (max-width: 768px) {
+    .container {
+      background-color: lightblue;
+      color: white;
+    }
+
+    .changeTextOnPC{
+        display: none;
+    }
+
+    .changeTextOnSmartPhone{
+        display: block;
+    } 
+
+    .caption-logo-title {
+        /* position: absolute; */
+        /* top: 10%; */
+        /* left: 25%; */
+        transform: translate(0%, 0%);
+        max-width: 600px;
+        height: auto; /* または具体的な値を指定 */
+    }
+    
+    .caption-logo-mokumoku {
+        max-width: 400px;
+        height: auto; /* または具体的な値を指定 */
+    }
+
+    #cart {
+        position: fixed;
+        top: 20%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+        padding: 10px;
+        width: 150px;
+        height: auto;
+        z-index: 6;
+      }
+
+      .cart_text_title{
+
+        font-size: 15px !important;
+    }
+
+    .cart_text{
+
+        font-size: 10px;
+    }
+
+
+  }
+  
+  /* パソコン用のスタイル */
+  @media (min-width: 769px) {
+    .container {
+      background-color: lightgray;
+      color: black;
+    }
+
+    .changeTextOnPC{
+        display: block;
+    }
+
+    .changeTextOnSmartPhone{
+        display: none;
+    }   
+    .caption-logo-title {
+        /* position: absolute; */
+        /* top: -16%; */
+        /* left: 28%; */
+        transform: translate(0%, 0%);
+        width: 600px;
+        height: auto; /* または具体的な値を指定 */
+    }
+
+    .caption-logo-mokumoku {
+        width: 500px;
+        height: auto; /* または具体的な値を指定 */
+    }
+
+    .responsive-image {
+        max-width: 45%;
+        height: auto;
+    }
+
+    /* カート機能 */
+    #cart {
+        position: fixed;
+        top: 20%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+        padding: 10px;
+        width: 300px;
+        height: auto;
+        z-index: 6;
+      }
+
+    .cart_text_title{
+
+        font-size: 20px !important;
+    }
+
+    .cart_text{
+
+        font-size: 15px;
+    }
+
+  }
+
+html {scroll-behavior: smooth;}
+
+body {
+    /* font-family: 'Arial', sans-serif; */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background-image: url('/static/images/common/bg_image_rainbow2.png');
+    background-size: cover;
+    font-family: 'CustomFont', 'Arial', sans-serif;
+    font-weight: bold;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    /* -webkit-font-kerning: normal; */
+    -webkit-text-size-adjust: 100%;
+    padding-top: 2rem;
+}
+
+.bg_about {
+    background-color: #ffffff;
+}
+
+.bg_fullorder{
+    background-image: url('/static/images/fullorder/bg/fullorder背景.png');
+    background-size: cover;
+
+}
+
+.coolfont{
+    font-family: 'CustomFont2';
+}
+
+.jkfont{
+    font-family: 'CustomFont3';
+}
+
+label {
+    margin-bottom: 1rem !important;
+}
+
+input[type="text"] {
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 5px #FF6CC4;
+    /* font-size: large; */
+    font-family: 'Arial', sans-serif;
+
+}
+
+input[type="password"] {
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 5px #FF6CC4;
+    /* font-size: large; */
+    font-family: 'Arial', sans-serif;
+
+}
+
+.container-main{
+    text-align: center;
+}
+
+.container-justifyMonitor{
+    text-align: center;
+    height:1120px;
+    width: 100%;
+}
+
+.container-sub{
+    height:168px;
+}
+.container-1000px{
+    height:1000px;
+}
+.container-sub-350px{
+    height:350px;
+}
+
+.inner{
+    width: 70%;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+.inner-big{
+    width: 70%;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+
+.center-item {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.right-item {
+    margin-left: auto; 
+}
+
+.container-center {
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.container-between {
+    display:flex;
+    justify-content: space-between;
+}
+
+.box_between {
+    width : 175px;
+    height: auto;
+}
+
+.margin-top-200 {
+    margin-top: 200px;
+}
+
+.margin-top-150 {
+    margin-top: 150px;
+}
+
+.margin-top-100 {
+    margin-top: 100px;
+}
+
+.margin-top-80 {
+    margin-top: 80px;
+}
+
+.margin-top-70 {
+    margin-top: 70px;
+}
+
+.margin-top-60 {
+    margin-top: 60px;
+}
+
+.margin-top-50 {
+    margin-top: 50px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-top-2per {
+    margin-top: 2%;
+}
+
+.margin-yoko {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.padding-2 {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.padding-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    height: 50%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.3rem;
+    font-family: CustomFont2;
+}
+
+.cute-button{
+    background-color: #FF6CC4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #FF6CC4;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cute-button:hover{
+    background-color: white;
+    color: #FF6CC4;
+    border: 2px solid #FF6CC4;
+    text-decoration: none;
+}
+
+a.cute-button{
+    display: inline-block; 
+    background-color: #FF6CC4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #FF6CC4;
+    cursor: pointer;
+    text-decoration: none;
+    width: 236px;
+}
+
+a.cute-button:hover{
+    display: inline-block; 
+    background-color: white;
+    color: #FF6CC4;
+    border: 2px solid #FF6CC4;
+    text-decoration: none;
+}
+
+.green-button{
+    background-color: #00BA00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #00BA00;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.green-button:hover{
+    background-color: white;
+    color: #00BA00;
+}
+
+.cute-input{
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 5px #FF6CC4;
+    /* font-size: large; */
+    font-family: 'Arial', sans-serif;
+}
+
+
+.main-description {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+
+.responsive-image {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    max-width: 768px;
+    transform: translateX(-50%);
+    height: auto;
+}
+
+.responsive-80-image {
+    max-width: 80%;
+    height: auto;
+}
+
+.responsive-Max-image {
+    min-width: 400px;
+    height: auto;
+}
+.title_size {
+    font-size:x-large;
+}
+
+.child_title_size {
+    font-size: large;
+}
+
+.fuchidori_pink {
+color: #FFF;
+text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
+            -1px 1px 0 #EC59A2, 1px -1px 0 #EC59A2,
+            0px 1px 0 #EC59A2,  0 -1px 0 #EC59A2,
+            -1px 0 0 #EC59A2, 1px 0 0 #EC59A2;
+}
+
+.fuchidori_shiro {
+    
+    color: #EC59A2 !important; 
+    text-shadow:2.5px 2.5px 0 #FFF, -2.5px -2.5px 0 #FFF,
+                -2.5px 2.5px 0 #FFF, 2.5px -2.5px 0 #FFF,
+                0px 2.5px 0 #FFF,  0 -2.5px 0 #FFF,
+                -2.5px 0 0 #FFF, 2.5px 0 0 #FFF;
+}
+
+.wrap_yoko {
+    display: flex;
+    justify-content: flex-start;
+    /* margin: 0 0 5px 0; */
+}
+
+.wrap_yoko_centering {
+    display: flex;
+    justify-content: center;
+    /* margin: 0 0 5px 0; */
+}
+
+.wrap_tate {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    /* margin: 0 0 5px 0; */
+}
+.wrap_center {
+    display: flex;
+    justify-content: center;
+}
+.wrap_tate_no_centering {
+    display: flex;
+    flex-flow: column;
+    /* margin: 0 0 5px 0; */
+}
+
+.right_alignment {
+    text-align: right;
+}
+
+
+.grayed-out {
+  filter: grayscale(100%);
+}
+
+/* 画像スライドアニメーション */
+
+.loopSlide {
+    display: flex;
+    width: 100vw;
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  .loopSlide img {
+    width: auto;
+    height: 180px;
+  }
+  
+  .loopSlide img:first-child {
+    animation: slide1 80s -40s linear infinite;
+  }
+
+  .loopSlide img:last-child {
+    animation: slide2 80s linear infinite;
+  }
+  
+  @keyframes slide1 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @keyframes slide2 {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+
+  /* カート機能 */
+.container-cart {
+    text-align: left;
+}
+
+.cartBox {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: white;
+    background-color: #FF6CC4;/*背景色*/
+    border-left: solid 6px #EC59A2;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+.cartBox p {
+    margin: 0; 
+    padding: 0;
+    font-family: CustomFont2;
+}
+.cartBox div {
+    margin: 0; 
+    padding: 0;
+    font-family: CustomFont2;
+}

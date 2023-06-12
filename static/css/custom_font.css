@@ -1,0 +1,13 @@
+/* static/css/custom_font.css */
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/07NikumaruFont.ttf');
+}
+
+body{
+    font-family: 'CustomFont', 'Arial', sans-serif;
+    font-weight: bold;
+    
+}
+
