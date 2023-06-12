@@ -14,3 +14,10 @@ def LogInView(request):
 
 def HomeView(request):
     return render(request, 'home.html')
+
+def FullOrderView(request):
+    return render(request, 'fullorder.html')
+
+def SemiOrderView(request):
+    return render(request, 'semiorder.html')
+
