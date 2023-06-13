@@ -23,11 +23,11 @@
                     </a>
                     <div class="main-description margin-top-50">
                 
-                        <h1 style="color:#696969;" class="coolfont">
+                        <h1 style="color:#696969; font-size: 50px;" class="coolfont">
                             世界にたった１つの<br>
-                            文字パネルを作成
+                            文字パネルを制作
                         </h1>
-                        <h3 style="color:#888686;" class="coolfont">
+                        <h3 style="color:#888686; font-size: 25px;" class="coolfont">
                             ♡ぜひ推し活のお手伝いをお任せください♡
                         </h3>
                         <div class="Button-wrapper" style="text-align: center;">
@@ -63,59 +63,83 @@
             </div>            
         </div>
 
-        <div class="container-justifyMonitor bg_about" id="jumpToAbout">
+        <div class="container-sub bg_about" id="jumpToAbout">
             <div class="padding-20">
-                <div class="main-description">
+                <div class="main-description inner">
                     
-                    <h2 class="fuchidori_shiro margin-top-100">
+                    <h2 class="fuchidori_shiro margin-top-100" style="text-align: center;">
                         About
                     </h2>
-                    <h3 class="coolfont margin-top-20" style="color:#696969; font-weight: bolder;">
+                    <h3 class="coolfont margin-top-20" style="color:#696969; font-weight: bolder;text-align: center;">
                         ぷちぇ屋さんFluffyとは
                     </h3>
-                    <h4 class="jkfont" style="color:#696969;">
-                        ぜひ推し活のお手伝いをお任せください♡<br>
-                        ぜひ推し活のお手伝いをお任せください♡<br>
-                        ぜひ推し活のお手伝いをお任せください♡<br><br>
-                        ぜひ推し活のお手伝いをお任せください♡<br>
-                        ぜひ推し活のお手伝いをお任せください♡<br>
-                        ぜひ推し活のお手伝いをお任せください♡<br><br><br>
-                        ぜひ推し活のお手伝いをお任せください♡<br>
-                        ぜひ推し活のお手伝いをお任せください♡<br>
-                        ぜひ推し活のお手伝いをお任せください♡<br>
+                    <h4 class="jkfont" style="color:#696969; text-align: center;">
+                        <br>誰とも被らない世界にたった一つの文字パネルを制作致します👀💓<br><br>
+                    
+
+                        安い！早い！可愛い！目立つ！キレイ！<br>
+                        コスパ最強のうちわ屋さんです✨<br><br><br><br>
                     </h4>
+
+                    <h5 class="jkfont" style="color:#696969; text-align: center;">
+                        <span style="text-align: left; display: block;">  
+                        <span style="font-weight: bold;">❶ とにかく安い‼︎<br><br></span>
+                    
+                        &nbsp;&nbsp;✔️ 自分だけのオリジナルデザインを注文したい方向けのフルオーダー<br>
+                        &nbsp;&nbsp;✔️ 既製デザインに一部カスタムを注文したい方向けのセミオーダー<br><br><br>
+                      
+                        <span style="font-weight: bold;">❷ 最短即日発送‼︎<br><br></span>
+                    
+                        &nbsp;&nbsp;✔️ 使用日に合わせて対応可能◎<br><br><br>
+                     
+                        <span style="font-weight: bold;">❸ デザイン特化<br><br></span>
+                  
+                        &nbsp;&nbsp;✔️ お客様のご要望をより多く取り入れ<br>
+                        &nbsp;&nbsp;✔️ 理想通りのオリジナルのパネルを仕上げます<br>
+                        &nbsp;&nbsp;✔️ イメージをお伝え頂ければこちらからデザインの提案も可能です<br><br><br>
+                     
+                        <span style="font-weight: bold;">❹ オーダーの多様性<br><br></span>
+                 
+                        &nbsp;&nbsp;✔️使用用途に合わせて加工対応◎<br><br><br>
+           
+                        <span style="font-weight: bold;">❺ 制作<br><br></span>
+                  
+                        &nbsp;&nbsp;✔️ プロ用のカッティングマシンを使用<br>
+                        &nbsp;&nbsp;✔️ 特殊加工による裏技でほぼ気泡0<br>
+                        &nbsp;&nbsp;✔️ 当店限定のオリジナル補強パネルの導入<br>
+                        </span>
+                    </h5>
                 </div>
-
-
-                <!-- ログインフォーム -->
-                <h2 class="fuchidori_shiro margin-top-100">Login</h2>
-                <form method="POST" action="{% url 'login' %}" >
-                    {% csrf_token %}
-                    <div style="display: flex; justify-content: center;" class="margin-top-50">
-                        <div class="wrap_yoko">
-                            <div class="wrap_tate right_alignment">
-                                <label for="username" class="fuchidori_shiro child_title_size">ユーザーID：</label>
-                                <label for="password" class="fuchidori_shiro child_title_size margin-top-20">パスワード：</label>
-                            </div>
-                            <div class="wrap_tate">
-                                <input type="text" id="username" name="username" value="">
-                                <input type="password" id="password" class="margin-top-20" name="password" value="">
-                            </div>
-
-                        </div>
-                        
-                    </div>
-                    <div class="margin-top-50 wrap_center">
-                        <div class="wrap_tate_no_centering">
-                            <a href="{% url 'signin' %}" class="cute-button" style="justify-content: center;">ログイン</a>
-                            <a href="{% url 'signin' %}" class="cute-button margin-top-20" style="justify-content: center;">サインイン</a>
-                        </div>
-                    </div>
-
-                </form>
+                
             </div>
 
         </div>
+        <!-- ログインフォーム -->
+        <h2 class="fuchidori_shiro margin-top-100" style="text-align: center;">Login</h2>
+        <form method="POST" action="{% url 'login' %}" >
+            {% csrf_token %}
+            <div style="display: flex; justify-content: center;" class="margin-top-50">
+                <div class="wrap_yoko">
+                    <div class="wrap_tate right_alignment">
+                        <label for="username" class="fuchidori_shiro child_title_size">ユーザーID：</label>
+                        <label for="password" class="fuchidori_shiro child_title_size margin-top-20">パスワード：</label>
+                    </div>
+                    <div class="wrap_tate">
+                        <input type="text" id="username" name="username" value="">
+                        <input type="password" id="password" class="margin-top-20" name="password" value="">
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="margin-top-50 wrap_center">
+                <div class="wrap_tate_no_centering">
+                    <a href="{% url 'signin' %}" class="cute-button" style="justify-content: center;">ログイン</a>
+                    <a href="{% url 'signin' %}" class="cute-button margin-top-20" style="justify-content: center;">サインイン</a>
+                </div>
+            </div>
+
+        </form>
     </div>
     <script src="{% static 'js/fluffy_button.js' %}"></script>
 {% endblock main %}

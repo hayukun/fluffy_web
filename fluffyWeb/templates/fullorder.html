@@ -6,28 +6,28 @@
 {% block main %}
 <div class="container-main bg_fullorder" style="height:5000px; width: 100%;">
     <div class="container-cart cartBox cart_text" id="cart" style="max-width: 20%;display: none;">
-        <p class="cart_text_title" style="color: white; margin-bottom: 10px;">Cart</p>
+        <p class="cart_text_title" style="color: white; margin-bottom: 10px;">カート</p>
         <div class="wrap_yoko">
-            <div id="cart_item1" class="jkfont"></div><div id="cart_item1_price" class="jkfont" style="padding-left: 10px;"></div>
+            <div id="cart_item1" class="jkfont"></div><div id="cart_item1_price" class="jkfont" style="display: none;"></div>
         </div>
-        <div id="cart_item1_extText" class="jkfont"></div>
+        <div id="cart_item1_extText" class="jkfont" style="display: none;"></div>
         <div class="wrap_yoko">
-            <div id="cart_item2" class="jkfont"></div><div id="cart_item2_price" class="jkfont" style="padding-left: 10px;"></div>
-        </div>
-        <div class="wrap_yoko">
-            <div id="cart_item3" class="jkfont"></div><div id="cart_item3_price" class="jkfont" style="padding-left: 10px;"></div>
+            <div id="cart_item2" class="jkfont"></div><div id="cart_item2_price" class="jkfont" style="display: none;"></div>
         </div>
         <div class="wrap_yoko">
-            <div id="cart_item4" class="jkfont"></div><div id="cart_item4_price" class="jkfont" style="padding-left: 10px;"></div>
+            <div id="cart_item3" class="jkfont"></div><div id="cart_item3_price" class="jkfont" style="display: none;"></div>
         </div>
         <div class="wrap_yoko">
-            <div id="cart_item5" class="jkfont"></div><div id="cart_item5_price" class="jkfont" style="padding-left: 10px;"></div>
+            <div id="cart_item4" class="jkfont"></div><div id="cart_item4_price" class="jkfont" style="display: none;"></div>
         </div>
         <div class="wrap_yoko">
-            <div id="cart_item6" class="jkfont"></div><div id="cart_item6_price" class="jkfont" style="padding-left: 10px;"></div>
+            <div id="cart_item5" class="jkfont"></div><div id="cart_item5_price" class="jkfont" style="display: none;"></div>
+        </div>
+        <div class="wrap_yoko">
+            <div id="cart_item6" class="jkfont"></div><div id="cart_item6_price" class="jkfont" style="display: none;"></div>
         </div>
     </div>
-    <div>
+    <div style="text-align: center;">
         <img src="/static/images/fullorder/title/fullorder.png" class="margin-top-100" style="width:700px;">
         <div class="inner-big margin-top-50" style="text-align: left;">
 
@@ -41,30 +41,30 @@
             <img src="/static/images/fullorder/title/①うちわorボード.png" width="600px">
 
             <div class="inner margin-top-50" style="text-align: center;">
-                <h3 class="jkfont changeTextOnPC" style="font-weight: bold;" >うちわ、またはボードをクリックしてください。</h3> 
-                <h3 class="jkfont changeTextOnSmartPhone" style="font-weight: bold;" >うちわ、またはボードをタップしてください。</h3>  
+                <h3 class="jkfont changeTextOnPC" style="font-weight: bold;" >うちわ or ボードをクリック</h3> 
+                <h3 class="jkfont changeTextOnSmartPhone" style="font-weight: bold;" >うちわ or ボードをタップ</h3>  
             </div> 
               
             <div class="container-center" style="height: 745px;">   
                 <div class="wrap_yoko">
                     <div class="wrap_tate_no_centering">
-                        <img src="/static/images/fullorder/order_buttons/うちわ1.png" id="title1" width="300px">
+                        <img src="/static/images/fullorder/order_buttons/うちわ1.png" class="select1_title" id="title1" width="300px">
                         <p class="fuchidori_shiro" style="font-size: 50px;">うちわ</p>
                         <div class="group1 wrap_tate_no_centering" style="display: none;">
-                            <img src="/static/images/fullorder/order_buttons/顔うちわ文字 ¥690.png" class="margin-top-10 padding-2 select1" id="image1" width="300px">
-                            <img src="/static/images/fullorder/order_buttons/うちわ文字 ¥1480.png" class="margin-top-10 padding-2 select1" id="image2" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/顔うちわ文字 ¥690.png" class="margin-top-10 padding-2 btn-image btn-image select1" id="image1_1" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/うちわ文字 ¥1480.png" class="margin-top-10 padding-2 btn-image select1" id="image1_2" width="300px">
                         </div>
                     </div>
                     <div class="wrap_tate_no_centering" >
-                        <img src="/static/images/fullorder/order_buttons/ボード1.png" id="title2" width="300px">
+                        <img src="/static/images/fullorder/order_buttons/ボード1.png" class="select1_title" id="title2" width="300px">
                         <p class="fuchidori_shiro" style="font-size: 50px;">ボード</p>
                         <div class="group2 wrap_tate_no_centering" style="display: none;">
-                            <img src="/static/images/fullorder/order_buttons/ボードB6 ¥990.png" class="margin-top-10 padding-2 select1" id="image3" width="300px">
-                            <img src="/static/images/fullorder/order_buttons/ボードB5 ¥1380.png" class="margin-top-10 padding-2 select1" id="image4" width="300px">
-                            <img src="/static/images/fullorder/order_buttons/ボードA4 ¥1500.png" class="margin-top-10 padding-2 select1" id="image5" width="300px">
-                            <img src="/static/images/fullorder/order_buttons/ボードB4 ¥1800.png" class="margin-top-10 padding-2 select1" id="image6" width="300px">
-                            <img src="/static/images/fullorder/order_buttons/ボードA3 ¥2100.png" class="margin-top-10 padding-2 select1" id="image7" width="300px">
-                            <img src="/static/images/fullorder/order_buttons/サイズ指定 ¥720～.png" class="margin-top-10 padding-2 select1" id="image8" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/ボードB6 ¥990.png" class="margin-top-10 padding-2 btn-image select1" id="image1_3" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/ボードB5 ¥1380.png" class="margin-top-10 padding-2 btn-image select1" id="image1_4" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/ボードA4 ¥1500.png" class="margin-top-10 padding-2 btn-image select1" id="image1_5" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/ボードB4 ¥1800.png" class="margin-top-10 padding-2 btn-image select1" id="image1_6" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/ボードA3 ¥2100.png" class="margin-top-10 padding-2 btn-image select1" id="image1_7" width="300px">
+                            <img src="/static/images/fullorder/order_buttons/サイズ指定 ¥720～.png" class="margin-top-10 padding-2 btn-image select1" id="image1_8" width="300px">
                         </div>
                         
                     </div>
@@ -78,7 +78,7 @@
                     </div>
                     <p>※デザインや文字によって縦横比率が変わる為多少の誤差が生じる場合があります</p>
                 </div>
-                <div id="selectedImageInfo" value="0" class="margin-top-10"></div>
+                <div id="selected_1_ImageInfo" value="0" class="margin-top-10"></div>
             </div>
 
             <img src="/static/images/fullorder/title/②文字サイズ.png" width="600px">
@@ -93,12 +93,23 @@
                             <h3 class="fuchidori_shiro box_between">大規定外<br>大きくはみ出る</h3>
                     </div>
                     <img src="/static/images/fullorder/order_buttons/文字サイズ_ボード.png" width="700px">
+                    <div class="inner margin-top-50" style="text-align: center;">
+                        <h3 class="jkfont changeTextOnPC" style="font-weight: bold;" >サイズをクリック</h3> 
+                        <h3 class="jkfont changeTextOnSmartPhone" style="font-weight: bold;" >サイズをタップ</h3>  
+                    </div> 
+                    <div class="wrap_yoko container-between">
+                        <img src="/static/images/fullorder/order_buttons/S490.png" class="padding-2 btn-image select2 image-width autoincluded2" id="image2_1">
+                        <img src="/static/images/fullorder/order_buttons/M610.png" class="padding-2 btn-image select2 image-width excluded2" id="image2_2">
+                        <img src="/static/images/fullorder/order_buttons/L720.png" class="padding-2 btn-image select2 image-width excluded2" id="image2_3">
+                        <img src="/static/images/fullorder/order_buttons/XL980.png" class="padding-2 btn-image select2 image-width excluded2" id="image2_4">
+                    </div>
+                    <div id="selected_2_ImageInfo" value="0" class="margin-top-10"></div>
+
                 </div>
             </div>
 
         </div>
     </div>
-
 
 </div>
 <script src="{% static 'js/fluffy_script.js' %}"></script>
