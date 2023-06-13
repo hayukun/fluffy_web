@@ -18,6 +18,7 @@ function updateDivContent() {
 // うちわorボードに含まれる画像がクリックされたときに呼び出される関数
 function handleImageSelection1(image) { 
     if (image.classList.contains("selected_1")) { // クリックした画像がすでに選択されている場合
+      console.log("0");
       // 選択状態を解除し、ボーダーも除去
       image.classList.remove("selected_1");
       image.style.border = "";
@@ -32,15 +33,24 @@ function handleImageSelection1(image) {
         inputElement.value = "";
         notesText.style.display = "none";
       } 
-
-      
+      if (image.id === 'image1_1'){ // クリックされた画像が"顔うちわ文字"なら
+      images.forEach(function (excluded2Image) { // すべての画像をループする(選択状態をクリックした画像に移動させるため、うちわorボード内で一度初期化する)
+        if (excluded2Image.classList.contains("excluded2")){ // 文字サイズS以外の文字サイズ画像なら
+          excluded2Image.classList.remove("grayed-out"); // グレーアウト解除
+        }
+      });
+      }
     } else { // クリックした画像が未選択状態の場合
+      console.log("1");
       images.forEach(function (otherImage) { // すべての画像をループする(選択状態をクリックした画像に移動させるため、うちわorボード内で一度初期化する)
         if (otherImage.classList.contains("select1") || otherImage.classList.contains("select1_title")){ // うちわ or ボード内の画像なら
-          if (otherImage.classList.contains('selected1')){ // クリック前に選択状態になっていた画像が顔うちわ文字なら
-            if (otherImage.id === 'image1_1'){
+          if (otherImage.classList.contains('selected_1') && otherImage.id === 'image1_1'){ // クリック前に選択状態になっていた画像が"顔うちわ文字"なら
+            images.forEach(function (excluded2Image) { // すべての画像をループ
+              if (excluded2Image.classList.contains("excluded2")){ // 文字サイズS以外の文字サイズ画像なら
+                excluded2Image.classList.remove("grayed-out"); // グレーアウト解除
+              }
+            });
 
-            }
           }
           // 選択解除し、ボーダーを取り除く
           otherImage.classList.remove("selected_1");
@@ -76,23 +86,33 @@ function handleImageSelection1(image) {
                 if (otherImage.classList.contains('selected_2')){ // 文字サイズS以外の画像がすでに選択されていたら
                   otherImage.classList.remove('selected_2'); //　選択解除し、ボーダー除去
                   otherImage.style.border = "";
-                  removeImageFromDiv('cartImage2', 'cart_item2'); // カートからアイテム除去
-                  cartItem2Price.textContent = ""; // カート内部の金額情報初期化
                 }
-              } else if (otherImage.classList.contains("autoincluded2")) { // 文字サイズSの画像なら
-                copiedImage = otherImage.cloneNode(true); // カート追加処理
-                copiedImage.id = 'cartImage2';
-                copiedImage.classList.add("cart-image2");
-                copiedImage.classList.remove("image-width");
-                copiedImage.classList.remove("btn-image");
-                cartItem2.appendChild(copiedImage);
-                otherImage.classList.add('selected_2'); // 選択状態にしてボーダー追加
+              } else if (otherImage.classList.contains("autoincluded2")) { // 文字サイズSの画像なら             
+                otherImage.classList.add('selected_2'); // 文字サイズSの画像を選択状態にしてボーダー追加
                 otherImage.style.border = "2px solid #FF6CC4";
               } else {
                 ;
               }
             });
-          } else { // image8_1以外が選択された
+            removeImageFromDiv('cartImage2', 'cart_item2'); // カートからアイテム除去
+            copiedImage = included2Image.cloneNode(true); // カート追加処理
+            copiedImage.id = 'cartImage2';
+            copiedImage.classList.add("cart-image2");
+            copiedImage.classList.remove("image-width");
+            copiedImage.classList.remove("btn-image");
+            cartItem2.appendChild(copiedImage);
+            cartItem2Price.textContent = map_priceObject2.get('image2_1'); // カート内部の金額情報を顔うちわ文字に変更
+            selected_2_ImageInfo.textContent = `値段: ${cartItem2Price.textContent}￥`;
+            // image8以外がクリックされるとカートの備考欄もクリアにする
+            cartItem1ExtText.textContent = "";
+            // ユーザー入力フォーム初期化
+            inputElement.value = "";
+            // 注意書きの非表示
+            notesText.style.display = "none";
+            // 選択した商品の値段表示
+            selected_1_ImageInfo.textContent = `値段: ${value}￥`;
+
+          } else { // image1_8以外が選択された
 
             // image8以外がクリックされるとカートの備考欄もクリアにする
             cartItem1ExtText.textContent = "";
@@ -107,8 +127,9 @@ function handleImageSelection1(image) {
         }
       }
       
-    }
+
   }
+}
 
 
 //　文字サイズ
@@ -122,32 +143,36 @@ function handleImageSelection2(image) {
     // カートからアイテム除去、内部価格情報も初期化
     removeImageFromDiv('cartImage2', 'cart_item2');
     cartItem2Price.textContent = "";
-  } else {
-    images.forEach(function (otherImage) {
-      if (otherImage.classList.contains("select2")){
-        otherImage.classList.remove("selected_2");
-        otherImage.style.border = "";
-      }
-    });
-    image.classList.add("selected_2");
-    image.style.border = "2px solid #FF6CC4";
-    for (const [key, value] of map_priceObject2) {
-      if (key === image.id) {
-        // カートに追加
-        // cartItem1.textContent = map_productNameObject.get(image.id);
-        removeImageFromDiv('cartImage2', 'cart_item2');
-        copiedImage = image.cloneNode(true);
-        copiedImage.id = 'cartImage2';
-        copiedImage.classList.add("cart-image2");
-        copiedImage.classList.remove("image-width");
-        copiedImage.classList.remove("btn-image");
-        cartItem2.appendChild(copiedImage);
+  } else {  // クリックした画像が未選択状態の場合
+    if (image.classList.contains('grayed-out')){
+      ;
+    } else {
+      images.forEach(function (otherImage) {
+        if (otherImage.classList.contains("select2")){
+          otherImage.classList.remove("selected_2");
+          otherImage.style.border = "";
+        }
+      });
+      image.classList.add("selected_2");
+      image.style.border = "2px solid #FF6CC4";
+      for (const [key, value] of map_priceObject2) {
+        if (key === image.id) {
+          // カートに追加
+          // cartItem1.textContent = map_productNameObject.get(image.id);
+          removeImageFromDiv('cartImage2', 'cart_item2');
+          copiedImage = image.cloneNode(true);
+          copiedImage.id = 'cartImage2';
+          copiedImage.classList.add("cart-image2");
+          copiedImage.classList.remove("image-width");
+          copiedImage.classList.remove("btn-image");
+          cartItem2.appendChild(copiedImage);
 
-        cartItem2Price.textContent = value;
-        selected_2_ImageInfo.textContent = `値段: ${value}￥`;
+          cartItem2Price.textContent = value;
+          selected_2_ImageInfo.textContent = `値段: ${value}￥`;
 
-        break;
-      }
+          break;
+        }
+      } 
     }
     
   }
@@ -171,8 +196,7 @@ function handleImageSelection2(image) {
   const group1 = document.querySelector(".group1");
   const group2 = document.querySelector(".group2");
   const images = document.querySelectorAll("img");
-  const excluded2images = document.getElementsByClassName("excluded2");
-  const included2image = document.getElementsByClassName("autoincluded2");
+  const included2Image = document.getElementById("image2_1");
 
   // 選択状況おしらせ表示
   // うちわorボード
@@ -260,7 +284,8 @@ function handleImageSelection2(image) {
             // title1がクリックされているため、title1がグレーアウトしているかどうかに関わらずグレーアウトを外す
             image.classList.remove("grayed-out"); 
           } else {
-            // それ以外の画像(select1のクラスがついた画像のみ)は選択状態を解除し、選択ボーダーも取り除く
+            // それ以外の画像(select1のクラスがついた画像のみ)は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
+            image.classList.remove("grayed-out"); 
             if (image.classList.contains("select1")){
               image.classList.remove("selected_1");
               image.style.border = "";
@@ -301,7 +326,8 @@ function handleImageSelection2(image) {
             // title2がクリックされているため、title2がグレーアウトしているかどうかに関わらずグレーアウトを外す
             image.classList.remove("grayed-out"); 
           } else {
-            // それ以外の画像(select1のクラスがついた画像のみ)は選択状態を解除し、選択ボーダーも取り除く
+            // それ以外の画像(select1のクラスがついた画像のみ)は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
+            image.classList.remove("grayed-out"); 
             if (image.classList.contains("select1")){
               image.classList.remove("selected_1");
               image.style.border = "";
