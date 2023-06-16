@@ -42,11 +42,15 @@
             </div>
 
 
-            <div class="wrap_tate margin-top-100">
+            <div class="wrap_tate margin-top-70">
                 <div class="wrap_yoko_centering margin-top-50">
-                    <a href="{% url 'fullorder' %}" class="cute-button coolfont" style="margin-right: 80px; font-weight: bold;">フルオーダー受付はこちら</a>
-                    <a href="{% url 'signin' %}" class="cute-button coolfont" style="font-weight: bold;">セミオーダー受付はこちら</a>
+                    <div class="wrap_yoko container-between">
+                        <a href="{% url 'fullorder' %}" class="cute-button coolfont" style="font-weight: bold; margin:5px;">フルオーダー受付はこちら</a>
+                        <a href="{% url 'signin' %}" class="cute-button coolfont" style="font-weight: bold; margin:5px;">セミオーダー受付はこちら</a>
+                    </div>
+                    
                 </div>
+                
 
             </div>
 
@@ -83,7 +87,7 @@
                         コスパ最強のうちわ屋さんです✨<br><br><br><br>
                     </h4>
 
-                    <h5 class="jkfont" style="color:#696969; text-align: center;">
+                    <h5 class="jkfont" style="color:#696969; ">
                         <span style="text-align: left; display: block;">  
                         <span style="font-weight: bold;">❶ とにかく安い‼︎<br><br></span>
                     
@@ -111,11 +115,13 @@
                         &nbsp;&nbsp;✔️ 当店限定のオリジナル補強パネルの導入<br>
                         </span>
                     </h5>
+                    
                 </div>
-                
+                <a href="#" class="coolfont margin-top-100" style="font-weight: bold; display: flex; justify-content: center;">【 初めての方へ 】</a>
             </div>
-
+            
         </div>
+        
         <!-- ログインフォーム -->
         <h2 class="fuchidori_shiro margin-top-100" style="text-align: center;">Login</h2>
         <form method="POST" action="{% url 'login' %}" >

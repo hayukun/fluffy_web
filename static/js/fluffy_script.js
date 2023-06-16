@@ -18,8 +18,7 @@ function handleImageSelection1(image) {
     image.classList.remove("selected_1");
     image.style.border = "";
     
-    removeImageFromDiv('cartImage1', 'cart_item1');
-    cartItem1Price.textContent = "";
+    resetHiddenCart(cartItem1, cartItem1Name, cartItem1Price);
     
     if (window.getComputedStyle(notesText).display === "block") {
       cartItem1ExtText.textContent = "";
@@ -35,9 +34,10 @@ function handleImageSelection1(image) {
         excludedImage.classList.remove("selected_2");
         excludedImage.style.border = "";
       });
-      
+      resetImageSelection3conbo();
       showAllOptions();
     }
+    UchiwaOrBoardGrayedOut();
   } else {
     // クリックした画像が未選択状態の場合
     images.forEach(function (otherImage) {
@@ -51,7 +51,7 @@ function handleImageSelection1(image) {
             excludedImage.classList.remove("selected_2");
             excludedImage.style.border = "";
           });
-          
+          resetImageSelection3conbo();
           showAllOptions();
         }
         
@@ -67,14 +67,16 @@ function handleImageSelection1(image) {
       if (key === image.id) {
         showAllOptions();
         removeImageFromDiv('cartImage1', 'cart_item1');
-        addImageToCart(cartItem1, 'cartImage1', "cart-image", image, startPosition, animationDuration);
-        
+        addImageToCart(cartItem1, 'cartImage1', "cart-image", image, startPosition, animationDuration);       
         cartItem1Price.textContent = value;
+        cartItem1Name.textContent = map_productNameObject.get(image.id);
         
         if (key === 'image1_8') {
           notesText.style.display = "block";
           selected_1_ImageInfo.appendChild(inputElement);
         } else if (key === 'image1_1') {
+          reduceOptions();         
+
           images.forEach(function (otherImage) {
             if (otherImage.classList.contains("excluded2")) {
               otherImage.classList.add("grayed-out");
@@ -91,13 +93,17 @@ function handleImageSelection1(image) {
             } else if (otherImage.classList.contains("autoincluded2")) {
               otherImage.classList.add('selected_2');
               otherImage.style.border = "2px solid #FF6CC4";
+            } else if (otherImage.classList.contains("autoincluded3")) {
+              otherImage.classList.remove("grayed-out");
             }
           });
           
-          reduceOptions();
           removeImageFromDiv('cartImage2', 'cart_item2');
           addImageToCart(cartItem2, 'cartImage2', "cart-image2", included2Image, startPosition, animationDuration);
           cartItem2Price.textContent = map_priceObject2.get('image2_1');
+          cartItem2Name.textContent = map_sizeObject.get('image2_1');
+
+          resetHiddenCart(cartItem3, cartItem3Name, cartItem3Price);
           
           cartItem1ExtText.textContent = "";
           inputElement.value = "";
@@ -107,6 +113,7 @@ function handleImageSelection1(image) {
           inputElement.value = "";
           removeImageFromDiv("cartItem1ExtInput", "selected_1_ImageInfo");
           notesText.style.display = "none";
+          UchiwaOrBoardGrayedOut();
         }
         
         break;
@@ -124,8 +131,8 @@ function handleImageSelection2(image) {
     image.style.border = "";
 
     // カートからアイテム除去、内部価格情報も初期化
-    removeImageFromDiv('cartImage2', 'cart_item2');
-    cartItem2Price.textContent = "";
+    // removeImageFromDiv('cartImage2', 'cart_item2');
+    resetHiddenCart(cartItem2, cartItem2Name, cartItem2Price);
   } else {  // クリックした画像が未選択状態の場合
     if (image.classList.contains('grayed-out')){
       ;
@@ -144,8 +151,8 @@ function handleImageSelection2(image) {
           // cartItem1.textContent = map_productNameObject.get(image.id);
           removeImageFromDiv('cartImage2', 'cart_item2');
           addImageToCart(cartItem2, 'cartImage2', "cart-image2", image, startPosition, animationDuration);
-
           cartItem2Price.textContent = value;
+          cartItem2Name.textContent = map_sizeObject.get(image.id);
 
           break;
         }
@@ -165,7 +172,7 @@ function handleImageSelection3(image) {
     selected_3_ImageInfo.textContent = "";
     // カートからアイテム除去、内部価格情報も初期化
     removeImageFromDiv('cartImage3', 'cart_item3');
-    cartItem3Price.textContent = "";
+    resetHiddenCart(cartItem3, cartItem3Name, cartItem3Price);
   } else {  // クリックした画像が未選択状態の場合
     if (image.classList.contains('grayed-out')){
       ;
@@ -178,14 +185,32 @@ function handleImageSelection3(image) {
       });
       image.classList.add("selected_3");
       image.style.border = "2px solid #FF6CC4";
-      // カートに追加
-      // cartItem1.textContent = map_productNameObject.get(image.id);
+      
+      
+      for ( type of list_charaTypeClassObject ){
+        if (image.classList.contains(type)){
+          typeNameImage = document.getElementById(type);
+          typeNameImage
+          break;
+        }
+      }
       removeImageFromDiv('cartImage3', 'cart_item3');
-      addImageToCart(cartItem3, 'cartImage3', "cart-image3", image, startPosition, animationDuration);
-      } 
-    }
+      addImageToCart(cartItem3, 'cartImage3', "cart-image3", typeNameImage, startPosition, animationDuration);
+      // タイプに金額つけるならここに追記
+      cartItem3Name.textContent = map_typeNameObject.get(typeNameImage.id);
+    } 
+  }
 }
 
+  function resetHiddenCart(cartItem, cartItemName, cartItemPrice){
+    cartItem.textContent = "";
+    cartItemName.textContent = "";
+    cartItemPrice.textContent = "";
+  }
+
+  function updateHiddenCart(cartItemName, cartItemPrice){
+
+  }
 
   // カートから
   function removeImageFromDiv(contentId, divId) {
@@ -245,6 +270,30 @@ function handleImageSelection3(image) {
     ['image1_8', 'サイズ指定']
   ]);
 
+  // サイズ対応マップ
+  const map_sizeObject = new Map([
+    ['image2_1', 'Sサイズ'],
+    ['image2_2', 'Mサイズ'],
+    ['image2_3', 'Lサイズ'],
+    ['image2_4', 'XLサイズ']
+  ]);
+
+  // タイプ名画像対応マップ
+  const map_typeNameObject = new Map([
+    ['image3_1', '顔うちわ文字(AorB)'],
+    ['image3_2', '1枚につき1文字'],
+    ['image3_3', '1枚につき1文字＋中文字'],
+    ['image3_4', '1枚につき2～3文字'],
+    ['image3_5', '1枚につき5～10文字前後'],
+    ['image3_6', '1枚につき1文字(バラ)'],
+    ['image3_7', '1枚につき1文字(連結)'],
+    ['image3_8', '1枚につき2～3文字(連結)'],
+    ['image3_9', '1枚につき5～10文字前後(連結)'],
+  ]);
+
+  // 文字タイプクラスリスト
+  const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4', 'image3_5', 'image3_6', 'image3_7',  'image3_8', 'image3_9'];
+
   // うちわ or ボード用　input要素
   const inputElement = document.createElement('input');
   inputElement.type = 'text';
@@ -257,6 +306,10 @@ function handleImageSelection3(image) {
   const cartItem2 = document.getElementById("cart_item2");
   const cartItem3 = document.getElementById("cart_item3");
   const cartItem4 = document.getElementById("cart_item4");
+  const cartItem1Name = document.getElementById("cart_item1_name");
+  const cartItem2Name = document.getElementById("cart_item2_name");
+  const cartItem3Name = document.getElementById("cart_item3_name");
+  const cartItem4Name = document.getElementById("cart_item4_name");
   const cartItem1Price = document.getElementById("cart_item1_price");
   const cartItem2Price = document.getElementById("cart_item2_price");
   const cartItem3Price = document.getElementById("cart_item3_price");
@@ -266,7 +319,8 @@ function handleImageSelection3(image) {
 
   // howManySelect要素を取得
   var howManySelectElement = document.querySelector('select[name="howManySelect"]');
-
+  var is_UchiwaGrayed = true;
+  var is_BoardGrayed = true;
 
 // カート追加アニメーション処理
 const animationDuration = 1000; // アニメーションの時間（ミリ秒）
@@ -288,7 +342,8 @@ function initializeImageSelection() {
       title1.classList.toggle("selected_1", element === title1);
       title2.classList.toggle("selected_1", element === title2);
 
-      resetImageSelection3conbo()
+      resetImageSelection3conbo();
+      UchiwaOrBoardGrayedOut();
       callback();
     });
   }
@@ -317,8 +372,41 @@ function initializeImageSelection() {
 // howManySelect要素の変更を検知するイベントリスナーを追加
 howManySelectElement.addEventListener('change', function() {
   // 変更されたときの処理を記述する
-  var selectedValue = howManySelectElement.value;
+  var selectedValue = parseInt(howManySelectElement.value);
   console.log('Selected value changed: ' + selectedValue);
+  resetImageSelection3();
+  // UchiwaOrBoardGrayedOut();
+  images.forEach(function (image) { // 全イメージ画像ループ
+    if (image.classList.contains("select3")){
+      if (!isNaN(selectedValue)){
+        if (selectedValue === 1 && (image.classList.contains("multipleUchiwa") || image.classList.contains("multipleBoard") )){
+          image.classList.add("grayed-out");
+        } else if (selectedValue > 1 && (image.classList.contains("singleUchiwa") || image.classList.contains("singleBoard") )) {
+          image.classList.add("grayed-out");
+        } else if (selectedValue === 1 && (image.classList.contains("singleUchiwa") || image.classList.contains("singleBoard") )) {
+          ;
+        } else if (selectedValue > 1 && (image.classList.contains("multipleUchiwa") || image.classList.contains("multipleBoard") )){
+          ;
+        } else {
+          image.classList.add("grayed-out");
+        }
+        if( is_UchiwaGrayed == true && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
+          image.classList.add("grayed-out");
+          console.log("1");
+        } else if ( is_UchiwaGrayed == false && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
+          ;
+        }
+        if( is_BoardGrayed == true && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
+          image.classList.add("grayed-out");
+          console.log("3");
+        } else if ( is_BoardGrayed == false && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
+          ;
+        }
+      } else {
+        image.classList.add("grayed-out");
+      }
+    }
+  });
 });
 
 // 何連オプションの1以外非表示にする
@@ -330,11 +418,10 @@ function reduceOptions() {
     if (option.value !== '1') {
         option.style.display = 'none';
     }
-    // ユーザーが何も選択していない場合にvalueが1のオプションを選択する
-    if (howManySelectElement.value === '') {
-      howManySelectElement.value = '1';
-    }
+    
+    howManySelectElement.value = '1';
   }
+  UchiwaOrBoardGrayedOut();
 }
 
 // オプションを再表示する関数
@@ -343,23 +430,73 @@ function showAllOptions() {
   for (var i = 0; i < howManySelectElement.options.length; i++) {
     var option = howManySelectElement.options[i];
     
-    option.style.display = ''; // デフォルトの表示設定に戻す
-    howManySelectElement.value = ''
+    // デフォルトの表示設定に戻す
+    option.style.display = ''; 
+    // howManySelectElement.value = '';
   }
 }
 
-function resetImageSelection3conbo(){
-  // カートの中身もクリアにする
-  cartItem1.textContent = ""
-  cartItem1Price.textContent = ""
-  cartItem2.textContent = ""
-  cartItem2Price.textContent = ""
-  cartItem3.textContent = ""
-  cartItem3Price.textContent = ""
-  showAllOptions();
+function UchiwaOrBoardGrayedOut() {
+  
+  if (title1.classList.contains("grayed-out") && !title2.classList.contains("grayed-out")){
+    is_UchiwaGrayed = true;
+    is_BoardGrayed = false;
+  } else if (!title1.classList.contains("grayed-out") && title2.classList.contains("grayed-out")){
+    is_UchiwaGrayed = false;
+    is_BoardGrayed = true;
+  } else {
+    is_UchiwaGrayed = true;
+    is_BoardGrayed = true;
+  }
+  var selectedValue = parseInt(howManySelectElement.value);
+  console.log('Now value: ' + selectedValue);
+  console.log('is Uchiwa: ' + is_UchiwaGrayed);
+  console.log('is Board: ' + is_BoardGrayed);
   images.forEach(function (image) { // 全イメージ画像ループ
-    // select1のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
-    if (!image.classList.contains("select1_title")){
+    if (image.classList.contains("select3")){
+      if (!isNaN(selectedValue)){
+        if (selectedValue === 1 && (image.classList.contains("multipleUchiwa") || image.classList.contains("multipleBoard") )){
+          image.classList.add("grayed-out");
+        } else if (selectedValue > 1 && (image.classList.contains("singleUchiwa") || image.classList.contains("singleBoard") )) {
+          image.classList.add("grayed-out");
+        } else if (selectedValue === 1 && (image.classList.contains("singleUchiwa") || image.classList.contains("singleBoard") )) {
+          ;
+        } else if (selectedValue > 1 && (image.classList.contains("multipleUchiwa") || image.classList.contains("multipleBoard") )){
+          ;
+        } else {
+          image.classList.add("grayed-out");
+        }
+        if( is_UchiwaGrayed == true && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
+          image.classList.add("grayed-out");
+          console.log("1");
+        } else if ( is_UchiwaGrayed == false && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
+          ;
+        }
+        if( is_BoardGrayed == true && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
+          image.classList.add("grayed-out");
+          console.log("3");
+        } else if ( is_BoardGrayed == false && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
+          ;
+        }
+      } else {
+        image.classList.add("grayed-out");
+      }
+    }
+  });
+}
+
+// 3conbo初期化関数
+function resetImageSelection3conbo(){
+  console.log("reset3conbo");
+  // カートの中身もクリアにする
+  resetHiddenCart(cartItem1, cartItem1Name, cartItem1Price);
+  resetHiddenCart(cartItem2, cartItem2Name, cartItem2Price);
+  resetHiddenCart(cartItem3, cartItem3Name, cartItem3Price);
+  showAllOptions();
+  howManySelectElement.value = '';
+  images.forEach(function (image) { // 全イメージ画像ループ
+    
+    if (!image.classList.contains("select1_title")){ // select1のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
       image.classList.remove("grayed-out");
       if(image.classList.contains("select1")){
         image.classList.remove("selected_1");
@@ -367,9 +504,9 @@ function resetImageSelection3conbo(){
           inputElement.value = "";
           cartItem1ExtText.textContent = "";
         }
-      } else if (image.classList.contains("select2")){
+      } else if (image.classList.contains("select2")){ // select2のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
         image.classList.remove("selected_2");
-      } else if (image.classList.contains("select3")){
+      } else if (image.classList.contains("select3")){ // select3のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
         image.classList.remove("selected_3"); 
       }
       removeImageFromDiv("cartItem1ExtInput", "selected_1_ImageInfo");
@@ -378,10 +515,10 @@ function resetImageSelection3conbo(){
   });
 }
 
+// うちわorボード初期化関数
 function resetImageSelection1(){
   // カートの中身もクリアにする
-  cartItem1.textContent = ""
-  cartItem1Price.textContent = ""
+  resetHiddenCart(cartItem1, cartItem1Name, cartItem1Price);
   images.forEach(function (image) { // 全イメージ画像ループ
     // select1のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
     if (image.classList.contains("select1")){
@@ -397,11 +534,27 @@ function resetImageSelection1(){
 
 }
 
+// 文字タイプ初期化関数 
+function resetImageSelection3(){
+  // カートの中身もクリアにする
+  resetHiddenCart(cartItem3, cartItem3Name, cartItem3Price);
+  images.forEach(function (image) { // 全イメージ画像ループ
+    // select3のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
+    if (image.classList.contains("select3")){
+      image.classList.remove("grayed-out"); 
+      image.classList.remove("selected_3");
+      image.style.border = "";
+    }
+  });
+
+}
+
 // カート追加関数 (カートitem名, 追加ID名, 追加クラス名, 画像, スタート位置, アニメーション時間)
 function addImageToCart(cartItem, cartID, cartClass, image, startPosition, animationDuration) {
   const copiedImage = image.cloneNode(true);
   copiedImage.id = cartID;
   copiedImage.classList.add(cartClass);
+  copiedImage.classList.add("cart-image");
   copiedImage.classList.remove("btn-image");
   copiedImage.classList.remove("image-width");
   copiedImage.style.border="";
