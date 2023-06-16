@@ -142,7 +142,7 @@ h5 {
         top: 20%;
         left: 100%;
         transform: translate(-100%, -50%);
-        padding: 10px;
+        padding: 8px;
         width: 300px;
         height: auto;
         z-index: 6;
@@ -193,6 +193,7 @@ body {
     justify-content: center;
     align-items: center;
     background-image: url('/static/images/common/bg_image_rainbow2.png');
+    /* background-color: #000000; */
     background-size: cover;
     font-family: 'CustomFont', 'Arial', sans-serif;
     font-weight: bold;
@@ -208,7 +209,7 @@ body {
 }
 
 .bg_fullorder{
-    background-image: url('/static/images/fullorder/bg/fullorder背景.png');
+    background-image: url('/static/images/fullorder/bg/もくもくさん.png');
     background-size: cover;
 
 }
@@ -249,13 +250,25 @@ input[type="password"] {
 
 .image-width{
     width:140px;
-    margin: 17px;
+    margin: 8px;
     padding: 0 5px 0 5px;
 }
 
 .btn-image{
     border-radius:9999px;
     background-color: white;
+}
+
+.charaType img {
+    width:360px;
+    /* margin: 17px;
+    padding: 0 5px 0 5px; */
+}
+
+.images-width{
+    width:180px;
+    margin: 17px;
+    padding: 0 5px 0 5px;
 }
 
 .container-main{
@@ -559,7 +572,15 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 
 
 .grayed-out {
-  filter: grayscale(100%);
+  filter: grayscale(100%) !important;
+  text-shadow:2.5px 2.5px 0 #FFF, -2.5px -2.5px 0 #FFF,
+  -2.5px 2.5px 0 #FFF, 2.5px -2.5px 0 #FFF,
+  0px 2.5px 0 #FFF,  0 -2.5px 0 #FFF,
+  -2.5px 0 0 #FFF, 2.5px 0 0 #FFF;
+}
+
+.grayed-out-comment {
+    color:gray;
 }
 
 /* 画像スライドアニメーション */
@@ -610,10 +631,11 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 .cartBox {
     padding: 0.5em 1em;
     margin: 2em 0;
-    color: white;
-    background-color: #FF6CC4;/*背景色*/
+    color: #FF6CC4;
+    background-color: rgb(165, 162, 162);/*背景色*/
     border-left: solid 6px #EC59A2;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+    border-radius: 20px 0 0 20px;
 }
 .cartBox p {
     margin: 0; 
@@ -625,3 +647,20 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
     padding: 0;
     font-family: CustomFont2;
 }
+
+.border-bottom{
+    border-bottom: dashed #FFF !important;
+    padding: 30px;
+}
+
+
+
+
+
+
+.noneobj{
+    /* display: none; */
+}
+
+
+
