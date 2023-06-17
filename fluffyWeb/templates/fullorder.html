@@ -4,7 +4,7 @@
 {% block script %}
 {% endblock script %}
 {% block main %}
-<div class="container-main bg_fullorder" style="height:7000px; width: 100%;">
+<div class="container-main" style="height:7000px; width: 100%;">
     
     <div class="container-cart cartBox cart_text" id="cart" style="max-width: 25%; display: none;">
         <div class="wrap_yoko border-bottom" style="align-items: center; height:50px;">
@@ -18,7 +18,7 @@
             <div id="cart_item2"></div><div id="cart_item2_name" class="noneobj" ></div><div id="cart_item2_price" class="noneobj" ></div>
         </div>
         <div class="wrap_yoko">
-            <div id="cart_item3"></div><div id="cart_item3_name" class="noneobj" ></div><div id="cart_item3_price" class="jkfont noneobj" ></div>
+            <div id="cart_item3"></div><div id="cart_item3_name" class="noneobj" ></div><div id="cart_item3_price" class="noneobj" ></div>
         </div>
         <div class="wrap_yoko">
             <div id="cart_item4"></div><div id="cart_item4_price" class="noneobj" ></div>
@@ -203,11 +203,32 @@
                         <img src="/static/images/fullorder/order_buttons/types/09-2.png" class="select3 image3_9 excluded3 multipleBoard grayed-out" style="width:400px;">
 
                     </div>
-                    <div id="selected_3_ImageInfo" value="0" class="margin-top-10"></div>
-                </div>
+                    <div class="wrap_tate_no_centering margin-top-70" style="display: flex; justify-content: center">
+                        <img src="/static/images/fullorder/order_buttons/types/タイプ10.png" class="padding-2" id="image3_10">
 
+                        <img src="/static/images/fullorder/order_buttons/types/10-1.png" class="select3 image3_10 excluded3 multipleUchiwa grayed-out" style="width:400px;">
+                        <img src="/static/images/fullorder/order_buttons/types/10-2.png" class="select3 image3_10 excluded3 multipleBoard grayed-out" style="width:400px;">
+                    </div>
+                    <div class="wrap_tate margin-top-70">
+                        <div class="wrap_yoko container-between" style="width: 400px; text-align: left;">
+                            <span style="padding-top: 8px; width:200px;">【名前】</span><input type="text" placeholder="名前" id="cartItem1ExtInput" style="width: 60%;">
+                        </div>
+                        <div class="wrap_yoko container-between margin-top-20" style="width: 400px; text-align: left;">
+                            <span style="padding-top: 8px; width:200px;">【中文字】</span><input type="text" placeholder="小さくする文字を入力" id="cartItem1ExtInput" style="width: 60%;">
+                        </div>
+                        <div class="wrap_yoko container-between margin-top-20" style="width: 400px; text-align: left;">
+                            <span style="padding-top: 8px; width:200px;">【名称・敬称】</span><input type="text" placeholder="苗字、あだ名" id="cartItem1ExtInput" style="width: 60%;">
+                        </div>
+                        <div class="wrap_yoko container-between margin-top-20" style="width: 400px; text-align: left;">
+                            <span style="padding-top: 8px; width:200px;">【キャッチフレーズ】</span><input type="text" placeholder="最大15文字" id="cartItem1ExtInput" style="width: 60%;">
+                        </div>
+                    </div>   
+                </div>
+                            
             </div>
+            
         </div>
+        
     </div>
 
 <!-- <div class="star"></div> -->

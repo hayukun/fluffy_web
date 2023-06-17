@@ -197,7 +197,7 @@ body {
     /* display: flex; */
     justify-content: center;
     align-items: center;
-    background-image: url('/static/images/common/bg_image_rainbow2.png');
+    background-image: url('/static/images/fullorder/bg/背景_作品1.png');
     /* background-color: #000000; */
     background-size: cover;
     font-family: 'CustomFont', 'Arial', sans-serif;
@@ -214,11 +214,12 @@ body {
     background-color: #ffffff;
 }
 
-.bg_fullorder{
-    background-image: url('/static/images/fullorder/bg/もくもくさん.png');
+/* .bg_fullorder{
+    background-image: url('/static/images/fullorder/bg/背景_作品1.png');
     background-size: cover;
+    z-index: -5;
 
-}
+} */
 
 .coolfont{
     font-family: 'CustomFont2';
@@ -283,13 +284,7 @@ input[type="password"] {
 
 .container-justifyMonitor{
     text-align: center;
-    height:1120px;
-    width: 100%;
-}
-
-.container-justifyMonitor{
-    text-align: center;
-    height:1120px;
+    height:1100px;
     width: 100%;
 }
 
@@ -593,7 +588,6 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 
 .loopSlide {
     display: flex;
-    width: 100vw;
     height: 250px;
     overflow: hidden;
   }
@@ -665,7 +659,7 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 
 
 .noneobj{
-    display: none;
+    /* display: none; */
 }
 
 

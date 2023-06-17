@@ -34,7 +34,7 @@ function handleImageSelection1(image) {
         excludedImage.classList.remove("selected_2");
         excludedImage.style.border = "";
       });
-      resetImageSelection3conbo();
+      resetImageSelection3combo();
       showAllOptions();
     }
     UchiwaOrBoardGrayedOut();
@@ -51,7 +51,7 @@ function handleImageSelection1(image) {
             excludedImage.classList.remove("selected_2");
             excludedImage.style.border = "";
           });
-          resetImageSelection3conbo();
+          resetImageSelection3combo();
           showAllOptions();
         }
         
@@ -168,8 +168,6 @@ function handleImageSelection3(image) {
     // 選択状態を解除し、ボーダーも除去
     image.classList.remove("selected_3");
     image.style.border = "";
-    // 選択状況おしらせ表示初期化
-    selected_3_ImageInfo.textContent = "";
     // カートからアイテム除去、内部価格情報も初期化
     removeImageFromDiv('cartImage3', 'cart_item3');
     resetHiddenCart(cartItem3, cartItem3Name, cartItem3Price);
@@ -286,13 +284,14 @@ function handleImageSelection3(image) {
     ['image3_4', '1枚につき2～3文字'],
     ['image3_5', '1枚につき5～10文字前後'],
     ['image3_6', '1枚につき1文字(バラ)'],
-    ['image3_7', '1枚につき1文字(連結)'],
-    ['image3_8', '1枚につき2～3文字(連結)'],
-    ['image3_9', '1枚につき5～10文字前後(連結)'],
+    ['image3_7', '1枚につき1文字＋中文字(バラ)'],
+    ['image3_8', '1枚につき1文字(連結)'],
+    ['image3_9', '1枚につき2～3文字(連結)'],
+    ['image3_10', '1枚につき5～10文字前後(連結)'],
   ]);
 
   // 文字タイプクラスリスト
-  const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4', 'image3_5', 'image3_6', 'image3_7',  'image3_8', 'image3_9'];
+  const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4', 'image3_5', 'image3_6', 'image3_7',  'image3_8', 'image3_9', 'image3_10'];
 
   // うちわ or ボード用　input要素
   const inputElement = document.createElement('input');
@@ -342,7 +341,7 @@ function initializeImageSelection() {
       title1.classList.toggle("selected_1", element === title1);
       title2.classList.toggle("selected_1", element === title2);
 
-      resetImageSelection3conbo();
+      resetImageSelection3combo();
       UchiwaOrBoardGrayedOut();
       callback();
     });
@@ -373,7 +372,6 @@ function initializeImageSelection() {
 howManySelectElement.addEventListener('change', function() {
   // 変更されたときの処理を記述する
   var selectedValue = parseInt(howManySelectElement.value);
-  console.log('Selected value changed: ' + selectedValue);
   resetImageSelection3();
   // UchiwaOrBoardGrayedOut();
   images.forEach(function (image) { // 全イメージ画像ループ
@@ -392,13 +390,11 @@ howManySelectElement.addEventListener('change', function() {
         }
         if( is_UchiwaGrayed == true && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
           image.classList.add("grayed-out");
-          console.log("1");
         } else if ( is_UchiwaGrayed == false && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
           ;
         }
         if( is_BoardGrayed == true && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
           image.classList.add("grayed-out");
-          console.log("3");
         } else if ( is_BoardGrayed == false && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
           ;
         }
@@ -449,9 +445,6 @@ function UchiwaOrBoardGrayedOut() {
     is_BoardGrayed = true;
   }
   var selectedValue = parseInt(howManySelectElement.value);
-  console.log('Now value: ' + selectedValue);
-  console.log('is Uchiwa: ' + is_UchiwaGrayed);
-  console.log('is Board: ' + is_BoardGrayed);
   images.forEach(function (image) { // 全イメージ画像ループ
     if (image.classList.contains("select3")){
       if (!isNaN(selectedValue)){
@@ -468,13 +461,12 @@ function UchiwaOrBoardGrayedOut() {
         }
         if( is_UchiwaGrayed == true && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
           image.classList.add("grayed-out");
-          console.log("1");
         } else if ( is_UchiwaGrayed == false && ( image.classList.contains("singleUchiwa") || (image.classList.contains("multipleUchiwa")) )){
           ;
         }
         if( is_BoardGrayed == true && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
           image.classList.add("grayed-out");
-          console.log("3");
+
         } else if ( is_BoardGrayed == false && ( image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")) )){
           ;
         }
@@ -485,9 +477,8 @@ function UchiwaOrBoardGrayedOut() {
   });
 }
 
-// 3conbo初期化関数
-function resetImageSelection3conbo(){
-  console.log("reset3conbo");
+// 3combo初期化関数
+function resetImageSelection3combo(){
   // カートの中身もクリアにする
   resetHiddenCart(cartItem1, cartItem1Name, cartItem1Price);
   resetHiddenCart(cartItem2, cartItem2Name, cartItem2Price);
