@@ -11,6 +11,11 @@
 }
 
 @font-face {
+    font-family: 'CustomFont2-Black';
+    src: url('../fonts/MPLUS1p-Black.ttf');
+}
+
+@font-face {
     font-family: 'CustomFont3';
     src: url('../fonts/JK-Maru-Gothic-M.otf');
 }
@@ -24,15 +29,24 @@
   
 
 h1 {
-    font-size: 50px;
+    font-size: 80px;
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 60px;
 }
 
 h3 {
     font-size: 25px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 500 !important;
 }
   /* スマートフォン用のスタイル */
   @media (max-width: 768px) {
@@ -69,7 +83,7 @@ h3 {
         left: 100%;
         transform: translate(-100%, -50%);
         padding: 10px;
-        width: 150px;
+        width: 170px;
         height: auto;
         z-index: 6;
       }
@@ -84,6 +98,13 @@ h3 {
         font-size: 10px;
     }
 
+    .cart-image {
+        width:150px;
+    }
+
+    .cart-image2 {
+        width: 107px !important;
+    }
 
   }
   
@@ -124,9 +145,9 @@ h3 {
     #cart {
         position: fixed;
         top: 20%;
-        left: 100%;
+        left: 105%;
         transform: translate(-100%, -50%);
-        padding: 10px;
+        padding: 8px;
         width: 300px;
         height: auto;
         z-index: 6;
@@ -142,6 +163,31 @@ h3 {
         font-size: 15px;
     }
 
+    .imagehover-container {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    .imagehover-container img {
+        transition: transform 0.3s ease;
+    }
+  
+    .imagehover-container:hover img {
+    transform: scale(1.05);
+    }
+    
+    .cart-image {
+        width:150px;
+        min-width: 185px;
+    }
+
+    .cart-image2 {
+        width: 107px !important;
+        min-width: 80px;
+        overflow: hidden;
+    }
+
   }
 
 html {scroll-behavior: smooth;}
@@ -151,11 +197,13 @@ body {
     /* display: flex; */
     justify-content: center;
     align-items: center;
-    background-image: url('/static/images/common/bg_image_rainbow2.png');
+    background-image: url('/static/images/fullorder/bg/背景_作品1.png');
+    /* background-color: #000000; */
     background-size: cover;
     font-family: 'CustomFont', 'Arial', sans-serif;
     font-weight: bold;
     line-height: 1;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     /* -webkit-font-kerning: normal; */
     -webkit-text-size-adjust: 100%;
@@ -166,11 +214,12 @@ body {
     background-color: #ffffff;
 }
 
-.bg_fullorder{
-    background-image: url('/static/images/fullorder/bg/fullorder背景.png');
+/* .bg_fullorder{
+    background-image: url('/static/images/fullorder/bg/背景_作品1.png');
     background-size: cover;
+    z-index: -5;
 
-}
+} */
 
 .coolfont{
     font-family: 'CustomFont2';
@@ -206,18 +255,43 @@ input[type="password"] {
 
 }
 
+.image-width{
+    width:140px;
+    margin: 8px;
+    padding: 0 5px 0 5px;
+}
+
+.btn-image{
+    border-radius:9999px;
+    background-color: white;
+}
+
+.charaType img {
+    width:300px;
+    /* margin: 17px;
+    padding: 0 5px 0 5px; */
+}
+
+.images-width{
+    width:180px;
+    margin: 17px;
+    padding: 0 5px 0 5px;
+}
+
 .container-main{
-    text-align: center;
+    width: 100%;
 }
 
 .container-justifyMonitor{
     text-align: center;
-    height:1120px;
+    height:1100px;
     width: 100%;
 }
 
+
 .container-sub{
-    height:168px;
+    height:1400px;
+    width: 100%;
 }
 .container-1000px{
     height:1000px;
@@ -229,13 +303,13 @@ input[type="password"] {
 .inner{
     width: 70%;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 620px;
   }
 
 .inner-big{
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 550px;
 }
 
 
@@ -456,6 +530,15 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
                 -2.5px 0 0 #FFF, 2.5px 0 0 #FFF;
 }
 
+.fuchidori_kuro {
+    
+    color: #FFF !important; 
+    text-shadow:4px 4px 4px #000000, 4px 4px 4px #000000,
+                4px 4px 4px #000000, 4px 4px 4px #000000,
+                4px 4px 4px #000000,  4px 4px 4px #000000,
+                4px 4px 4px #000000, 4px 4px 4px #000000;
+}
+
 .wrap_yoko {
     display: flex;
     justify-content: flex-start;
@@ -490,14 +573,21 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 
 
 .grayed-out {
-  filter: grayscale(100%);
+  filter: grayscale(100%) !important;
+  text-shadow:2.5px 2.5px 0 #FFF, -2.5px -2.5px 0 #FFF,
+  -2.5px 2.5px 0 #FFF, 2.5px -2.5px 0 #FFF,
+  0px 2.5px 0 #FFF,  0 -2.5px 0 #FFF,
+  -2.5px 0 0 #FFF, 2.5px 0 0 #FFF;
+}
+
+.grayed-out-comment {
+    color:gray;
 }
 
 /* 画像スライドアニメーション */
 
 .loopSlide {
     display: flex;
-    width: 100vw;
     height: 250px;
     overflow: hidden;
   }
@@ -541,10 +631,11 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 .cartBox {
     padding: 0.5em 1em;
     margin: 2em 0;
-    color: white;
-    background-color: #FF6CC4;/*背景色*/
+    color: #FF6CC4;
+    background-color: rgb(165, 162, 162);/*背景色*/
     border-left: solid 6px #EC59A2;
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+    border-radius: 20px 0 0 20px;
 }
 .cartBox p {
     margin: 0; 
@@ -556,3 +647,20 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
     padding: 0;
     font-family: CustomFont2;
 }
+
+.border-bottom{
+    border-bottom: dashed #FFF !important;
+    padding: 30px;
+}
+
+
+
+
+
+
+.noneobj{
+    /* display: none; */
+}
+
+
+
