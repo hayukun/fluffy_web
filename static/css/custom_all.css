@@ -21,6 +21,52 @@
 }
 
 
+.fuwafuwa {
+  animation: fuwafuwa 3s infinite ease-in-out .8s alternate;
+  background: url(../images/common/company_logo.png) no-repeat center center / 140px auto;
+  display: inline-block;
+  transition: 1.5s ease-in-out;
+  width: 140px;
+  height: 140px;
+  margin-top: 2px;
+}
+ 
+@keyframes fuwafuwa {
+  0% {
+    transform:translate(0, 0) rotate(-7deg);
+  }
+  50% {
+    transform:translate(0, -7px) rotate(0deg);
+  }
+  100% {
+    transform:translate(0, 0) rotate(7deg);
+  }
+}
+
+.ql-toolbar {
+    padding: 10px;
+  }
+  
+  .ql-snow .ql-picker.ql-font, .ql-bubble .ql-picker.ql-font {
+    width: 130px;
+  }
+ 
+  /* .ql-font span[data-value="nikumaru"]::before, .ql-font span[data-label="Nikumaru"]::before {
+    font-family: "CustomFont" !important;
+  }
+  .ql-font span[data-value="mplus1p"]::before, .ql-font span[data-label="MPlus1p"]::before {
+    font-family: "CustomFont2" !important;
+  }
+  .ql-font span[data-value="jkfont"]::before, .ql-font span[data-label="JK Font"]::before {
+    font-family: "CustomFont3" !important;
+  }
+  
+  .ql-font-nikumaru { font-family: 'CustomFont' !important; }
+  .ql-font-mplus1p { font-family: 'CustomFont2' !important; }
+  .ql-font-jkfont { font-family: 'CustomFont3' !important; } */
+  
+  
+
 /* 共通のスタイル */
 .container {
     width: 100%;
@@ -85,7 +131,7 @@ h5 {
         padding: 10px;
         width: 170px;
         height: auto;
-        z-index: 6;
+        z-index: 10;
       }
 
       .cart_text_title{
@@ -105,7 +151,55 @@ h5 {
     .cart-image2 {
         width: 107px !important;
     }
+    /* プレビュー */
+    #inputForm-view {
+        position: absolute;
+        bottom : 85%;
+        left: 0%;
+        z-index:6;
+    }
+    
+    #palette_board{
+        position: absolute;
+        bottom : 25%;
+        left: 0%;
+        width: 600px;
+        z-index:7;
+    }
+    
+    #view_example_form {
+        position: absolute;
+        bottom : 25%;
+        left: 35%;
+        z-index:8;
+    }
+    
+    #view_board img{
+        width:150px !important;
+    }
 
+    #view_board{
+        position: absolute;
+        top : 3%;
+        left: 0%;
+        z-index:7;
+    }
+
+    .bg-pink{
+        width:600px;
+    }
+
+    .about_frameUpperleft {
+        position: absolute;
+        top:38%;
+        left:-10%;
+    }
+    
+    .about_frameBottomRight {
+        position: absolute;
+        top:95%;
+        left:65%;
+    }
   }
   
   /* パソコン用のスタイル */
@@ -150,7 +244,7 @@ h5 {
         padding: 8px;
         width: 300px;
         height: auto;
-        z-index: 6;
+        z-index: 10;
       }
 
     .cart_text_title{
@@ -188,6 +282,61 @@ h5 {
         overflow: hidden;
     }
 
+    /* プレビュー */
+    #inputForm-view {
+        position: absolute;
+        bottom : 85%;
+        left: 0%;
+        z-index:6;
+    }
+    
+    #palette_board{
+        position: absolute;
+        bottom : 25%;
+        left: 0%;
+        width: 600px;
+        z-index:7;
+    }
+    
+    #view_example_form {
+        position: absolute;
+        bottom : 25%;
+        left: 35%;
+        z-index:8;
+    }
+    
+    #view_board img{
+        width:150px !important;
+    }
+
+    #view_board{
+        position: absolute;
+        top : 3%;
+        left: 0%;
+        z-index:7;
+    }
+
+    .bg-pink{
+        width:600px;
+    }
+
+    .about_frameUpperleft {
+        position: absolute;
+        top:38%;
+        left:-20%;
+    }
+    
+    .about_frameBottomRight {
+        position: absolute;
+        top:95%;
+        left:85%;
+    }
+
+    .frameCloud{
+        position: absolute;
+        top:95%;
+        left:0%;
+    }
   }
 
 html {scroll-behavior: smooth;}
@@ -204,6 +353,7 @@ body {
     font-weight: bold;
     line-height: 1;
     font-size: 16px;
+    color:#3c3c3c;
     -webkit-font-smoothing: antialiased;
     /* -webkit-font-kerning: normal; */
     -webkit-text-size-adjust: 100%;
@@ -211,7 +361,7 @@ body {
 }
 
 .bg_about {
-    background-color: #ffffff;
+    background-color: #FFF3F7;
 }
 
 /* .bg_fullorder{
@@ -220,6 +370,53 @@ body {
     z-index: -5;
 
 } */
+
+.about_motto{
+    width: 100px;
+}
+
+.about_number{
+    width: 50px;
+}
+
+.about_number_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    top:42%;
+    left:-2%;
+
+}
+
+.about_items{
+    background-color: #FFD9E7;padding:10px 30px 5px 30px; border-radius: 100px;
+}
+
+.about_items_text{
+    font-weight: bold; font-size: 20px; text-decoration:underline; text-decoration-color: #FF689D;
+}
+
+
+.about_animation-container {
+    display: flex;
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+  
+.animate {
+    animation: expandWidth 3s ease forwards;
+  }
+
+  @keyframes expandWidth {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
 
 .coolfont{
     font-family: 'CustomFont2';
@@ -290,7 +487,7 @@ input[type="password"] {
 
 
 .container-sub{
-    height:1400px;
+    height:1515px;
     width: 100%;
 }
 .container-1000px{
@@ -305,6 +502,12 @@ input[type="password"] {
     margin: 0 auto;
     max-width: 620px;
   }
+
+.inner-order{
+    width: 67%;
+    margin: 0 auto;
+    max-width: 620px;
+}
 
 .inner-big{
     width: 80%;
@@ -513,6 +716,8 @@ a.cute-button:hover{
     font-size: large;
 }
 
+
+
 .fuchidori_pink {
 color: #FFF;
 text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
@@ -542,6 +747,7 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 .wrap_yoko {
     display: flex;
     justify-content: flex-start;
+    flex-direction:row;
     /* margin: 0 0 5px 0; */
 }
 
@@ -652,8 +858,6 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
     border-bottom: dashed #FFF !important;
     padding: 30px;
 }
-
-
 
 
 

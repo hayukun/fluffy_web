@@ -4,7 +4,7 @@
 {% block script %}
 {% endblock script %}
 {% block main %}
-<div class="container-main" style="height:7000px; width: 100%;">
+<div class="container-main" style="height:12000px; width: 100%;">
     
     <div class="container-cart cartBox cart_text" id="cart" style="max-width: 25%; display: none;">
         <div class="wrap_yoko border-bottom" style="align-items: center; height:50px;">
@@ -84,7 +84,7 @@
                 <div id="selected_1_ImageInfo" value="0"></div>
             </div>
 
-            <img src="/static/images/fullorder/title/もじサイズ.png" width="600px">
+            <img src="/static/images/fullorder/title/文字サイズ.png" width="600px">
 
             <div class="margin-top-50 wrap_center" style="height: 530px;">
                 <div class="wrap_tate_no_centering">
@@ -123,24 +123,32 @@
                 </div>
             </div>
             <div class="margin-top-50">
-            <img src="/static/images/fullorder/title/もじタイプ.png" width="600px">
+            <img src="/static/images/fullorder/title/文字タイプ.png" width="600px">
             </div>
-            <div class="margin-top-50 wrap_center" style="height: 1200px;">
+            <div class="margin-top-50 wrap_center">
                 
-                <div class="wrap_tate_no_centering charaType">
-                    <div class="inner" style="text-align: left;">
+                <div class="wrap_tate_no_centering charaType" style="align-items:center; position: relative;">
+                    <div class="inner-order">
                         <div class="wrap_yoko">
                             <span class="tag tag-danger" style="color: rgb(255, 255, 255); background-color: rgb(244, 67, 54); font-size: 14px;">必須</span><p style="color: #FF6CC4; padding: 2px 0 0 10px;">何連 or 何枚</p>
                         </div>
                     </div>
-                    <select name="howManySelect" required>
+                    <select name="howManySelect" required style="width: 400px;">
                         <option value="">▼ 選択してください</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
-                    <div class="wrap_tate_no_centering margin-top-70" style="display: flex; justify-content: center">
+                    <div style="height:300px; width: 600px; flex-direction: row; display: flex; justify-content: center;">
+                        <img id="uchiwa_palette" src="/static/images/fullorder/user-input/input_uchiwa.png" style="display: none;">
+                        <img id="board_palette" src="/static/images/fullorder/user-input/input_board.png" style="display: none;">
+                        <div id="view_board" style="width:600px; display: flex; justify-content: center;">
+                            <!-- ここにうちわorボードのパレットが入る -->
+                            
+                        </div>
+                    </div>
+                    <div class="wrap_tate_no_centering" style="display: flex; justify-content: center;">
                         <img src="/static/images/fullorder/order_buttons/types/タイプ1.png" class="padding-2" id="image3_1">
                         <div class="wrap_yoko container-between">
                             <img src="/static/images/fullorder/order_buttons/types/01-a.png" class="select3 image3_1 autoincluded3 grayed-out" style="width:200px;">
@@ -184,7 +192,7 @@
                     </div>
                     <div class="wrap_tate_no_centering margin-top-70" style="display: flex; justify-content: center">
                         <img src="/static/images/fullorder/order_buttons/types/タイプ7.png" class="padding-2" id="image3_7">
-
+                        
                         <img src="/static/images/fullorder/order_buttons/types/07-1.png" class="select3 image3_7 excluded3 multipleUchiwa grayed-out" style="width:400px;">
                         <img src="/static/images/fullorder/order_buttons/types/07-2.png" class="select3 image3_7 excluded3 multipleBoard grayed-out" style="width:400px;">
 
@@ -209,24 +217,89 @@
                         <img src="/static/images/fullorder/order_buttons/types/10-1.png" class="select3 image3_10 excluded3 multipleUchiwa grayed-out" style="width:400px;">
                         <img src="/static/images/fullorder/order_buttons/types/10-2.png" class="select3 image3_10 excluded3 multipleBoard grayed-out" style="width:400px;">
                     </div>
-                    <div class="wrap_tate margin-top-70">
-                        <div class="wrap_yoko container-between" style="width: 400px; text-align: left;">
-                            <span style="padding-top: 8px; width:200px;">【名前】</span><input type="text" placeholder="名前" id="cartItem1ExtInput" style="width: 60%;">
-                        </div>
-                        <div class="wrap_yoko container-between margin-top-20" style="width: 400px; text-align: left;">
-                            <span style="padding-top: 8px; width:200px;">【中文字】</span><input type="text" placeholder="小さくする文字を入力" id="cartItem1ExtInput" style="width: 60%;">
-                        </div>
-                        <div class="wrap_yoko container-between margin-top-20" style="width: 400px; text-align: left;">
-                            <span style="padding-top: 8px; width:200px;">【名称・敬称】</span><input type="text" placeholder="苗字、あだ名" id="cartItem1ExtInput" style="width: 60%;">
-                        </div>
-                        <div class="wrap_yoko container-between margin-top-20" style="width: 400px; text-align: left;">
-                            <span style="padding-top: 8px; width:200px;">【キャッチフレーズ】</span><input type="text" placeholder="最大15文字" id="cartItem1ExtInput" style="width: 60%;">
-                        </div>
-                    </div>   
+ 
                 </div>
                             
             </div>
             
+            <div class="wrap_tate inner" style="margin-top: 100px;">
+                <img src="/static/images/fullorder/title/パネル文字.png" width="600px">
+                <div  style="margin-top: 200px; position:relative;">
+                    <form class="" action="">
+                        {% csrf_token %}
+                        <!-- {{ fullorder.media }}
+                        {{ fullorder.as_p }} -->
+                        <div class="wrap_tate margin-top-70">
+                            <div id="normal_Chara">
+                                <div class="container-center" style="flex-direction:row ;">
+                                    <span style="padding-top: 8px; width:200px;">【名前】</span><input type="text" placeholder="名前" id="input_example_name_main" style="width: 60%;">
+                                </div>
+                            </div>
+                            <div id="small_Chara" style=" display: none;">
+                                <div class="container-center">
+                                    <span style="padding-top: 8px; width:200px;">【名前:左】</span><input type="text" placeholder="名前" id="input_example_name_left" style="width: 60%;">
+                                </div>
+                                <div class="container-center margin-top-20">
+                                    <span style="padding-top: 8px; width:200px;">【名前：右】</span><input type="text" placeholder="名前" id="input_example_name_right" style="width: 60%;">
+                                </div>
+                                <div class="container-center margin-top-20">
+                                    <span style="padding-top: 8px; width:200px;">【中文字】</span><input type="text" placeholder="小さくする文字を入力" id="input_example_small_name" style="width: 60%;">
+                                </div>
+                            </div>
+                            <div class="container-center margin-top-20">
+                                <span style="padding-top: 8px; width:200px;">【名称】</span><input type="text" placeholder="苗字、あだ名" id="input_example_nickname" style="width: 60%;">
+                            </div>
+                            <div class="container-center margin-top-20">
+                                <span style="padding-top: 8px; width:200px;">【敬称】</span><input type="text" placeholder="ちゃん、くん等" id="input_example_nametitle" style="width: 60%;">
+                            </div>
+                            <div class="container-center margin-top-20">
+                                <span style="padding-top: 8px; width:200px;">【キャッチフレーズ】</span><input type="text" placeholder="最大15文字" id="input_example_catchphrase" style="width: 60%;">
+                            </div>
+                        </div>
+                    
+                    </form> 
+                    <div id="inputForm-view">
+                        <div style="position: relative;">
+                            <img src="/static/images/fullorder/user-input/bg-pink.png" class="bg-pink">
+                            <div id="palette_board">
+                                <div id="view_example_form">
+                                    <div style="display: flex; justify-content: flex-start; text-align: center;">
+                                        <div id="view_example_catchphrase" style="font-size:1.0em !important;"></div><div id="view_example_nickname" style="font-size:1.3em !important;"></div>
+                                    </div>
+                                    <div style="display: flex; align-items: end; justify-content: flex-end; text-align: center;">
+                                        <div id="view_example_name_1" style="font-size:5.2em !important;"></div><div id="view_example_small_chara" style="font-size:2.5em !important;"></div><div id="view_example_name_2" style="font-size:5.2em !important;"></div><div id="view_example_nametitle" style="font-size:1em !important;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <!-- <div id="toolbar-container">
+                <select class="ql-font">
+                  <option value="nikumaru">Nikumaru</option>
+                  <option value="mplus1p" selected>MPlus1P</option>
+                  <option value="jkfont">JK Font</option>
+                </select>
+
+                <select class="ql-size">
+                  <option value="small"></option>
+
+                  <option selected></option>
+                  <option value="large"></option>
+                  <option value="huge"></option>
+                </select>
+
+                <button class="ql-bold"></button>
+
+                <button class="ql-script" value="sub"></button>
+                <button class="ql-script" value="super"></button>
+              </div>
+              <div id="container"></div> -->
         </div>
         
     </div>
@@ -237,4 +310,5 @@
 </div>
 
 <script src="{% static 'js/fluffy_script.js' %}"></script>
+<script src="{% static 'js/fluffy_preview.js' %}"></script>
 {% endblock main %}

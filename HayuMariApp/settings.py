@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_quill',
 ]
 
 MIDDLEWARE = [
@@ -68,8 +69,28 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'HayuMariApp.wsgi.application'
-
-
+CUSTOMFONT = 'static/fonts/MPLUS1p-Medium.ttf'
+QUILL_CONFIGS = {
+    'default':{
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    { 'size': [ 'small', False, 'large', 'huge' ]},
+                    {'align': []},
+                    'bold', 
+                    {'color': []},
+                    { 'script': 'sub'}, { 'script': 'super' },
+                    { 'indent': '-1'}, { 'indent': '+1' },
+                    
+                ],
+                ['image'],
+                ['clean'],
+            ]
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

@@ -5,10 +5,7 @@ function updateCartVisibility() {
   
   cart.style.display = scrollTop > 100 ? 'block' : 'none';
 }
-// 入力フォームのinputイベントを監視し、入力内容を表示する関数を定義
-function updateDivContent() {
-  cartItem1ExtText.textContent = inputElement.value;
-}
+
 
 function handleImageSelection1(image) {
   const isAlreadySelected = image.classList.contains("selected_1");
@@ -22,7 +19,7 @@ function handleImageSelection1(image) {
     
     if (window.getComputedStyle(notesText).display === "block") {
       cartItem1ExtText.textContent = "";
-      inputElement.value = "";
+      inputElement1.value = "";
       notesText.style.display = "none";
     }
     
@@ -73,7 +70,7 @@ function handleImageSelection1(image) {
         
         if (key === 'image1_8') {
           notesText.style.display = "block";
-          selected_1_ImageInfo.appendChild(inputElement);
+          selected_1_ImageInfo.appendChild(inputElement1);
         } else if (key === 'image1_1') {
           reduceOptions();         
 
@@ -106,11 +103,11 @@ function handleImageSelection1(image) {
           resetHiddenCart(cartItem3, cartItem3Name, cartItem3Price);
           
           cartItem1ExtText.textContent = "";
-          inputElement.value = "";
+          inputElement1.value = "";
           notesText.style.display = "none";
         } else {
           cartItem1ExtText.textContent = "";
-          inputElement.value = "";
+          inputElement1.value = "";
           removeImageFromDiv("cartItem1ExtInput", "selected_1_ImageInfo");
           notesText.style.display = "none";
           UchiwaOrBoardGrayedOut();
@@ -188,10 +185,18 @@ function handleImageSelection3(image) {
       for ( type of list_charaTypeClassObject ){
         if (image.classList.contains(type)){
           typeNameImage = document.getElementById(type);
-          typeNameImage
           break;
         }
       }
+
+      if (image.classList.contains('image3_3') || image.classList.contains('image3_7')){
+        normalCharaInputForm.style.display = 'none';
+        smallCharaInputForm.style.display = 'block';
+      } else {
+        normalCharaInputForm.style.display = 'block';
+        smallCharaInputForm.style.display = 'none';
+      }
+
       removeImageFromDiv('cartImage3', 'cart_item3');
       addImageToCart(cartItem3, 'cartImage3', "cart-image3", typeNameImage, startPosition, animationDuration);
       // タイプに金額つけるならここに追記
@@ -206,9 +211,9 @@ function handleImageSelection3(image) {
     cartItemPrice.textContent = "";
   }
 
-  function updateHiddenCart(cartItemName, cartItemPrice){
+  // function updateHiddenCart(cartItemName, cartItemPrice){
 
-  }
+  // }
 
   // カートから
   function removeImageFromDiv(contentId, divId) {
@@ -294,11 +299,11 @@ function handleImageSelection3(image) {
   const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4', 'image3_5', 'image3_6', 'image3_7',  'image3_8', 'image3_9', 'image3_10'];
 
   // うちわ or ボード用　input要素
-  const inputElement = document.createElement('input');
-  inputElement.type = 'text';
-  inputElement.placeholder = "(例) B3 / 縦 〇cm、横 〇cm など  ";
-  inputElement.style.width = '500px';
-  inputElement.setAttribute('id', 'cartItem1ExtInput');
+  const inputElement1 = document.createElement('input');
+  inputElement1.type = 'text';
+  inputElement1.placeholder = "(例) B3 / 縦 〇cm、横 〇cm など  ";
+  inputElement1.style.width = '500px';
+  inputElement1.setAttribute('id', 'cartItem1ExtInput');
 
   // カート機能用コンストラクタ
   const cartItem1 = document.getElementById("cart_item1");
@@ -320,6 +325,13 @@ function handleImageSelection3(image) {
   var howManySelectElement = document.querySelector('select[name="howManySelect"]');
   var is_UchiwaGrayed = true;
   var is_BoardGrayed = true;
+
+  // プレビュー画面要素を取得
+  const viewBoard = document.getElementById('view_board');
+  const uchiwaPaletteOrigin = document.getElementById('uchiwa_palette');
+  const boardPaletteOrigin = document.getElementById('board_palette');
+  const normalCharaInputForm = document.getElementById('normal_Chara');
+  const smallCharaInputForm = document.getElementById('small_Chara');
 
 // カート追加アニメーション処理
 const animationDuration = 1000; // アニメーションの時間（ミリ秒）
@@ -343,6 +355,7 @@ function initializeImageSelection() {
 
       resetImageSelection3combo();
       UchiwaOrBoardGrayedOut();
+      createPreview();
       callback();
     });
   }
@@ -403,6 +416,7 @@ howManySelectElement.addEventListener('change', function() {
       }
     }
   });
+  createPreview();
 });
 
 // 何連オプションの1以外非表示にする
@@ -414,10 +428,10 @@ function reduceOptions() {
     if (option.value !== '1') {
         option.style.display = 'none';
     }
-    
-    howManySelectElement.value = '1';
   }
+  howManySelectElement.value = '1';
   UchiwaOrBoardGrayedOut();
+  createPreview();
 }
 
 // オプションを再表示する関数
@@ -430,6 +444,7 @@ function showAllOptions() {
     option.style.display = ''; 
     // howManySelectElement.value = '';
   }
+  createPreview();
 }
 
 function UchiwaOrBoardGrayedOut() {
@@ -492,7 +507,7 @@ function resetImageSelection3combo(){
       if(image.classList.contains("select1")){
         image.classList.remove("selected_1");
         if ( image.id == "image1_8" ){ // title1がクリック -> サイズ指定の入力フォームを初期化 (title2と同じ処理のためまとめれそう)
-          inputElement.value = "";
+          inputElement1.value = "";
           cartItem1ExtText.textContent = "";
         }
       } else if (image.classList.contains("select2")){ // select2のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
@@ -517,7 +532,7 @@ function resetImageSelection1(){
       image.classList.remove("selected_1");
       image.style.border = "";
       if ( image.id == "image1_8" ){ // title1がクリック -> サイズ指定の入力フォームを初期化 (title2と同じ処理のためまとめれそう)
-        inputElement.value = "";
+        inputElement1.value = "";
         cartItem1ExtText.textContent = "";
       }
     }
@@ -560,9 +575,39 @@ function addImageToCart(cartItem, cartID, cartClass, image, startPosition, anima
   }, 0);
 }
 
+function createPreview() {
+  viewBoard.textContent = "";
+  var copiedImage;
+
+  if (!is_UchiwaGrayed && is_BoardGrayed) {
+    copiedImage = uchiwaPaletteOrigin.cloneNode(true);
+    copiedImage.classList.remove("uchiwa_palette");
+    copiedImage.id = "";
+    copiedImage.style.display = "block";
+  } else if (is_UchiwaGrayed && !is_BoardGrayed) {
+    copiedImage = boardPaletteOrigin.cloneNode(true);
+    copiedImage.classList.remove("board_palette");
+    copiedImage.id = "";
+    copiedImage.style.display = "block";
+  }
+
+
+  if (howManySelectElement.value != "" && (!is_UchiwaGrayed || !is_BoardGrayed)) {
+    for (let i = 0; i < parseInt(howManySelectElement.value); i++) {
+      var clonedImage = copiedImage.cloneNode(true);
+      viewBoard.appendChild(clonedImage);
+    }
+  }
+}
+
 // 初期化関数を呼び出して画像の選択機能を有効にする
 initializeImageSelection();
 window.addEventListener('scroll', updateCartVisibility);
 
+// 入力フォームのinputイベントを監視し、入力内容を表示する関数を定義
+function updateDivContent(divElem, inputElem) {
+  divElem.textContent = inputElem.value;
+}
+
 // 入力フォームのinputイベントに関数を登録
-inputElement.addEventListener('input', updateDivContent);
+inputElement1.addEventListener('input', function(){ updateDivContent(cartItem1ExtText, inputElement1)});
