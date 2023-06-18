@@ -161,8 +161,8 @@ h5 {
     
     #palette_board{
         position: absolute;
-        bottom : 25%;
-        left: 0%;
+        bottom : 10%;
+        left: 50%;
         width: 600px;
         z-index:7;
     }
@@ -170,8 +170,12 @@ h5 {
     #view_example_form {
         position: absolute;
         bottom : 25%;
-        left: 35%;
+        left: 0%;
+        width: auto;
         z-index:8;
+        transform: translate(-50%,0%);
+        -webkit-transform: translate(-50%, 0%);
+        -ms-transform: translate(-50%, 0%);
     }
     
     #view_board img{
@@ -292,8 +296,8 @@ h5 {
     
     #palette_board{
         position: absolute;
-        bottom : 25%;
-        left: 0%;
+        top : 10%;
+        left: 50%;
         width: 600px;
         z-index:7;
     }
@@ -301,8 +305,12 @@ h5 {
     #view_example_form {
         position: absolute;
         bottom : 25%;
-        left: 35%;
+        left: 0%;
+        width: auto;
         z-index:8;
+        transform: translate(-50%,0%);
+        -webkit-transform: translate(-50%, 0%);
+        -ms-transform: translate(-50%, 0%);
     }
     
     #view_board img{
@@ -500,11 +508,17 @@ input[type="password"] {
 .inner{
     width: 70%;
     margin: 0 auto;
-    max-width: 620px;
+    max-width: 600px;
+  }
+
+  .inner-about{
+    width: 70%;
+    margin: 0 auto;
+    max-width: 630px;
   }
 
 .inner-order{
-    width: 67%;
+    width: 53%;
     margin: 0 auto;
     max-width: 620px;
 }
@@ -754,6 +768,7 @@ text-shadow:1px 1px 0 #EC59A2, -1px -1px 0 #EC59A2,
 .wrap_yoko_centering {
     display: flex;
     justify-content: center;
+    flex-direction:row;
     /* margin: 0 0 5px 0; */
 }
 
