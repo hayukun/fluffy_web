@@ -18,32 +18,32 @@ const inputFormView = document.getElementById('inputForm-view');
 const observ = document.getElementById('observ');
 
 // 入力フォームのinputイベントを監視し、入力内容を表示する関数を定義
-function updateDivContent(divElem, inputElem) {
+function updateDivContentAdjustSize(divElem, inputElem) {
   divElem.textContent = inputElem.value;
   adjustTextSize();
 }
 
 // 入力フォームのinputイベントに関数を登録
-inputExampleNameMain.addEventListener('input', function() {
-  updateDivContent(viewExampleName1, inputExampleNameMain);
+inputExampleNameMain.addEventListener('input', function () {
+  updateDivContentAdjustSize(viewExampleName1, inputExampleNameMain);
 });
-inputExampleNameLeft.addEventListener('input', function() {
-  updateDivContent(viewExampleName1, inputExampleNameLeft);
+inputExampleNameLeft.addEventListener('input', function () {
+  updateDivContentAdjustSize(viewExampleName1, inputExampleNameLeft);
 });
-inputExampleNameRight.addEventListener('input', function() {
-  updateDivContent(viewExampleName2, inputExampleNameRight);
+inputExampleNameRight.addEventListener('input', function () {
+  updateDivContentAdjustSize(viewExampleName2, inputExampleNameRight);
 });
-inputExampleSmallName.addEventListener('input', function() {
-  updateDivContent(viewExampleSmallChara, inputExampleSmallName);
+inputExampleSmallName.addEventListener('input', function () {
+  updateDivContentAdjustSize(viewExampleSmallChara, inputExampleSmallName);
 });
-inputExampleNickname.addEventListener('input', function() {
-  updateDivContent(viewExampleNickname, inputExampleNickname);
+inputExampleNickname.addEventListener('input', function () {
+  updateDivContentAdjustSize(viewExampleNickname, inputExampleNickname);
 });
-inputExampleNametitle.addEventListener('input', function() {
-  updateDivContent(viewExampleNametitle, inputExampleNametitle);
+inputExampleNametitle.addEventListener('input', function () {
+  updateDivContentAdjustSize(viewExampleNametitle, inputExampleNametitle);
 });
-inputExampleCatchphrase.addEventListener('input', function() {
-  updateDivContent(viewExampleCatchphrase, inputExampleCatchphrase);
+inputExampleCatchphrase.addEventListener('input', function () {
+  updateDivContentAdjustSize(viewExampleCatchphrase, inputExampleCatchphrase);
 });
 
 // adjustTextSize関数の定義
@@ -53,19 +53,36 @@ function adjustTextSize() {
 
   const observHeight = observ.clientHeight;
   const inputFormViewHeight = inputFormView.clientHeight;
-  const currentFontSize = parseFloat(viewExampleName1.style.fontSize);
   const textContent = viewExampleName1.textContent.trim() + viewExampleName2.textContent.trim();
-  const targetFontSize = 5.5;
+  const targetFontSizeMain = 5.5;
+  const targetFontSizeSmallChara = 3.5;
+  const targetFontSizeNametitle = 1.8;
+  const targetFontSizeNickname = 2.5;
+  const targetFontSizeCatchphrase = 1.8;
 
   if (observHeight >= inputFormViewHeight) {
     const scaleFactor = inputFormViewHeight / observHeight;
-    const newFontSize = currentFontSize * scaleFactor;
-    viewExampleName1.style.fontSize = newFontSize + 'em';
-    viewExampleName2.style.fontSize = newFontSize + 'em';
+    viewExampleName1.style.fontSize = parseFloat(viewExampleName1.style.fontSize) * scaleFactor + 'em';
+    viewExampleName2.style.fontSize = parseFloat(viewExampleName1.style.fontSize) * scaleFactor + 'em';
+    viewExampleSmallChara.style.fontSize = parseFloat(viewExampleSmallChara.style.fontSize) * scaleFactor + 'em';
+    viewExampleNametitle.style.fontSize = parseFloat(viewExampleNametitle.style.fontSize) * scaleFactor + 'em';
+    viewExampleNickname.style.fontSize = parseFloat(viewExampleNickname.style.fontSize) * scaleFactor + 'em';
+    viewExampleCatchphrase.style.fontSize = parseFloat(viewExampleCatchphrase.style.fontSize) * scaleFactor + 'em';
   } else {
-    if (textContent.length <= 12){
-    viewExampleName1.style.fontSize = targetFontSize + 'em';
-    viewExampleName2.style.fontSize = targetFontSize + 'em';
+    if (textContent.length <= 6) {
+      viewExampleName1.style.fontSize = targetFontSizeMain + 'em';
+      viewExampleName2.style.fontSize = targetFontSizeMain + 'em';
+      viewExampleSmallChara.style.fontSize = targetFontSizeSmallChara + 'em';
+      viewExampleNametitle.style.fontSize = targetFontSizeNametitle + 'em';
+      viewExampleNickname.style.fontSize = targetFontSizeNickname + 'em';
+      viewExampleCatchphrase.style.fontSize = targetFontSizeCatchphrase + 'em';
+    } else {
+      viewExampleName1.style.fontSize = parseFloat(viewExampleName1.style.fontSize) + 'em';
+      viewExampleName2.style.fontSize = parseFloat(viewExampleName2.style.fontSize) + 'em';
+      viewExampleSmallChara.style.fontSize = parseFloat(viewExampleSmallChara.style.fontSize) + 'em';
+      viewExampleNametitle.style.fontSize = parseFloat(viewExampleNametitle.style.fontSize) + 'em';
+      viewExampleNickname.style.fontSize = parseFloat(viewExampleNickname.style.fontSize) + 'em';
+      viewExampleCatchphrase.style.fontSize = parseFloat(viewExampleCatchphrase.style.fontSize) + 'em';
     }
   }
 }
