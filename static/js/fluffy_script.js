@@ -6,7 +6,7 @@ function updateCartVisibility() {
   cart.style.display = scrollTop > 100 ? 'block' : 'none';
 }
 
-
+// うちわ or ボード
 function handleImageSelection1(image) {
   const isAlreadySelected = image.classList.contains("selected_1");
 
@@ -229,13 +229,15 @@ function handleImageSelection4(image) {
     addImageToCart(cartItem4, 'cartImage4', "cart-image4", image, startPosition, animationDuration);
     // フォントに金額つけるならここに追記
     cartItem4Name.textContent = map_fontNameObject.get(image.id);
+
+    // フォントの金額初期化、指定フォントのインプットフォーム初期化
+    cartItem4Price.textContent = "";
+    cartItem4ExtText.textContent = "";
+    inputFontElement.value = "";
   }
 }
 
-
-
-
-
+// ユーザーには見えないカート情報を初期化
 function resetHiddenCart(cartItem, cartItemName, cartItemPrice) {
   cartItem.textContent = "";
   cartItemName.textContent = "";
@@ -246,7 +248,7 @@ function resetHiddenCart(cartItem, cartItemName, cartItemPrice) {
 
 // }
 
-// カートから
+// カートからイメージ削除
 function removeImageFromDiv(contentId, divId) {
   const content = document.getElementById(contentId);
   const div = document.getElementById(divId);
@@ -326,7 +328,7 @@ const map_typeNameObject = new Map([
   ['image3_10', '1枚につき5～10文字前後(連結)'],
 ]);
 
-// タイプ名画像対応マップ
+// フォント名画像対応マップ
 const map_fontNameObject = new Map([
   ['image4_1', '日本語01'],
   ['image4_2', '日本語02'],
@@ -358,6 +360,7 @@ const map_fontNameObject = new Map([
   ['image4_28', '韓国語28'],
   ['image4_29', '韓国語29'],
   ['image4_30', '韓国語30'],
+  ['image4_31', 'フォント指定00'],
 ]);
 
 // 文字タイプクラスリスト
@@ -636,6 +639,7 @@ function addImageToCart(cartItem, cartID, cartClass, image, startPosition, anima
   copiedImage.classList.remove("image-width4");
   copiedImage.classList.remove("margin-top-10");
   copiedImage.style.border = "";
+  copiedImage.style.display = "block";
   cartItem.appendChild(copiedImage);
 
   copiedImage.style.position = 'relative';
@@ -677,9 +681,22 @@ function updateDivContent(divElem, inputElem, bool) {
 
   divElem.textContent = inputElem.value;
   if (divElem.textContent.trim().length > 0 && bool) {
+    inputFontImage = document.getElementById('image4_31');
+    removeImageFromDiv('cartImage4', 'cart_item4');
+    addImageToCart(cartItem4, 'cartImage4', "cart-image4", inputFontImage, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem4Name.textContent = map_fontNameObject.get('image4_31');
     cartItem4Price.textContent = 120;
+    images.forEach(function (image) { // 全イメージ画像ループ
+      // select4のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。
+      if (image.classList.contains("select4")) {
+        image.classList.remove("selected_4");
+        image.style.border = "";
+      }
+    });
   } else if (divElem.textContent.trim().length === 0 && bool) {
     cartItem4Price.textContent = "";
+    removeImageFromDiv('cartImage4', 'cart_item4');
   }
 }
 
