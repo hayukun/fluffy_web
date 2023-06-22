@@ -16,6 +16,9 @@ const viewExampleName2 = document.getElementById("view_example_name_2");
 const viewExampleNametitle = document.getElementById("view_example_nametitle");
 const inputFormView = document.getElementById('inputForm-view');
 const observ = document.getElementById('observ');
+const warning = document.getElementById('panelCharaWarning');
+
+
 
 // 入力フォームのinputイベントを監視し、入力内容を表示する関数を定義
 function updateDivContentAdjustSize(divElem, inputElem) {
@@ -51,6 +54,22 @@ function adjustTextSize() {
   const observ = document.getElementById('observ');
   const inputFormView = document.getElementById('inputForm-view');
 
+  console.log(inputExampleNickname.value.length);
+  console.log(inputExampleCatchphrase.value.length);
+  if (inputExampleNickname.value.length >= 1){
+    inputExampleCatchphrase.disabled = true;
+    inputExampleNickname.disabled = false;
+    warning.style.display = 'block';
+  } else if (inputExampleCatchphrase.value.length >= 1){
+    inputExampleCatchphrase.disabled = false;
+    inputExampleNickname.disabled = true;
+    warning.style.display = 'block';
+  } else {
+    inputExampleNickname.disabled = false;
+    inputExampleCatchphrase.disabled = false;
+    warning.style.display = 'none';
+  }
+
   const observHeight = observ.clientHeight;
   const inputFormViewHeight = inputFormView.clientHeight;
   const textContent = viewExampleName1.textContent.trim() + viewExampleName2.textContent.trim();
@@ -69,7 +88,7 @@ function adjustTextSize() {
     viewExampleNickname.style.fontSize = parseFloat(viewExampleNickname.style.fontSize) * scaleFactor + 'em';
     viewExampleCatchphrase.style.fontSize = parseFloat(viewExampleCatchphrase.style.fontSize) * scaleFactor + 'em';
   } else {
-    if (textContent.length <= 6) {
+    if (textContent.length <= 8) {
       viewExampleName1.style.fontSize = targetFontSizeMain + 'em';
       viewExampleName2.style.fontSize = targetFontSizeMain + 'em';
       viewExampleSmallChara.style.fontSize = targetFontSizeSmallChara + 'em';
@@ -86,3 +105,4 @@ function adjustTextSize() {
     }
   }
 }
+

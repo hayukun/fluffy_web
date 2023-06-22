@@ -1,0 +1,511 @@
+.fuwafuwa {
+    animation: fuwafuwa 4s infinite ease-in-out .8s alternate;
+    background: url('/static/images/fullorder/materials/design/ハート羽.png') no-repeat center center / 400px auto;
+    display: inline-block;
+    transition: 2s ease-in-out;
+    width: 400px;
+    height: 400px;
+    margin-top: 2px;
+    animation-delay: 1s;
+}
+
+@keyframes fuwafuwa {
+    0% {
+        transform: translate(5px, 7px) rotate(-4deg);
+    }
+
+    50% {
+        transform: translate(-5px, -7px) rotate(8deg);
+    }
+
+    100% {
+        transform: translate(5px, 7px) rotate(-4deg);
+    }
+}
+
+.set_hart_position {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(-40%, -47%) rotate(-15deg);
+}
+
+.set_baloon_position {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    transform: translate(-40%, -47%) rotate(15deg);
+}
+
+
+.ql-toolbar {
+    padding: 10px;
+}
+
+.ql-snow .ql-picker.ql-font,
+.ql-bubble .ql-picker.ql-font {
+    width: 130px;
+}
+
+/* .ql-font span[data-value="nikumaru"]::before, .ql-font span[data-label="Nikumaru"]::before {
+    font-family: "CustomFont" !important;
+  }
+  .ql-font span[data-value="mplus1p"]::before, .ql-font span[data-label="MPlus1p"]::before {
+    font-family: "CustomFont2" !important;
+  }
+  .ql-font span[data-value="jkfont"]::before, .ql-font span[data-label="JK Font"]::before {
+    font-family: "CustomFont3" !important;
+  }
+  
+  .ql-font-nikumaru { font-family: 'CustomFont' !important; }
+  .ql-font-mplus1p { font-family: 'CustomFont2' !important; }
+  .ql-font-jkfont { font-family: 'CustomFont3' !important; } */
+
+@media (max-width: 768px) {
+
+    .container {
+        background-color: lightblue;
+        color: white;
+    }
+
+    #cart {
+        position: fixed;
+        top: 20%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+        padding: 10px;
+        width: 170px;
+        height: auto;
+        z-index: 10;
+    }
+
+    .cart_text_title {
+
+        font-size: 15px !important;
+    }
+
+    .cart_text {
+
+        font-size: 10px;
+    }
+
+    .cart-image1 {
+        width: 7.8125vw;
+    }
+
+    .cart-image2 {
+        width: 107px !important;
+    }
+
+    .cart-image3 {
+        width: 150px;
+        min-width: 185px;
+        overflow: hidden;
+    }
+
+    .cart-image4 {
+        width: 256px !important;
+        min-width: 185px;
+        overflow: hidden;
+    }
+
+    .cart-image5 {
+        width: 256px !important;
+        min-width: 185px;
+        overflow: hidden;
+    }
+
+    /* プレビュー */
+    #inputForm-view {
+        position: absolute;
+        bottom: 58%;
+        left: 12%;
+        transform: translate(0%, 0%);
+        background-color: #FFFFFF;
+        z-index: 6;
+    }
+
+    #palette_board {
+        position: absolute;
+        top: 12%;
+        left: 50%;
+        width: 40vw;
+        z-index: 7;
+    }
+
+    #view_example_form {
+        position: absolute;
+        bottom: 25%;
+        left: 0%;
+        width: auto;
+        z-index: 8;
+        transform: translate(-50%, 0%);
+        -webkit-transform: translate(-50%, 0%);
+        -ms-transform: translate(-50%, 0%);
+    }
+
+    #view_board img {
+        width: 150px !important;
+    }
+
+    #view_board {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, 30%);
+        z-index: 7;
+    }
+
+
+    /* 素材パレット */
+    #materialPalette {
+        position: fixed;
+        top: 68%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        padding: 8px;
+        width: 300px;
+        height: auto;
+        z-index: 10;
+    }
+
+    .materialPalette_text_title {
+
+        font-size: 15px !important;
+    }
+
+    .materialPalette_text {
+
+        font-size: 10px;
+    }
+
+
+}
+
+@media (min-width: 769px) {
+
+    .container {
+        background-color: lightgray;
+        color: black;
+    }
+
+    /* カート機能 */
+    #cart {
+        position: fixed;
+        top: 20%;
+        left: 101%;
+        transform: translate(-100%, -50%);
+        padding: 8px;
+        width: 300px;
+        height: auto;
+        z-index: 10;
+    }
+
+    .cart_text_title {
+
+        font-size: 20px !important;
+    }
+
+    .cart_text {
+
+        font-size: 15px;
+    }
+
+    .cart-image1 {
+        height: 1.3541666666666667vw;
+        padding: 0px !important;
+    }
+
+    .cart-image2 {
+        /* width: 107px !important;
+    min-width: 80px; */
+        height: 1.3541666666666667vw;
+        padding: 0px !important;
+        overflow: hidden;
+    }
+
+    .cart-image3 {
+        height: 1.3541666666666667vw;
+        padding: 0px !important;
+        overflow: hidden;
+    }
+
+    .cart-image4 {
+        height: 1.3541666666666667vw;
+        padding: 0px !important;
+        overflow: hidden;
+    }
+
+    .cart-image5 {
+        height: 1.3541666666666667vw;
+        padding: 0px !important;
+        overflow: hidden;
+    }
+
+    /* プレビュー */
+    #inputForm-view {
+        position: absolute;
+        bottom: 58%;
+        left: 12%;
+        transform: translate(0%, 0%);
+        background-color: #FFFFFF;
+        border-radius: 30px;
+        z-index: 6;
+    }
+
+    #palette_board {
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+        width: 45vw;
+        z-index: 7;
+    }
+
+    #view_example_form {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        width: 100%;
+        z-index: 8;
+        transform: translate(-50%, 0%);
+        -webkit-transform: translate(-50%, 0%);
+        -ms-transform: translate(-50%, 0%);
+    }
+
+    #view_board img {
+        width: 150px !important;
+    }
+
+    #view_board {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, 30%);
+        z-index: 7;
+    }
+
+    /* 素材パレット */
+    #materialPalette {
+        position: fixed;
+        top: 68%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        padding: 8px;
+        height: auto;
+        z-index: 10;
+    }
+
+    .materialPalette_text_title {
+
+        font-size: 20px !important;
+    }
+
+    .materialPalette_text {
+
+        font-size: 15px;
+    }
+
+}
+
+.container-fullorder {
+    width: 100%;
+    background-image: url('/static/images/fullorder/bg/背景.png');
+    background-size: contain;
+}
+
+
+.color_title {
+    width: 380px;
+}
+
+.image-title {
+    width: 31.25vw;
+}
+
+.UchiwaOrBoard-width {
+    width: 15.625vw;
+    max-height: 15.625vw
+}
+
+.btn-image {
+    border-radius: 9999px;
+    background-color: #FFD9E7;
+}
+
+.charaType img {
+    max-width: 300px;
+    /* margin: 17px;
+    padding: 0 5px 0 5px; */
+}
+
+.selected_1 {
+    padding: 0px !important;
+}
+
+.selected_2 {
+    padding: 0px !important;
+}
+
+.selected_3 {
+    padding: 0px !important;
+}
+
+.selected_4 {
+    padding: 0px !important;
+}
+
+.selected_5 {
+    padding: 0px !important;
+}
+
+.grayed-out {
+    filter: grayscale(100%) !important;
+    text-shadow: 2.5px 2.5px 0 #FFF, -2.5px -2.5px 0 #FFF,
+        -2.5px 2.5px 0 #FFF, 2.5px -2.5px 0 #FFF,
+        0px 2.5px 0 #FFF, 0 -2.5px 0 #FFF,
+        -2.5px 0 0 #FFF, 2.5px 0 0 #FFF;
+}
+
+
+
+/* カート機能 */
+.container-cart {
+    text-align: left;
+}
+
+.cartBox {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #FF6CC4;
+    background-color: rgb(165, 162, 162);
+    /*背景色*/
+    border-left: solid 6px #EC59A2;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+    /*影*/
+    border-radius: 20px 0 0 20px;
+}
+
+.cartBox p {
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont2;
+}
+
+.cartBox div {
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont2;
+}
+
+
+.cartBorder-bottom {
+    border-bottom: dashed #FFF !important;
+    padding: 30px;
+}
+
+
+/* カート機能 */
+.container-materialPalette {
+    text-align: left;
+}
+
+.materialPaletteBox {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #FF6CC4;
+    /* background-color: #ADDEFF; */
+    /*背景色*/
+    /* border: solid 2px #FFF3F7; */
+    /* box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32); */
+    /*影*/
+    /* border-radius: 10px; */
+}
+
+.materialPaletteBox p {
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont2;
+}
+
+.materialPaletteBox div {
+    margin: 0;
+    padding: 0;
+    font-family: CustomFont2;
+}
+
+
+.materialPaletteBorder-bottom {
+    border-bottom: dashed #FFF !important;
+    padding: 30px;
+}
+
+
+/* パレットタブ */
+
+/*タブ切り替え全体のスタイル*/
+.tabs {
+    margin-top: 50px;
+    padding-bottom: 40px;
+    background-color: #ADDEFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 59.5vw;
+    margin: 0 auto;
+    
+}
+  
+  /*タブのスタイル*/
+  .tab_item {
+    width: calc(100%/4);
+    height: 1.3020833333333333;
+    border-bottom: 3px solid #ADDEFF;
+    background-color: #FFF3F7;
+    line-height: 35px;
+    font-size: 16px;
+    text-align: center;
+    color: #FF6CC4;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    
+  }
+  .tab_item:hover {
+    opacity: 0.75;
+  }
+  
+  /*ラジオボタンを全て消す*/
+  input[name="tab_item"] {
+    display: none;
+  }
+  
+  /*タブ切り替えの中身のスタイル*/
+  .tab_content {
+    display: none;
+    padding: 40px 40px 0;
+    clear: both;
+    overflow: hidden;
+  }
+  
+  
+  /*選択されているタブのコンテンツのみを表示*/
+  #name:checked ~ #name_content,
+  #nickname:checked ~ #nickname_content,
+  #nametitle:checked ~ #nametitle_content,
+  #catchphrase:checked ~ #catchphrase_content{
+    display: block;
+  }
+  
+  /*選択されているタブのスタイルを変える*/
+  .tabs input:checked + .tab_item {
+    background-color: #ADDEFF;
+    color: #fff;
+  }
+
+
+  .paletteImage{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+  }
