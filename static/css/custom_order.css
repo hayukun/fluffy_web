@@ -1,10 +1,10 @@
 .fuwafuwa {
     animation: fuwafuwa 4s infinite ease-in-out .8s alternate;
-    background: url('/static/images/fullorder/materials/design/ハート羽.png') no-repeat center center / 400px auto;
+    background: url('/static/images/fullorder/materials/design/ハート羽.png') no-repeat center center / 20.833333333333332vw auto;
     display: inline-block;
     transition: 2s ease-in-out;
-    width: 400px;
-    height: 400px;
+    width: 20.833333333333332vw;
+    height: 20.833333333333332vw;
     margin-top: 2px;
     animation-delay: 1s;
 }
@@ -82,6 +82,7 @@
     .cart_text_title {
 
         font-size: 15px !important;
+        color: white;
     }
 
     .cart_text {
@@ -113,6 +114,10 @@
         width: 256px !important;
         min-width: 185px;
         overflow: hidden;
+    }
+
+    .modal-image5 {
+        height: 5.208333333333333vw;
     }
 
     /* プレビュー */
@@ -193,10 +198,10 @@
     #cart {
         position: fixed;
         top: 20%;
-        left: 101%;
+        left: 100%;
         transform: translate(-100%, -50%);
         padding: 8px;
-        width: 300px;
+        width: 18.229166666666668vw;
         height: auto;
         z-index: 10;
     }
@@ -204,6 +209,7 @@
     .cart_text_title {
 
         font-size: 20px !important;
+        color: white;
     }
 
     .cart_text {
@@ -297,7 +303,9 @@
 
     .materialPalette_text_title {
 
-        font-size: 20px !important;
+        font-size: 1.0416666666666667vw !important;
+        color: #FF6CC4;
+
     }
 
     .materialPalette_text {
@@ -411,7 +419,6 @@
 
 .materialPaletteBox {
     padding: 0.5em 1em;
-    margin: 2em 0;
     color: #FF6CC4;
     /* background-color: #ADDEFF; */
     /*背景色*/
@@ -444,23 +451,23 @@
 
 /*タブ切り替え全体のスタイル*/
 .tabs {
-    margin-top: 50px;
-    padding-bottom: 40px;
+    margin-top: 2.6041666666666665vw;
+    padding-bottom: 2.0833333333333335vw;
     background-color: #ADDEFF;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 59.5vw;
     margin: 0 auto;
-    
+
 }
-  
-  /*タブのスタイル*/
-  .tab_item {
+
+/*タブのスタイル*/
+.tab_item {
     width: calc(100%/4);
     height: 1.3020833333333333;
     border-bottom: 3px solid #ADDEFF;
     background-color: #FFF3F7;
-    line-height: 35px;
-    font-size: 16px;
+    line-height: 1.8229166666666667vw;
+    font-size: 0.8333333333333334vw;
     text-align: center;
     color: #FF6CC4;
     display: block;
@@ -468,44 +475,110 @@
     text-align: center;
     font-weight: bold;
     transition: all 0.2s ease;
-    
-  }
-  .tab_item:hover {
+
+}
+
+.tab_item:hover {
     opacity: 0.75;
-  }
-  
-  /*ラジオボタンを全て消す*/
-  input[name="tab_item"] {
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
     display: none;
-  }
-  
-  /*タブ切り替えの中身のスタイル*/
-  .tab_content {
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
     display: none;
-    padding: 40px 40px 0;
+    padding: 2.0833333333333335vw 2.0833333333333335vw 0;
     clear: both;
     overflow: hidden;
-  }
-  
-  
-  /*選択されているタブのコンテンツのみを表示*/
-  #name:checked ~ #name_content,
-  #nickname:checked ~ #nickname_content,
-  #nametitle:checked ~ #nametitle_content,
-  #catchphrase:checked ~ #catchphrase_content{
+    
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#name:checked~#name_content,
+#nickname:checked~#nickname_content,
+#nametitle:checked~#nametitle_content,
+#catchphrase:checked~#catchphrase_content {
     display: block;
-  }
-  
-  /*選択されているタブのスタイルを変える*/
-  .tabs input:checked + .tab_item {
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked+.tab_item {
     background-color: #ADDEFF;
     color: #fff;
-  }
+}
 
 
-  .paletteImage{
+.paletteImage {
     position: absolute;
     top: 0%;
     left: 0%;
     transform: translate(0%, 0%);
-  }
+}
+
+.paletteInner {
+    border: solid 2px #FFF3F7;
+    border-radius: 20px;
+    width: auto;
+    padding: 5px;
+    background-color: #BAFFC6;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.modal-header h1 {
+    margin: 1rem 0;
+}
+
+.modal-header {
+    background: #ADDEFF;
+    padding: 3px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modalClose {
+    font-size: 2rem;
+}
+
+.modalClose:hover {
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 10px 20px;
+    color: black;
+}

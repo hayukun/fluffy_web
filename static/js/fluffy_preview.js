@@ -54,8 +54,6 @@ function adjustTextSize() {
   const observ = document.getElementById('observ');
   const inputFormView = document.getElementById('inputForm-view');
 
-  console.log(inputExampleNickname.value.length);
-  console.log(inputExampleCatchphrase.value.length);
   if (inputExampleNickname.value.length >= 1){
     inputExampleCatchphrase.disabled = true;
     inputExampleNickname.disabled = false;
@@ -69,6 +67,23 @@ function adjustTextSize() {
     inputExampleCatchphrase.disabled = false;
     warning.style.display = 'none';
   }
+
+  if (inputExampleNameLeft.value.length > 0 && inputExampleNameLeft.value.length < parseInt(howManySelectElement.value)){
+    inputExampleNameRight.setAttribute('maxlength', String(parseInt(howManySelectElement.value)-inputExampleNameLeft.value.length));
+  } else if (inputExampleNameLeft.value.length > 0 && inputExampleNameLeft.value.length >= parseInt(howManySelectElement.value)){
+    inputExampleNameRight.setAttribute('maxlength', '0');
+  } else {
+    inputExampleNameRight.setAttribute('maxlength', String(parseInt(howManySelectElement.value)));
+  }
+
+  if (inputExampleNameRight.value.length > 0 && inputExampleNameRight.value.length < parseInt(howManySelectElement.value)){
+    inputExampleNameLeft.setAttribute('maxlength', String(parseInt(howManySelectElement.value)-inputExampleNameRight.value.length));
+  } else if (inputExampleNameRight.value.length > 0 && inputExampleNameRight.value.length >= parseInt(howManySelectElement.value)){
+    inputExampleNameLeft.setAttribute('maxlength', '0');
+  } else {
+    inputExampleNameLeft.setAttribute('maxlength', String(parseInt(howManySelectElement.value)));
+  }
+
 
   const observHeight = observ.clientHeight;
   const inputFormViewHeight = inputFormView.clientHeight;

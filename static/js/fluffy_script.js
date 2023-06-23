@@ -183,6 +183,7 @@ function handleImageSelection3(image) {
     if (image.classList.contains('grayed-out')) {
       ;
     } else {
+      initializeCharactorSet();
       images.forEach(function (otherImage) {
         if (otherImage.classList.contains("select3")) {
           otherImage.classList.remove("selected_3");
@@ -199,7 +200,7 @@ function handleImageSelection3(image) {
           break;
         }
       }
-
+      
       if (image.classList.contains('image3_3') || image.classList.contains('image3_7')) {
         normalCharaInputForm.style.display = 'none';
         smallCharaInputForm.style.display = 'block';
@@ -208,12 +209,61 @@ function handleImageSelection3(image) {
         smallCharaInputForm.style.display = 'none';
       }
 
+      var selectedValue = parseInt(howManySelectElement.value);
+      if (image.classList.contains('image3_2') || image.classList.contains('image3_3') ) {
+        inputExampleNameMain.setAttribute('maxlength', '1');
+        inputExampleNameLeft.setAttribute('maxlength', '1');
+        inputExampleNameRight.setAttribute('maxlength', '1');
+      } else if (image.classList.contains('image3_4')) {
+        inputExampleNameMain.setAttribute('maxlength', '3');
+      } else if (image.classList.contains('image3_6') || image.classList.contains('image3_7') || image.classList.contains('image3_8')) {
+        inputExampleNameMain.setAttribute('maxlength', howManySelectElement.value);
+        inputExampleNameLeft.setAttribute('maxlength', howManySelectElement.value);
+        inputExampleNameRight.setAttribute('maxlength', howManySelectElement.value);
+      } else if (image.classList.contains('image3_9')) {
+        var maxCharaNumber = selectedValue * 3;
+        inputExampleNameMain.setAttribute('maxlength', maxCharaNumber.toString());
+        inputExampleNameLeft.setAttribute('maxlength', maxCharaNumber.toString());
+        inputExampleNameRight.setAttribute('maxlength', maxCharaNumber.toString());
+      } else {
+        inputExampleNameMain.setAttribute('maxlength', '15');
+        inputExampleNameLeft.setAttribute('maxlength', '15');
+        inputExampleNameRight.setAttribute('maxlength', '15');
+      }
+      
+
       removeImageFromDiv('cartImage3', 'cart_item3');
       addImageToCart(cartItem3, 'cartImage3', "cart-image3", typeNameImage, startPosition, animationDuration);
       // タイプに金額つけるならここに追記
       cartItem3Name.textContent = map_typeNameObject.get(typeNameImage.id);
     }
   }
+}
+
+function initializeCharactorSet (){
+  inputExampleNameMain.value='';
+  inputExampleNameMain.setAttribute('maxlength', '15');
+  inputExampleNameLeft.value='';
+  inputExampleNameLeft.setAttribute('maxlength', '8');
+  inputExampleNameRight.value='';
+  inputExampleNameRight.setAttribute('maxlength', '8');
+  inputExampleSmallName.value='';
+  inputExampleSmallName.setAttribute('maxlength', '5');
+  inputExampleNickname.value='';
+  inputExampleNickname.setAttribute('maxlength', '5');
+  inputExampleNametitle.value='';
+  inputExampleNametitle.setAttribute('maxlength', '5');
+  inputExampleCatchphrase.value='';
+  inputExampleCatchphrase.setAttribute('maxlength', '15');
+  viewExampleName1.textContent='';
+  viewExampleName2.textContent='';
+  viewExampleSmallChara.textContent='';
+  viewExampleNickname.textContent='';
+  viewExampleNametitle.textContent='';
+  viewExampleCatchphrase.textContent='';
+  warning.style.display = 'none';
+  normalCharaInputForm.style.display = 'block';
+  smallCharaInputForm.style.display = 'none';
 }
 
 //　フォント
@@ -253,7 +303,7 @@ function handleImageSelection5_palette(image) {
   if (image.classList.contains("selected_5_palette")) { // クリックした画像がすでに選択されている場合
     ;
   } else {  // クリックした画像が未選択状態の場合
-    
+
 
     images.forEach(function (otherImage) {
       if (otherImage.classList.contains("select5_palette")) {
@@ -264,55 +314,79 @@ function handleImageSelection5_palette(image) {
     image.classList.add("selected_5_palette");
     image.style.border = "2px solid #FF6CC4";
 
-    
   }
 }
 
 //　素材
 function handleImageSelection5(image) {
-   // クリックした画像が未選択状態の場合
-   selectedPaletteImage = '';
+  // クリックした画像が未選択状態の場合
+  
+  // パレットのImage格納用変数
+  selectedPaletteImage = '';
 
-   images.forEach(function (otherImage) {
-    if (otherImage.classList.contains("selected_5_palette")) {
+  images.forEach(function (otherImage) { // すべての画像をループ
+    if (otherImage.classList.contains("selected_5_palette")) { // 現在選択されているパレットImageを検索
       selectedPaletteImage = otherImage;
     }
   });
 
-  if (selectedPaletteImage != ''){
+  if (selectedPaletteImage != '') {
+
+    map_paletteImage.set(selectedPaletteImage.id, image);
+
+    selectedPaletteImage.src = image.src;
+  }
+}
+//
+function cartMaterials(divname, imageobj1, imageobj2, imageobj3, imageobj4, text) {
+  this.divname = divname;
+  this.colorNameImage = [];
+  this.text = text;
+  if (imageobj1 != ''){
+    this.imageobj1 = imageobj1.id;
     for (type of list_materialClassObject) {
-      if (image.classList.contains(type)) {
-        typeNameImage = document.getElementById(type);
+      if (imageobj1.classList.contains(type)) {
+        this.colorNameImage.push(document.getElementById(type));
         break;
       }
     }
-
-    selectedPaletteImage.src = image.src;
- 
-    addImageToPalette(cartItem5_1, "cart-image5", typeNameImage)
+  } else {
+    this.imageobj1 = '';
   }
-}
-// (カートitem名, 追加ID名, 追加クラス名, 画像, 
-function cartMaterials(imageID1, imageID2, imageID3, imageID4 ) {
-  this.imageID1 = imageID1;
-  this.imageID2 = imageID2;
-  this.imageID3 = imageID3;
-  this.imageID4 = imageID4;
+  if (imageobj2 != ''){
+    this.imageobj2 = imageobj2.id;
+    for (type of list_materialClassObject) {
+      if (imageobj2.classList.contains(type)) {
+        this.colorNameImage.push(document.getElementById(type));
+        break;
+      }
+    }
+  } else {
+    this.imageobj2 = '';
+  }
+  if (imageobj3 != ''){
+    this.imageobj3 = imageobj3.id;
+    for (type of list_materialClassObject) {
+      if (imageobj3.classList.contains(type)) {
+        this.colorNameImage.push(document.getElementById(type));
+        break;
+      }
+    }
+  } else {
+    this.imageobj3 = '';
+  }
+  if (imageobj4 != ''){
+    this.imageobj4 = imageobj4.id;
+    for (type of list_materialClassObject) {
+      if (imageobj4.classList.contains(type)) {
+        this.colorNameImage.push(document.getElementById(type));
+        break;
+      }
+    }
+  } else {
+    this.imageobj4 = '';
+  }
 
-}
-
-// Palette要素
-const palette_1 = document.getElementById("palette_1");
-const palette_2 = document.getElementById("palette_2");
-const palette_3 = document.getElementById("palette_3");
-const palette_4 = document.getElementById("palette_4");
-
-function Palette(name, colorID_1, colorID_2, colorID_3, colorID_4) {
-  this.name = name;
-  this.colorID_1 = colorID_1;
-  this.colorID_2 = colorID_2;
-  this.colorID_3 = colorID_3;
-  this.colorID_4 = colorID_4;
 }
 
 // ユーザーには見えないカート情報を初期化
@@ -469,15 +543,33 @@ const map_priceObject5 = new Map([
   ['image5_l', 2100],
 ]);
 
+const map_paletteNameCart = new Map([
+  ['palette_1', 'cart_item5-1'],
+  ['palette_2', 'cart_item5-2'],
+  ['palette_3', 'cart_item5-3'],
+]);
 
+const map_paletteImage = new Map([
+  ['select5_palette5_1', ''],
+  ['select5_palette5_2', ''],
+  ['select5_palette5_3', ''],
+  ['select5_palette5_4', ''],
+  ['select5_palette5_5', ''],
+  ['select5_palette5_6', ''],
+  ['select5_palette5_7', ''],
+  ['select5_palette5_8', ''],
+  ['select5_palette5_9', ''],
+  ['select5_palette5_10', ''],
+  ['select5_palette5_11', ''],
+  ['select5_palette5_12', ''],
+]);
 
 // 文字タイプクラスリスト
 const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4', 'image3_5', 'image3_6', 'image3_7', 'image3_8', 'image3_9', 'image3_10'];
 // 素材クラスリスト
 const list_materialClassObject = ['image5_a', 'image5_b', 'image5_c', 'image5_d', 'image5_e', 'image5_f', 'image5_g', 'image5_h', 'image5_i', 'image5_j', 'image5_k', 'image5_l'];
 
-const list_paletteSelector = ['select5_palette5_1', 'select5_palette5_2', 'select5_palette5_3', 'select5_palette5_4', 'select5_palette5_5', 'select5_palette5_6', 'select5_palette5_7', 'select5_palette5_8', 'select5_palette5_9', 'select5_palette5_10'];
-
+// デフォルトパレット画像
 const default_palette_src = "/static/images/fullorder/order_buttons/colors/hoshi-waku.png";
 
 // うちわ or ボード用　input要素
@@ -492,26 +584,14 @@ const cartItem1 = document.getElementById("cart_item1");
 const cartItem2 = document.getElementById("cart_item2");
 const cartItem3 = document.getElementById("cart_item3");
 const cartItem4 = document.getElementById("cart_item4");
-const cartItem5_1 = document.getElementById("cart_item5-1");
-const cartItem5_2 = document.getElementById("cart_item5-2");
-const cartItem5_3 = document.getElementById("cart_item5-3");
-const cartItem5_4 = document.getElementById("cart_item5-4");
 const cartItem1Name = document.getElementById("cart_item1_name");
 const cartItem2Name = document.getElementById("cart_item2_name");
 const cartItem3Name = document.getElementById("cart_item3_name");
 const cartItem4Name = document.getElementById("cart_item4_name");
-const cartItem5_1Name = document.getElementById("cart_item5-1_name");
-const cartItem5_2Name = document.getElementById("cart_item5-2_name");
-const cartItem5_3Name = document.getElementById("cart_item5-3_name");
-const cartItem5_4Name = document.getElementById("cart_item5-4_name");
 const cartItem1Price = document.getElementById("cart_item1_price");
 const cartItem2Price = document.getElementById("cart_item2_price");
 const cartItem3Price = document.getElementById("cart_item3_price");
 const cartItem4Price = document.getElementById("cart_item4_price");
-const cartItem5_1Price = document.getElementById("cart_item5-1_price");
-const cartItem5_2Price = document.getElementById("cart_item5-2_price");
-const cartItem5_3Price = document.getElementById("cart_item5-3_price");
-const cartItem5_4Price = document.getElementById("cart_item5-4_price");
 
 // image1_8選んだ時の入力フォーム(image1_8はサイズ指定)
 const cartItem1ExtText = document.getElementById("cart_item1_extText");
@@ -532,11 +612,14 @@ const boardPaletteOrigin = document.getElementById('board_palette');
 const normalCharaInputForm = document.getElementById('normal_Chara');
 const smallCharaInputForm = document.getElementById('small_Chara');
 
+
 // カート追加アニメーション処理
 const animationDuration = 1000; // アニメーションの時間（ミリ秒）
 const startPosition = -100; // アニメーションの開始位置（左からの位置、ピクセル単位）
 const endPosition = 0; // アニメーションの終了位置（左からの位置、ピクセル単位）
 
+const modalImages = document.getElementById("modal-images");
+const modalText = document.getElementById("modal-text");
 
 function initializeImageSelection() {
   // イベントリスナーをセットアップする関数
@@ -552,6 +635,7 @@ function initializeImageSelection() {
       title1.classList.toggle("selected_1", element === title1);
       title2.classList.toggle("selected_1", element === title2);
 
+      initializeCharactorSet();
       resetImageSelection3combo();
       UchiwaOrBoardGrayedOut();
       createPreview();
@@ -576,7 +660,7 @@ function initializeImageSelection() {
         handleImageSelection3(image);
       } else if (image.classList.contains("select4")) {
         handleImageSelection4(image);
-      } else if (image.classList.contains("select5_palette")){
+      } else if (image.classList.contains("select5_palette")) {
         handleImageSelection5_palette(image);
       } else if (image.classList.contains("select5")) {
         handleImageSelection5(image);
@@ -717,13 +801,15 @@ function resetImageSelection3combo() {
           inputElement1.value = "";
           cartItem1ExtText.textContent = "";
         }
+        image.style.border = "";
       } else if (image.classList.contains("select2")) { // select2のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
         image.classList.remove("selected_2");
+        image.style.border = "";
       } else if (image.classList.contains("select3")) { // select3のクラスがついた画像は選択状態を解除し、選択ボーダーも取り除く。グレーアウトはすべての画像から取り除く
         image.classList.remove("selected_3");
+        image.style.border = "";
       }
       removeImageFromDiv("cartItem1ExtInput", "selected_1_ImageInfo");
-      image.style.border = "";
     }
   });
 }
@@ -850,6 +936,128 @@ function updateDivContent(divElem, inputElem, bool) {
 }
 
 
+const buttonOpen1 = document.getElementById('set_colorsToCart_1');
+const buttonOpen2 = document.getElementById('set_colorsToCart_2');
+const buttonOpen3 = document.getElementById('set_colorsToCart_3');
+const buttonOpen4 = document.getElementById('set_colorsToCart_4');
+const modal = document.getElementById('easyModal');
+const buttonClose = document.getElementsByClassName('modalClose')[0];
+const buttonInsertColorsIntoCart = document.getElementById('btnInsertColorsIntoCart');
+
+buttonOpen1.addEventListener('click', function() { modalOpen("select5_palette5_1", "select5_palette5_4", "cart_item5-1"); });
+buttonOpen2.addEventListener('click', function() { modalOpen("select5_palette5_5", "select5_palette5_8", "cart_item5-2"); });
+buttonOpen3.addEventListener('click', function() { modalOpen("select5_palette5_9", "select5_palette5_12", "cart_item5-3"); });
+buttonOpen4.addEventListener('click', function() { modalOpen("select5_palette5_13", "select5_palette5_16", "cart_item5-2"); });
+
+let map_insertCart;
+var cartForColors;
+var cartForColors_name;
+var cartForColors_price;
+var cartForColors_multiple;
+
+function insertColorsIntoCart(){
+  cartForColors = document.getElementById(map_insertCart.divname);
+  cartForColors_name = document.getElementById(map_insertCart.divname + '_name');
+  cartForColors_price = document.getElementById(map_insertCart.divname + '_price');
+  cartForColors_multiple = document.getElementById(map_insertCart.divname + '_multiple');
+  calc_price = 0;
+  cartForColors.innerHTML = '';
+  cartForColors_price.textContent = '';
+  cartForColors_multiple.innerHTML = '';
+  for (img of map_insertCart.colorNameImage){
+    copiedImage = img.cloneNode(true);
+    calc_price = calc_price + map_priceObject5.get(img.id);
+    copiedImage.removeAttribute('id');
+    copiedImage.classList.remove('box-width350');
+    copiedImage.classList.add('cart-image5');
+    
+    cartForColors.appendChild(copiedImage);
+  }
+  cartForColors_name.textContent = map_insertCart.text;
+
+  if (howManySelectElement.value != ""){
+    cartForColors_price.textContent = calc_price * parseInt(howManySelectElement.value);
+  } else {
+    cartForColors_price.textContent = calc_price;
+  }
+
+  // 画像要素を作成
+  var imgElement = document.createElement('img');
+  if (howManySelectElement.value === "1"){
+    imgElement.src = '/static/images/fullorder/materials/multiple_number/かける1.png';
+  } else if (howManySelectElement.value === "2"){
+    imgElement.src = '/static/images/fullorder/materials/multiple_number/かける2.png';
+  } else if (howManySelectElement.value === "3"){
+    imgElement.src = '/static/images/fullorder/materials/multiple_number/かける3.png';
+  } else if (howManySelectElement.value === "4"){
+    imgElement.src = '/static/images/fullorder/materials/multiple_number/かける4.png';
+  } else {
+    imgElement.src = '/static/images/fullorder/materials/multiple_number/かける1.png';
+  }
+  imgElement.alt = 'Image';
+  imgElement.classList.add('cart-image5');
+  cartForColors_multiple.appendChild(imgElement);
+  modalClose();
+
+}
+
+function modalOpen(start_mapAttr, end_mapAttr, cartID) {
+  modal.style.display = 'block';
+  var is_Insert = false;
+  modalText.innerHTML = "<p class='jkfont'>この色の組み合わせをカートに追加してもよろしいですか？</p>";
+  modalImages.textContent = "";
+  arrayImagelist = [];
+  images_text = "";
+  
+  for (const [key, value] of map_paletteImage) {
+    if (key === start_mapAttr){
+      is_Insert = true;      
+    } else if (key === end_mapAttr){
+      if (value != ''){
+        addImageToPalette(modalImages, "modal-image5", value);
+        arrayImagelist.push(value);
+        images_text = images_text + "→" + value.id;
+        
+      } else {
+        arrayImagelist.push("");
+      }
+      
+      is_Insert = false;
+      map_insertCart = new cartMaterials(cartID, arrayImagelist[0], arrayImagelist[1], arrayImagelist[2], arrayImagelist[3], images_text);
+      
+    }
+
+    if (is_Insert && value != ''){
+      addImageToPalette(modalImages, "modal-image5", value);
+      if (images_text === ''){
+        images_text = value.id;
+      } else {
+        images_text = images_text + "→" + value.id;
+      }
+      
+      arrayImagelist.push(value);
+    } else if (is_Insert && value == ''){
+      arrayImagelist.push("");
+    }
+  }
+  
+}
+
+buttonClose.addEventListener('click', modalClose);
+
+function modalClose() {
+  modal.style.display = 'none';
+}
+
+// モーダルコンテンツ以外がクリックされた時
+addEventListener('click', outsideClose);
+function outsideClose(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+
+
 // 初期化関数を呼び出して画像の選択機能を有効にする
 initializeImageSelection();
 window.addEventListener('scroll', updateFloatingVisibility);
@@ -858,3 +1066,6 @@ window.addEventListener('scroll', updateFloatingVisibility);
 // 入力フォームのinputイベントに関数を登録
 inputElement1.addEventListener('input', function () { updateDivContent(cartItem1ExtText, inputElement1, false) });
 inputFontElement.addEventListener('input', function () { updateDivContent(cartItem4ExtText, inputFontElement, true) });
+buttonInsertColorsIntoCart.addEventListener('click', function() {
+  insertColorsIntoCart();
+});
