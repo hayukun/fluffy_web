@@ -2,16 +2,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block script %}
-<style>
-    #hero-slider .slide {
-        background-size: cover;
-        background-position: center;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/custom_home.css' %}"> 
 {% endblock script %}
 {% block main %}
 <div class="container-main">
-    <div class="container-justifyMonitor">
+    <div class="container-justifyMonitor" style="position: relative;">
         <div style="width: 100%; height:50px;">
 
         </div>
@@ -20,7 +15,6 @@
             <a href="{% url 'home' %}">
                 <!-- caption-logo-title変えると画像の大きさ変わる -->
                 <img src="/static/images/home/company_logo.png" class="caption-logo-title" alt="titleLogo">
-                <!-- <div class="fuwafuwa" alt="titleLogo"></div> -->
             </a>
             <div class="main-description margin-top-50">
 
@@ -65,16 +59,13 @@
                 </div>
             </form> -->
         <!-- 背景で横に流れる画像 -->
-        <div class="loopSlide margin-top-70">
+        <div class="loopSlide">
             <img src="{% static 'images/home/slide-anime/カメラロール.png' %}">
             <img src="{% static 'images/home/slide-anime/カメラロール.png' %}">
         </div>
     </div>
 
     <div class="container-sub bg_about" id="jumpToAbout" style="position: relative;">
-        <!-- <div class="frameCloud">
-                <img src="/static/images/home/materials/もくもくさん1.png" style="width: 100%;">
-            </div>  -->
         <div class="padding-20">
             <div class="main-description inner-about" style="position: relative;">
                 <div class="about_frameUpperleft">
