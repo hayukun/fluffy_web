@@ -14,10 +14,14 @@ const viewExampleName1 = document.getElementById("view_example_name_1");
 const viewExampleSmallChara = document.getElementById("view_example_small_chara");
 const viewExampleName2 = document.getElementById("view_example_name_2");
 const viewExampleNametitle = document.getElementById("view_example_nametitle");
+const labelNickname = document.getElementById("label_nickname");
+const labelCatchphrase = document.getElementById("label_catchphrase");
+const labelNametitle = document.getElementById("label_nametitle");
+
 const inputFormView = document.getElementById('inputForm-view');
 const observ = document.getElementById('observ');
 const warning = document.getElementById('panelCharaWarning');
-
+const map_inputText = new Map() ;
 
 
 // 入力フォームのinputイベントを監視し、入力内容を表示する関数を定義
@@ -53,20 +57,88 @@ inputExampleCatchphrase.addEventListener('input', function () {
 function adjustTextSize() {
   const observ = document.getElementById('observ');
   const inputFormView = document.getElementById('inputForm-view');
+  
+  labelNametitle.style.display = 'none';
+  labelNickname.style.display = 'none';
+  labelCatchphrase.style.display = 'none';
 
+  tabCount = 1;
+  cartItem5Name.textContent = "";
+  cartItem5Price.textContent = "";
+  calc_TextPrice=0;
+  temp_Text = '';
+  var className = "tab_item";
+  var styleElement = document.createElement("style");
+
+  cartNicknameForColors = document.getElementById('cart_item6-2');
+  cartNicknameForColors_name = document.getElementById('cart_item6-2_name');
+  cartNicknameForColors_price = document.getElementById('cart_item6-2_price');
+  cartNicknameForColors_multiple = document.getElementById('cart_item6-2_multiple');
+  cartCatchphraseForColors = document.getElementById('cart_item6-4');
+  cartCatchphraseForColors_name = document.getElementById('cart_item6-4_name');
+  cartCatchphraseForColors_price = document.getElementById('cart_item6-4_price');
+  cartCatchphraseForColors_multiple = document.getElementById('cart_item6-4_multiple');
+  
+
+  // 名称に文字を入れて色をカートに入れたあと、名称の文字を空にするとカートから素材は消えるがパレットからは色が消えてない + タブコンテントも残っている
   if (inputExampleNickname.value.length >= 1){
     inputExampleCatchphrase.disabled = true;
     inputExampleNickname.disabled = false;
     warning.style.display = 'block';
+    labelNickname.style.display = 'block';
+    tabCount = tabCount + 1; 
   } else if (inputExampleCatchphrase.value.length >= 1){
     inputExampleCatchphrase.disabled = false;
     inputExampleNickname.disabled = true;
     warning.style.display = 'block';
+    labelCatchphrase.style.display = 'block';
+    tabCount = tabCount + 1; 
   } else {
     inputExampleNickname.disabled = false;
     inputExampleCatchphrase.disabled = false;
     warning.style.display = 'none';
   }
+
+  if (inputExampleNickname.value.length == 0){
+    cartNicknameForColors.innerHTML = '';
+    cartNicknameForColors_name.textContent = '';
+    cartNicknameForColors_price.textContent = '';
+    cartNicknameForColors_multiple.innerHTML = '';
+  }
+  if (inputExampleCatchphrase.value.length == 0){
+    cartCatchphraseForColors.innerHTML = '';
+    cartCatchphraseForColors_name.textContent = '';
+    cartCatchphraseForColors_price.textContent = '';
+    cartCatchphraseForColors_multiple.innerHTML = '';
+  }
+  
+  if (inputExampleNametitle.value.length >= 1){ 
+    labelNametitle.style.display = 'block';
+    tabCount = tabCount + 1; 
+  } 
+  styleElement.innerHTML = "." + className + " { width: calc(100%/" + tabCount + "); }";
+  document.head.appendChild(styleElement);
+
+  map_inputText.set("名前", viewExampleName1.textContent);
+  map_inputText.set("名前(右側)", viewExampleName2.textContent);
+  map_inputText.set("中文字", viewExampleSmallChara.textContent);
+  map_inputText.set("名称", viewExampleNickname.textContent);
+  map_inputText.set("敬称", viewExampleNametitle.textContent);
+  map_inputText.set("キャッチフレーズ", viewExampleCatchphrase.textContent);
+
+  for (const [key, value] of map_inputText) {
+    temp_Text = temp_Text + key + ':' + value + '/';
+  }
+  
+  cartItem5Name.textContent = temp_Text;
+
+  // calc price 
+  calc_TextPrice = calc_TextPrice + 450 * viewExampleSmallChara.textContent.trim().length;
+  calc_TextPrice = calc_TextPrice + 50 * viewExampleNametitle.textContent.trim().length;
+  calc_TextPrice = calc_TextPrice + 50 * viewExampleNickname.textContent.trim().length;
+  calc_TextPrice = calc_TextPrice + 180 * viewExampleCatchphrase.textContent.trim().length;
+
+  cartItem5Price.textContent = calc_TextPrice;
 
   if (inputExampleNameLeft.value.length > 0 && inputExampleNameLeft.value.length < parseInt(howManySelectElement.value)){
     inputExampleNameRight.setAttribute('maxlength', String(parseInt(howManySelectElement.value)-inputExampleNameLeft.value.length));

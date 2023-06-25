@@ -6,10 +6,10 @@
 {% endblock script %}
 {% block main %}
 <div class="container-main">
-
+    <!-- カート機能 -->
     <div class="container-cart cartBox cart_text" id="cart" style="max-width: 25%; display: none;">
-        <div class="wrap_yoko cartBorder-bottom" style="align-items: center; height:50px;">
-            <img src="/static/images/fullorder/materials/cart/かご.png" style="width:30px; height:auto;">
+        <div class="wrap_yoko cartBorder-bottom" style="align-items: center; height:2.6041666666666665vw;">
+            <img src="/static/images/fullorder/materials/cart/かご.png" style="width:1.5625vw; height:auto;">
             <p class="cart_text_title" style=" padding-left: 20px; margin: 0;">カート</p>
         </div>
         <div style="display: flex; flex-direction: column; justify-content: flex-end;">
@@ -36,90 +36,101 @@
                 <div id="cart_item4_extText" class="noneobj"></div>
             </div>
             <div class="wrap_yoko">
-                <div id="cart_item5-1"></div>
-                <div style="display: flex; flex-direction: column; justify-content: flex-end;">
-                    <div id="cart_item5-1_multiple"></div>
-                </div>
-                <div id="cart_item5-1_name" class="noneobj"></div>
-                <div id="cart_item5-1_price" class="noneobj"></div>
+                <div id="cart_item5"></div>
+                <div id="cart_item5_name" class="noneobj"></div>
+                <div id="cart_item5_price" class="noneobj"></div>
             </div>
             <div class="wrap_yoko">
-                <div id="cart_item5-2"></div>
+                <div id="cart_item6-1"></div>
                 <div style="display: flex; flex-direction: column; justify-content: flex-end;">
-                    <div id="cart_item5-2_multiple"></div>
+                    <div id="cart_item6-1_multiple"></div>
                 </div>
-                <div id="cart_item5-2_name" class="noneobj"></div>
-                <div id="cart_item5-2_price" class="noneobj"></div>
+                <div id="cart_item6-1_name" class="noneobj"></div>
+                <div id="cart_item6-1_price" class="noneobj"></div>
             </div>
             <div class="wrap_yoko">
-                <div id="cart_item5-3"></div>
+                <div id="cart_item6-2"></div>
                 <div style="display: flex; flex-direction: column; justify-content: flex-end;">
-                    <div id="cart_item5-3_multiple"></div>
+                    <div id="cart_item6-2_multiple"></div>
                 </div>
-                <div id="cart_item5-3_name" class="noneobj"></div>
-                <div id="cart_item5-3_price" class="noneobj"></div>
+                <div id="cart_item6-2_name" class="noneobj"></div>
+                <div id="cart_item6-2_price" class="noneobj"></div>
             </div>
             <div class="wrap_yoko">
-                <div id="cart_item5-4"></div>
+                <div id="cart_item6-3"></div>
                 <div style="display: flex; flex-direction: column; justify-content: flex-end;">
-                    <div id="cart_item5-4_multiple"></div>
+                    <div id="cart_item6-3_multiple"></div>
                 </div>
-                <div id="cart_item5-4_name" class="noneobj"></div>
-                <div id="cart_item5-4_price" class="noneobj"></div>
+                <div id="cart_item6-3_name" class="noneobj"></div>
+                <div id="cart_item6-3_price" class="noneobj"></div>
             </div>
             <div class="wrap_yoko">
-                <div id="cart_item6"></div>
-                <div id="cart_item6_price" class="noneobj"></div>
+                <div id="cart_item6-4"></div>
+                <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+                    <div id="cart_item6-4_multiple"></div>
+                </div>
+                <div id="cart_item6-4_name" class="noneobj"></div>
+                <div id="cart_item6-4_price" class="noneobj"></div>
+            </div>
+            <div class="wrap_yoko">
+                <div id="cart_summary"></div>
+                <div id="cart_summary_price"></div>
             </div>
         </div>
     </div>
 
+    <!-- パレット機能 -->
     <div class="container-materialPalette materialPaletteBox materialPalette_text" id="materialPalette"
         style="width: 100%; display: none;">
         <div style="display: flex; flex-direction: row; justify-content: center; height:43.14994606256742vh;">
+
             <div class="tabs">
                 <input id="name" type="radio" name="tab_item" checked>
                 <label class="tab_item" for="name">名前</label>
                 <input id="nickname" type="radio" name="tab_item">
-                <label class="tab_item" for="nickname">名称</label>
+                <label id="label_nickname" class="tab_item" for="nickname" style="display: none;">名称</label>
                 <input id="nametitle" type="radio" name="tab_item">
-                <label class="tab_item" for="nametitle">敬称</label>
+                <label id="label_nametitle" class="tab_item" for="nametitle" style="display: none;">敬称</label>
                 <input id="catchphrase" type="radio" name="tab_item">
-                <label class="tab_item" for="catchphrase">キャッチフレーズ</label>
+                <label id="label_catchphrase" class="tab_item" for="catchphrase" style="display: none;">キャッチフレーズ</label>
                 <div class="tab_content" id="name_content">
                     <div class="tab_content_description"
                         style="display: flex; flex-direction: row; justify-content: center;">
                         <div class="box-width850 " style="display: flex; flex-direction: column; text-align: center;">
-                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">素材パレット</p>
+                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">【名前】素材パレット
+                            </p>
                             <div class="paletteInner"
                                 style="display: flex; flex-direction: row; justify-content: space-evenly;">
                                 <div
                                     style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
                                     <div
                                         style="display: flex; flex-direction: row; justify-content: space-between;align-items: center;">
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_1" class="box-width100 select5_palette palette_1"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_2" class="box-width100 select5_palette palette_1"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img id="select6_palette6_1" class="box-width100 select6_palette palette_1"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_3" class="box-width100 select5_palette palette_1"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_4" class="box-width100 select5_palette palette_1"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
 
-                                        </div>
+                                        <img id="select6_palette6_2" class="box-width100 select6_palette palette_1"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_3" class="box-width100 select6_palette palette_1"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_4" class="box-width100 select6_palette palette_1"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
                                     </div>
 
                                     <div
@@ -136,16 +147,21 @@
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                                    <div style="display: flex; flex-direction: column; justify-content:center">
+                                    <div class="imagehover-container"
+                                        style="display: flex; flex-direction: column; justify-content:center">
                                         <img id="set_colorsToCart_1" class="box-width120 box-height120"
                                             src="/static/images/fullorder/order_buttons/colors/パレット/色決定.png">
 
                                     </div>
                                     <div style="display: flex; flex-direction: column; justify-content:center">
-                                        <img id="delete_color_1" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
-                                        <img id="delete_Allcolors_1" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        <div class="imagehover-container">
+                                            <img id="delete_color_1" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
+                                        </div>
+                                        <div class="imagehover-container">
+                                            <img id="delete_Allcolors_1" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -157,36 +173,40 @@
                     <div class="tab_content_description"
                         style="display: flex; flex-direction: row; justify-content: center;">
                         <div class="box-width850" style="display: flex; flex-direction: column; text-align: center;">
-                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">素材パレット</p>
+                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">【名称】素材パレット
+                            </p>
                             <div class="paletteInner"
                                 style="display: flex; flex-direction: row; justify-content: space-evenly;">
                                 <div
                                     style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
                                     <div
                                         style="display: flex; flex-direction: row; justify-content: space-between;align-items: center;">
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_5" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_6" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img id="select6_palette6_5" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_7" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_8" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
 
-                                        </div>
+                                        <img id="select6_palette6_6" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_7" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_8" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
                                     </div>
 
                                     <div
@@ -203,16 +223,21 @@
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                                    <div style="display: flex; flex-direction: column; justify-content:center">
+                                    <div class="imagehover-container"
+                                        style="display: flex; flex-direction: column; justify-content:center">
                                         <img id="set_colorsToCart_2" class="box-width120 box-height120"
                                             src="/static/images/fullorder/order_buttons/colors/パレット/色決定.png">
 
                                     </div>
                                     <div style="display: flex; flex-direction: column; justify-content:center">
-                                        <img id="delete_color_2" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
-                                        <img id="delete_Allcolors_2" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        <div class="imagehover-container">
+                                            <img id="delete_color_2" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
+                                        </div>
+                                        <div class="imagehover-container">
+                                            <img id="delete_Allcolors_2" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -224,36 +249,40 @@
                     <div class="tab_content_description"
                         style="display: flex; flex-direction: row; justify-content: center;">
                         <div class="box-width850" style="display: flex; flex-direction: column; text-align: center;">
-                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">素材パレット</p>
+                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">【敬称】素材パレット
+                            </p>
                             <div class="paletteInner"
                                 style="display: flex; flex-direction: row; justify-content: space-evenly;">
                                 <div
                                     style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
                                     <div
                                         style="display: flex; flex-direction: row; justify-content: space-between;align-items: center;">
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_9" class="box-width100 select5_palette palette_3"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_10" class="box-width100 select5_palette palette_3"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img id="select6_palette6_9" class="box-width100 select6_palette palette_3"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_11" class="box-width100 select5_palette palette_3"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_12" class="box-width100 select5_palette palette_3"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
 
-                                        </div>
+                                        <img id="select6_palette6_10" class="box-width100 select6_palette palette_3"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_11" class="box-width100 select6_palette palette_3"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_12" class="box-width100 select6_palette palette_3"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
                                     </div>
 
                                     <div
@@ -270,16 +299,21 @@
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                                    <div style="display: flex; flex-direction: column; justify-content:center">
+                                    <div class="imagehover-container"
+                                        style="display: flex; flex-direction: column; justify-content:center">
                                         <img id="set_colorsToCart_3" class="box-width120 box-height120"
                                             src="/static/images/fullorder/order_buttons/colors/パレット/色決定.png">
 
                                     </div>
                                     <div style="display: flex; flex-direction: column; justify-content:center">
-                                        <img id="delete_color_3" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
-                                        <img id="delete_Allcolors_3" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        <div class="imagehover-container">
+                                            <img id="delete_color_3" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
+                                        </div>
+                                        <div class="imagehover-container">
+                                            <img id="delete_Allcolors_3" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -291,36 +325,40 @@
                     <div class="tab_content_description"
                         style="display: flex; flex-direction: row; justify-content: center;">
                         <div class="box-width850" style="display: flex; flex-direction: column; text-align: center;">
-                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">素材パレット</p>
+                            <p class="materialPalette_text_title" style="color:white; margin-bottom: 20px;">
+                                【キャッチフレーズ】素材パレット</p>
                             <div class="paletteInner"
                                 style="display: flex; flex-direction: row; justify-content: space-evenly;">
                                 <div
                                     style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
                                     <div
                                         style="display: flex; flex-direction: row; justify-content: space-between;align-items: center;">
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_13" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_14" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img id="select6_palette6_13" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_15" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
 
-                                        </div>
-                                        <p class="materialPalette_text_title">→</p>
-                                        <div style="position: relative;">
-                                            <img id="select5_palette5_16" class="box-width100 select5_palette palette_2"
-                                                src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
 
-                                        </div>
+                                        <img id="select6_palette6_14" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_15" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
+                                        <img class="box-width40"
+                                            src="/static/images/fullorder/order_buttons/colors/パレット/palette_arrow.png">
+
+                                        <img id="select6_palette6_16" class="box-width100 select6_palette palette_2"
+                                            src="/static/images/fullorder/order_buttons/colors/hoshi-waku.png">
+
+
                                     </div>
 
                                     <div
@@ -337,16 +375,21 @@
                                 </div>
 
                                 <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                                    <div style="display: flex; flex-direction: column; justify-content:center">
+                                    <div class="imagehover-container"
+                                        style="display: flex; flex-direction: column; justify-content:center">
                                         <img id="set_colorsToCart_4" class="box-width120 box-height120"
                                             src="/static/images/fullorder/order_buttons/colors/パレット/色決定.png">
 
                                     </div>
                                     <div style="display: flex; flex-direction: column; justify-content:center">
-                                        <img id="delete_color_4" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
-                                        <img id="delete_Allcolors_4" class="box-width60"
-                                            src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        <div class="imagehover-container">
+                                            <img id="delete_color_4" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/色選択解除.png">
+                                        </div>
+                                        <div class="imagehover-container">
+                                            <img id="delete_Allcolors_4" class="box-width60"
+                                                src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -361,9 +404,9 @@
         </div>
     </div>
 
-
-
     <div style="text-align: center;">
+
+        <!-- モーダル -->
         <div id="easyModal" class="modal">
             <div class="modal-content box-width850">
                 <div class="modal-header">
@@ -382,20 +425,24 @@
 
             </div>
         </div>
-        <img src="/static/images/fullorder/title/main_title/Fullorder.png" class="margin-top-100"
-            style="height:100px; width: auto;">
-        <div class="margin-top-50"
-            style="display: flex; justify-content: center; flex-direction: row; align-items: center; text-align: center;">
-            <div style="display: flex; justify-content: flex-start; flex-direction: column; text-align: left;">
-                <h4 class="fuchidori_shiro coolfont">あなただけのオリジナル文字パネルを制作</h4>
-                <p class="jkfont margin-top-20">こちらのページはフルオーダーでご依頼される方向けのページとなります。<br>
-                    ご希望に合わせて<span style="color:red">上から順に</span>選択してください。<br>
-                </p>
+
+        <!-- フルオーダートップ -->
+        <div>
+            <img src="/static/images/fullorder/title/main_title/Fullorder.png" class="margin-top-100 page_title">
+            <div class="margin-top-50"
+                style="display: flex; justify-content: center; flex-direction: row; align-items: center; text-align: center;">
+                <div style="display: flex; justify-content: flex-start; flex-direction: column; text-align: left;">
+                    <h4 class="fuchidori_shiro coolfont">あなただけのオリジナル文字パネルを制作</h4>
+                    <p class="jkfont margin-top-20">こちらのページはフルオーダーでご依頼される方向けのページとなります。<br>
+                        ご希望に合わせて<span style="color:red">上から順に</span>選択してください。<br>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="margin-top-100"
             style="display: flex; justify-content: flex-start; flex-direction: column; align-items: center; text-align: center;">
 
+            <!-- うちわ or ボード -->
             <div class="box-pink"
                 style="display: flex; justify-content: center; flex-direction: column; text-align: center; height: auto; position: relative;">
                 <div class="set_hart_position">
@@ -459,10 +506,9 @@
                         <div id="selected_1_ImageInfo" value="0"></div>
                     </div>
                 </div>
-
-
             </div>
 
+            <!-- 文字サイズ -->
             <div class="box-pink margin-top-100"
                 style="display: flex; justify-content: center; flex-direction: column; text-align: center; height: auto;">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
@@ -502,13 +548,13 @@
                             <h3 class="jkfont changeTextOnSmartPhone" style="font-weight: bold;">サイズをタップ</h3>
                         </div>
                         <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                            <img src="/static/images/fullorder/order_buttons/size/S490.png"
+                            <img src="/static/images/fullorder/order_buttons/size/S1.png"
                                 class="btn-image select2 padding-2 box-width180 autoincluded2" id="image2_1">
-                            <img src="/static/images/fullorder/order_buttons/size/M610.png"
+                            <img src="/static/images/fullorder/order_buttons/size/M2.png"
                                 class="btn-image select2 padding-2 box-width180 excluded2" id="image2_2">
-                            <img src="/static/images/fullorder/order_buttons/size/L720.png"
+                            <img src="/static/images/fullorder/order_buttons/size/L3.png"
                                 class="btn-image select2 padding-2 box-width180 excluded2" id="image2_3">
-                            <img src="/static/images/fullorder/order_buttons/size/XL980.png"
+                            <img src="/static/images/fullorder/order_buttons/size/XL4.png"
                                 class="btn-image select2 padding-2 box-width180 excluded2" id="image2_4">
                         </div>
                         <div id="selected_2_ImageInfo" value="0" class="margin-top-10"></div>
@@ -517,6 +563,7 @@
                 </div>
             </div>
 
+            <!-- 文字タイプ -->
             <div class="box-pink margin-top-100"
                 style="display: flex; justify-content: center; flex-direction: column; text-align: center; height: auto;">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
@@ -658,130 +705,7 @@
                 </div>
             </div>
 
-            <!-- 文字パネル入力 -->
-            <div class="box-pink wrap_tate margin-top-100" style="position:relative;">
-                <div style="display: flex; flex-direction: row; justify-content: center;">
-                    <img src="/static/images/fullorder/title/main_title/パネル文字.png" class="image-title">
-                </div>
-
-                <div class="box-white box-height500" style="margin-top: 15.625vw;">
-                    <h3 class="jkfont changeTextOnPC" style="font-weight: bold;">パネルに入れたい文字を入力してください</h3>
-                    <div style="height:16px;">
-                        <p id="panelCharaWarning" class="jkfont changeTextOnPC"
-                            style="font-weight: bold; color: #FF6193; display: none;">※【名称】と【キャッチフレーズ】はどちらかのみ入力できます</p>
-                    </div>
-                    <form class="" action="">
-                        {% csrf_token %}
-                        <!-- {{ fullorder.media }}
-                        {{ fullorder.as_p }} -->
-                        <div style="display: flex; flex-direction: row; justify-content: center;">
-                            <div class="wrap_tate margin-top-70 box-width600" style="justify-content: center;">
-
-                                <div id="normal_Chara">
-                                    <div style="display: flex; justify-content: center; flex-direction: row;">
-                                        <div class="box-width200 btn-image" style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
-                                            <span style="color: #FF6193;">【名前】</span>
-                                        </div>
-                                        <input type="text" placeholder="名前" maxlength="15" id="input_example_name_main"
-                                            style="width: 60%;">
-                                    </div>
-                                </div>
-                                <div id="small_Chara" style=" display: none;">
-                                    <div style="display: flex; justify-content: center; flex-direction: row;">
-                                        <div class="box-width200 btn-image" style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
-                                            <span style="color: #FF6193;">【名前：左】</span>
-                                        </div>
-                                            <input type="text" placeholder="名前(左側)" maxlength="8" id="input_example_name_left"
-                                            style="width: 60%;">
-                                    </div>
-                                    <div class="margin-top-20" style="display: flex; justify-content: center; flex-direction: row;">
-                                        <div class="box-width200 btn-image" style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
-                                            <span style="color: #FF6193;">【名前：右】</span>
-                                        </div>
-                                        <input type="text" placeholder="名前(右側)" maxlength="8" id="input_example_name_right"
-                                            style="width: 60%;">
-                                    </div>
-                                    <div class="margin-top-20" style="display: flex; justify-content: center; flex-direction: row;">
-                                        <div class="box-width200 btn-image" style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
-                                            <span style="color: #FFDC61;">【中文字】</span>
-                                        </div>
-                                        <input type="text" placeholder="小さくする文字を入力してね" maxlength="5"
-                                            id="input_example_small_name" style="width: 60%;">
-                                    </div>
-                                </div>
-                                <div class="margin-top-20" style="display: flex; justify-content: center; flex-direction: row;">
-                                    <div class="box-width200 btn-image" style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
-                                        <span style="color: #8EFF77;">【名称】</span>
-                                    </div>
-                                    <input
-                                        type="text" placeholder="苗字、あだ名を入力してね" maxlength="5" id="input_example_nickname"
-                                        style="width: 60%;">
-                                </div>
-                                <div class="margin-top-20" style="display: flex; justify-content: center; flex-direction: row;">
-                                    <div class="box-width200 btn-image" style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
-                                        <span style="color: #E1BEFF;">【敬称】</span>
-                                    </div>
-                                    <input
-                                        type="text" placeholder="「ちゃん、くん」など入力してね" maxlength="5"
-                                        id="input_example_nametitle" style="width: 60%;">
-                                </div>
-                                <div class="margin-top-20" style="display: flex; justify-content: center; flex-direction: row;">
-                                    <div class="box-width200 btn-image" style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
-                                        <span style="color: #7DFFF2;">【キャッチフレーズ】</span>
-                                    </div>
-
-                                    <input type="text" placeholder="最大15文字" maxlength="15"
-                                        id="input_example_catchphrase" style="width: 60%;">
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                    <div id="inputForm-view" style="width:45vw; height:10.416666666666666vw;">
-                        <div style="position: relative; text-align: center;height: 100%;">
-                            <div id="palette_board" style="height: 100%;">
-                                <div id="view_example_form"
-                                    style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center; font-size:100%; height: 95%;">
-                                    <div id="observ">
-                                        <div
-                                            style="display: flex; justify-content: flex-start; flex-direction: row; text-align: left;">
-                                            <div id="view_example_catchphrase"
-                                                style="word-break: break-all; font-size:1.8em !important; color: #7DFFF2;">
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            style="display: flex; justify-content: flex-start; flex-direction: row; text-align: left;">
-                                            <div id="view_example_nickname"
-                                                style="word-break: break-all; font-size:2.5em !important; color: #8EFF77;">
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            style="display: flex; align-items: end; justify-content: center; text-align: center;">
-                                            <div id="view_example_name_1"
-                                                style="word-break: break-all; font-size:5.8em !important; color: #FF6193;">
-                                            </div>
-                                            <div id="view_example_small_chara"
-                                                style="word-break: break-all; font-size:3.5em !important; color: #FFDC61;">
-                                            </div>
-                                            <div id="view_example_name_2"
-                                                style="word-break: break-all; font-size:5.8em !important; color: #FF6193;">
-                                            </div>
-                                            <div id="view_example_nametitle"
-                                                style="word-break: break-all; font-size:1.8em !important;color: #E1BEFF;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
+            <!-- フォント -->
             <div class="box-pink margin-top-100 wrap_tate">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
                     <img src="/static/images/fullorder/title/main_title/フォント.png" class="image-title">
@@ -860,13 +784,153 @@
                             <div style="display: flex; flex-direction: row; justify-content: flex-start;">
                                 <span class="tag"
                                     style="color: rgb(255, 255, 255); background-color: rgb(96, 125, 139); font-size: 14px;">任意</span>
-                                <p style="color: #FF6CC4; padding: 2px 0 0 10px;">フォント指定(120円)</p>
+                                <p style="color: #FF6CC4; padding: 2px 0 0 10px;">フォント指定(¥120)</p>
                             </div>
                             <input type="text" placeholder="フォント名" id="input_font" style="width: 100%;">
                             <img src="/static/images/fullorder/order_buttons/fonts/ja/フォント指定0.png" class="select4"
                                 id="image4_31" style="display: none;">
                         </div>
                     </div>
+                </div>
+
+            </div>
+
+            <!-- 文字パネル入力 -->
+            <div class="box-pink wrap_tate margin-top-100" style="position:relative;">
+                <div style="display: flex; flex-direction: row; justify-content: center;">
+                    <img src="/static/images/fullorder/title/main_title/パネル文字.png" class="image-title">
+                </div>
+
+                <div class="box-white box-height550" style="margin-top: 15.625vw;">
+                    <h3 class="jkfont changeTextOnPC" style="font-weight: bold;">パネルに入れたい文字を入力してください</h3>
+                    <h4 class="jkfont changeTextOnPC" style="font-size: 0.7291666666666666vw;color: #FFD9E7;">
+                        【名称・敬称:¥50／キャッチフレーズ:¥180／中文字:¥450 】 ※1文字</h4>
+                    <!-- <h4 class="jkfont changeTextOnPC">中文字 → 1文字 ¥450</h4> -->
+                    <!-- <h4 class="jkfont changeTextOnPC">名称 → 1文字 ¥50</h4>
+                    <h4 class="jkfont changeTextOnPC">敬称 → 1文字 ¥50</h4>
+                    <h4 class="jkfont changeTextOnPC">キャッチフレーズ → 1文字 ¥180</h4> -->
+                    <div style="height:16px;">
+                        <p id="panelCharaWarning" class="jkfont changeTextOnPC"
+                            style="font-weight: bold; color: #FF6193; display: none;">※【名称】と【キャッチフレーズ】はどちらかのみ入力できます</p>
+                    </div>
+                    <form class="" action="">
+                        {% csrf_token %}
+                        <!-- {{ fullorder.media }}
+                        {{ fullorder.as_p }} -->
+                        <div style="display: flex; flex-direction: row; justify-content: center;">
+                            <div class="wrap_tate margin-top-70 box-width600" style="justify-content: center;">
+
+                                <div id="normal_Chara">
+                                    <div style="display: flex; justify-content: center; flex-direction: row;">
+                                        <div class="box-width200 btn-image"
+                                            style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
+                                            <span style="color: #FF6193;">【名前】</span>
+                                        </div>
+                                        <input type="text" placeholder="名前" maxlength="15" id="input_example_name_main"
+                                            style="width: 60%;">
+                                    </div>
+                                </div>
+                                <div id="small_Chara" style=" display: none;">
+                                    <div style="display: flex; justify-content: center; flex-direction: row;">
+                                        <div class="box-width200 btn-image"
+                                            style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
+                                            <span style="color: #FF6193;">【名前：左】</span>
+                                        </div>
+                                        <input type="text" placeholder="名前(左側)" maxlength="8"
+                                            id="input_example_name_left" style="width: 60%;">
+                                    </div>
+                                    <div class="margin-top-20"
+                                        style="display: flex; justify-content: center; flex-direction: row;">
+                                        <div class="box-width200 btn-image"
+                                            style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
+                                            <span style="color: #FF6193;">【名前：右】</span>
+                                        </div>
+                                        <input type="text" placeholder="名前(右側)" maxlength="8"
+                                            id="input_example_name_right" style="width: 60%;">
+                                    </div>
+                                    <div class="margin-top-20"
+                                        style="display: flex; justify-content: center; flex-direction: row;">
+                                        <div class="box-width200 btn-image"
+                                            style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
+                                            <span style="color: #FFDC61;">【中文字】</span>
+                                        </div>
+                                        <input type="text" placeholder="小さくする文字を入力してね" maxlength="5"
+                                            id="input_example_small_name" style="width: 60%;">
+                                    </div>
+                                </div>
+                                <div class="margin-top-20"
+                                    style="display: flex; justify-content: center; flex-direction: row;">
+                                    <div class="box-width200 btn-image"
+                                        style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
+                                        <span style="color: #8EFF77;">【名称】</span>
+                                    </div>
+                                    <input type="text" placeholder="苗字、あだ名を入力してね" maxlength="5"
+                                        id="input_example_nickname" style="width: 60%;">
+                                </div>
+                                <div class="margin-top-20"
+                                    style="display: flex; justify-content: center; flex-direction: row;">
+                                    <div class="box-width200 btn-image"
+                                        style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
+                                        <span style="color: #E1BEFF;">【敬称】</span>
+                                    </div>
+                                    <input type="text" placeholder="「ちゃん、くん」など入力してね" maxlength="5"
+                                        id="input_example_nametitle" style="width: 60%;">
+                                </div>
+                                <div class="margin-top-20"
+                                    style="display: flex; justify-content: center; flex-direction: row;">
+                                    <div class="box-width200 btn-image"
+                                        style="height:2.0833333333333335vw; display: flex; justify-content: center; flex-direction: column; margin-right: 10px;">
+                                        <span style="color: #7DFFF2;">【キャッチフレーズ】</span>
+                                    </div>
+
+                                    <input type="text" placeholder="最大20文字" maxlength="20"
+                                        id="input_example_catchphrase" style="width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                    <div id="inputForm-view" style="width:45vw; height:10.416666666666666vw;">
+                        <div style="position: relative; text-align: center;height: 100%;">
+                            <div id="palette_board" style="height: 100%;">
+                                <div id="view_example_form"
+                                    style="display: flex; flex-direction: column; justify-content: flex-end; align-items: center; font-size:100%; height: 95%;">
+                                    <div id="observ">
+                                        <div
+                                            style="display: flex; justify-content: flex-start; flex-direction: row; text-align: left;">
+                                            <div id="view_example_catchphrase"
+                                                style="word-break: break-all; font-size:1.8em !important; color: #7DFFF2;">
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="display: flex; justify-content: flex-start; flex-direction: row; text-align: left;">
+                                            <div id="view_example_nickname"
+                                                style="word-break: break-all; font-size:2.5em !important; color: #8EFF77;">
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="display: flex; align-items: end; justify-content: center; text-align: center;">
+                                            <div id="view_example_name_1"
+                                                style="word-break: break-all; font-size:5.8em !important; color: #FF6193;">
+                                            </div>
+                                            <div id="view_example_small_chara"
+                                                style="word-break: break-all; font-size:3.5em !important; color: #FFDC61;">
+                                            </div>
+                                            <div id="view_example_name_2"
+                                                style="word-break: break-all; font-size:5.8em !important; color: #FF6193;">
+                                            </div>
+                                            <div id="view_example_nametitle"
+                                                style="word-break: break-all; font-size:1.8em !important;color: #E1BEFF;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -885,7 +949,7 @@
                 
             </div> -->
 
-
+            <!-- カラー素材 -->
             <div class="box-pink margin-top-100" style="display: flex; flex-direction: row; justify-content: center; ">
                 <div class="wrap_tate" style="width: 100%;">
                     <div style="display: flex; flex-direction: row; justify-content: center;">
@@ -895,298 +959,367 @@
                     <div class="margin-top-70"
                         style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
                         <div class="wrap_tate" style="width: 100%;">
+                            <div>
+                                <img src="/static/images/fullorder/order_buttons/colors/ランキング/ランキング.png"
+                                    class="padding-2 box-width400" id="openColorRanking">
+                            </div>
+                            <div id="colorRanking" class="box-white wrap_tate" style="width: auto; display: none;">
+                                <div style="display: flex; flex-direction: row; justify-content: center;">
+                                    <img src="/static/images/fullorder/order_buttons/colors/ランキング/王冠1.png"
+                                        class="padding-2 box-width150" id="image6_rank1">
+                                </div>
+                                <div id="ranking6-1"
+                                    style="display: flex; flex-direction: row; justify-content: center;">
+                                    <img src="/static/images/fullorder/order_buttons/colors/d蛍光/d1黄.png"
+                                        class="rankingColor image6_d margin-top-10 box-width100" id="color_Ranking1-1">
+                                    <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b1黒.png"
+                                        class="rankingColor image6_b margin-top-10 box-width100" id="color_Ranking1-2">
+                                    <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b2白.png"
+                                        class="rankingColor image6_b margin-top-10 box-width100" id="color_Ranking1-3">
+                                    <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f5青.png"
+                                        class="rankingColor image6_f margin-top-10 box-width100" id="color_Ranking1-4">
+                                </div>
+
+                                <div class="margin-top-70"
+                                    style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                                    <div>
+                                        <div>
+                                            <img src="/static/images/fullorder/order_buttons/colors/ランキング/王冠2.png"
+                                                class="padding-2 box-width100" id="image6_rank2">
+                                        </div>
+                                        <div id="ranking6-2"
+                                            style="display: flex; flex-direction: row; justify-content: center;">
+                                            <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g7青.png"
+                                                class="rankingColor image6_g margin-top-10 box-width100"
+                                                id="color_Ranking2-1">
+                                            <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b2白.png"
+                                                class="rankingColor image6_b margin-top-10 box-width100"
+                                                id="color_Ranking2-2">
+                                            <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b1黒.png"
+                                                class="rankingColor image6_b margin-top-10 box-width100"
+                                                id="color_Ranking2-3">
+                                            <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a9青.png"
+                                                class="rankingColor image6_a margin-top-10 box-width100"
+                                                id="color_Ranking2-4">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <img src="/static/images/fullorder/order_buttons/colors/ランキング/王冠3.png"
+                                                class="padding-2 box-width100" id="image6_rank3">
+                                        </div>
+                                        <div id="ranking6-3"
+                                            style="display: flex; flex-direction: row; justify-content: center;">
+                                            <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g5桃.png"
+                                                class="rankingColor image6_g margin-top-10 box-width100"
+                                                id="color_Ranking3-1">
+                                            <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b2白.png"
+                                                class="rankingColor image6_b margin-top-10 box-width100"
+                                                id="color_Ranking3-2">
+                                            <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b1黒.png"
+                                                class="rankingColor image6_b margin-top-10 box-width100"
+                                                id="color_Ranking3-3">
+                                            <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a6桃.png"
+                                                class="rankingColor image6_a margin-top-10 box-width100"
+                                                id="color_Ranking3-4">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
                             <div class="box-white wrap_tate" style="width: auto;">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/aカッティング.png"
-                                        class="padding-2 box-width350" id="image5_a">
+                                        class="padding-2 box-width350" id="image6_a">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a1黄.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a1">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a1">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a2杏.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a2">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a2">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a3橙.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a3">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a3">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a4赤.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a4">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a4">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a5桜.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a5">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a5">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a6桃.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a6">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a6">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a7紫.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a7">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a7">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a8菫.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a8">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a8">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a9青.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a9">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a9">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a10水.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a10">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a10">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a11藍.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a11">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a11">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a12緑.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a12">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a12">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a13竹.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a13">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a13">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a14葉.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a14">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a14">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a15茶.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a15">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a15">
                                     <img src="/static/images/fullorder/order_buttons/colors/aカッティング/a16灰.png"
-                                        class="select5 image5_a margin-top-10 box-width100" id="color_a16">
+                                        class="select6 image6_a margin-top-10 box-width100" id="color_a16">
                                 </div>
                             </div>
                             <div class="box-white wrap_tate margin-top-50" style="width: auto;">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/bカッティング.png"
-                                        class="padding-2 box-width350" id="image5_b">
+                                        class="padding-2 box-width350" id="image6_b">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b1黒.png"
-                                        class="select5 image5_b margin-top-10 box-width100" id="color_b1">
+                                        class="select6 image6_b margin-top-10 box-width100" id="color_b1">
                                     <img src="/static/images/fullorder/order_buttons/colors/bカッティング/b2白.png"
-                                        class="select5 image5_b margin-top-10 box-width100" id="color_b2">
+                                        class="select6 image6_b margin-top-10 box-width100" id="color_b2">
                                 </div>
                             </div>
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/c画用紙.png"
-                                        class="padding-2 box-width350" id="image5_c">
+                                        class="padding-2 box-width350" id="image6_c">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c1黄.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c1">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c1">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c2橙.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c2">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c2">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c3赤.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c3">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c3">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c4桜.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c4">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c4">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c5桃.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c5">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c5">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c6紫.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c6">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c6">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c7青.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c7">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c7">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c8水.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c8">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c8">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c9緑.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c9">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c9">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c10葉.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c10">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c10">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c11黒.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c11">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c11">
                                     <img src="/static/images/fullorder/order_buttons/colors/c画用紙/c12白.png"
-                                        class="select5 image5_c margin-top-10 box-width100" id="color_c12">
+                                        class="select6 image6_c margin-top-10 box-width100" id="color_c12">
                                 </div>
                             </div>
 
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/d蛍光シート.png"
-                                        class="padding-2 box-width350" id="image5_d">
+                                        class="padding-2 box-width350" id="image6_d">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/d蛍光/d1黄.png"
-                                        class="select5 image5_d margin-top-10 box-width100" id="color_d1">
+                                        class="select6 image6_d margin-top-10 box-width100" id="color_d1">
                                     <img src="/static/images/fullorder/order_buttons/colors/d蛍光/d2橙.png"
-                                        class="select5 image5_d margin-top-10 box-width100" id="color_d2">
+                                        class="select6 image6_d margin-top-10 box-width100" id="color_d2">
                                     <img src="/static/images/fullorder/order_buttons/colors/d蛍光/d3桃.png"
-                                        class="select5 image5_d margin-top-10 box-width100" id="color_d3">
+                                        class="select6 image6_d margin-top-10 box-width100" id="color_d3">
                                     <img src="/static/images/fullorder/order_buttons/colors/d蛍光/d4緑.png"
-                                        class="select5 image5_d margin-top-10 box-width100" id="color_d4">
+                                        class="select6 image6_d margin-top-10 box-width100" id="color_d4">
                                 </div>
                             </div>
 
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/e蓄光シート.png"
-                                        class="padding-2 box-width350" id="image5_e">
+                                        class="padding-2 box-width350" id="image6_e">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/e蓄光/e1橙.png"
-                                        class="select5 image5_e margin-top-10 box-width200" id="color_e1">
+                                        class="select6 image6_e margin-top-10 box-width200" id="color_e1">
                                     <img src="/static/images/fullorder/order_buttons/colors/e蓄光/e2青.png"
-                                        class="select5 image5_e margin-top-10 box-width200" id="color_e2">
+                                        class="select6 image6_e margin-top-10 box-width200" id="color_e2">
                                     <img src="/static/images/fullorder/order_buttons/colors/e蓄光/e3緑.png"
-                                        class="select5 image5_e margin-top-10 box-width200" id="color_e3">
+                                        class="select6 image6_e margin-top-10 box-width200" id="color_e3">
                                 </div>
                             </div>
 
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/f高品質グリッター.png"
-                                        class="padding-2 box-width350" id="image5_f">
+                                        class="padding-2 box-width350" id="image6_f">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f1橙.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f1">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f1">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f2赤.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f2">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f2">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f3桃.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f3">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f3">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f4紫.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f4">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f4">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f5青.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f5">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f5">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f6紺.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f6">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f6">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f7水.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f7">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f7">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f8緑.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f8">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f8">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f9葉.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f9">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f9">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f10灰.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f10">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f10">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f11銀.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f11">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f11">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f12虹.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f12">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f12">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f13黒.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f13">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f13">
                                     <img src="/static/images/fullorder/order_buttons/colors/fグリッター/f14白.png"
-                                        class="select5 image5_f margin-top-10 box-width100" id="color_f14">
+                                        class="select6 image6_f margin-top-10 box-width100" id="color_f14">
                                 </div>
                             </div>
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/g高品質グリッター.png"
-                                        class="padding-2 box-width350" id="image5_g">
+                                        class="padding-2 box-width350" id="image6_g">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g1黄.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g1">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g1">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g2金.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g2">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g2">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g3赤.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g3">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g3">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g4桜.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g4">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g4">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g5桃.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g5">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g5">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g6紫.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g6">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g6">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g7青.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g7">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g7">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g8紺.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g8">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g8">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g9水.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g9">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g9">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g10空.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g10">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g10">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g11緑.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g11">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g11">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g12葉.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g12">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g12">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g13茶.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g13">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g13">
                                     <img src="/static/images/fullorder/order_buttons/colors/gグリッター/g14銀.png"
-                                        class="select5 image5_g margin-top-10 box-width100" id="color_g14">
+                                        class="select6 image6_g margin-top-10 box-width100" id="color_g14">
                                 </div>
                             </div>
 
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/hホログラム.png"
-                                        class="padding-2 box-width350" id="image5_h">
+                                        class="padding-2 box-width350" id="image6_h">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h1金.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h1">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h1">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h2赤.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h2">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h2">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h3桜.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h3">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h3">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h4桃.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h4">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h4">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h5紫.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h5">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h5">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h6青.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h6">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h6">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h7水.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h7">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h7">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h8緑.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h8">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h8">
                                     <img src="/static/images/fullorder/order_buttons/colors/hホログラム/h9銀.png"
-                                        class="select5 image5_h margin-top-10 box-width100" id="color_h9">
+                                        class="select6 image6_h margin-top-10 box-width100" id="color_h9">
                                 </div>
                             </div>
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/iホログラム.png"
-                                        class="padding-2 box-width350" id="image5_i">
+                                        class="padding-2 box-width350" id="image6_i">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/iホログラム/i1.png"
-                                        class="select5 image5_i margin-top-10 box-width100" id="color_i1">
+                                        class="select6 image6_i margin-top-10 box-width100" id="color_i1">
                                     <img src="/static/images/fullorder/order_buttons/colors/iホログラム/i2.png"
-                                        class="select5 image5_i margin-top-10 box-width100" id="color_i2">
+                                        class="select6 image6_i margin-top-10 box-width100" id="color_i2">
                                     <img src="/static/images/fullorder/order_buttons/colors/iホログラム/i3.png"
-                                        class="select5 image5_i margin-top-10 box-width100" id="color_i3">
+                                        class="select6 image6_i margin-top-10 box-width100" id="color_i3">
                                 </div>
                             </div>
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/j反射シート.png"
-                                        class="padding-2 box-width350" id="image5_j">
+                                        class="padding-2 box-width350" id="image6_j">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/j反射シート/j1黄.png"
-                                        class="select5 image5_j margin-top-10 box-width200" id="color_j1">
+                                        class="select6 image6_j margin-top-10 box-width200" id="color_j1">
                                     <img src="/static/images/fullorder/order_buttons/colors/j反射シート/j2橙.png"
-                                        class="select5 image5_j margin-top-10 box-width200" id="color_j2">
+                                        class="select6 image6_j margin-top-10 box-width200" id="color_j2">
                                     <img src="/static/images/fullorder/order_buttons/colors/j反射シート/j3赤.png"
-                                        class="select5 image5_j margin-top-10 box-width200" id="color_j3">
+                                        class="select6 image6_j margin-top-10 box-width200" id="color_j3">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/j反射シート/j4青.png"
-                                        class="select5 image5_j margin-top-10 box-width200" id="color_j4">
+                                        class="select6 image6_j margin-top-10 box-width200" id="color_j4">
                                     <img src="/static/images/fullorder/order_buttons/colors/j反射シート/j5緑.png"
-                                        class="select5 image5_j margin-top-10 box-width200" id="color_j5">
+                                        class="select6 image6_j margin-top-10 box-width200" id="color_j5">
                                     <img src="/static/images/fullorder/order_buttons/colors/j反射シート/j6白.png"
-                                        class="select5 image5_j margin-top-10 box-width200" id="color_j6">
+                                        class="select6 image6_j margin-top-10 box-width200" id="color_j6">
                                 </div>
                             </div>
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/kアニマル.png"
-                                        class="padding-2 box-width350" id="image5_k">
+                                        class="padding-2 box-width350" id="image6_k">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/kアニマル/k1豹.png"
-                                        class="select5 image5_k margin-top-10 box-width100" id="color_k1">
+                                        class="select6 image6_k margin-top-10 box-width100" id="color_k1">
                                     <img src="/static/images/fullorder/order_buttons/colors/kアニマル/k2豹.png"
-                                        class="select5 image5_k margin-top-10 box-width100" id="color_k2">
+                                        class="select6 image6_k margin-top-10 box-width100" id="color_k2">
                                     <img src="/static/images/fullorder/order_buttons/colors/kアニマル/k3ゼブラ.png"
-                                        class="select5 image5_k margin-top-10 box-width100" id="color_k3">
+                                        class="select6 image6_k margin-top-10 box-width100" id="color_k3">
                                     <img src="/static/images/fullorder/order_buttons/colors/kアニマル/k4牛.png"
-                                        class="select5 image5_k margin-top-10 box-width100" id="color_k4">
+                                        class="select6 image6_k margin-top-10 box-width100" id="color_k4">
                                 </div>
                             </div>
                             <div class="box-white wrap_tate margin-top-50">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/l取り寄せ品.png"
-                                        class="padding-2 box-width350" id="image5_l">
+                                        class="padding-2 box-width350" id="image6_l">
                                 </div>
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/order_buttons/colors/l取り寄せ品/l1.png"
-                                        class="select5 image5_l margin-top-10 box-width100" id="color_l1">
+                                        class="select6 image6_l margin-top-10 box-width100" id="color_l1">
                                     <img src="/static/images/fullorder/order_buttons/colors/l取り寄せ品/l2.png"
-                                        class="select5 image5_l margin-top-10 box-width100" id="color_l2">
+                                        class="select6 image6_l margin-top-10 box-width100" id="color_l2">
                                     <img src="/static/images/fullorder/order_buttons/colors/l取り寄せ品/l3.png"
-                                        class="select5 image5_l margin-top-10 box-width100" id="color_l3">
+                                        class="select6 image6_l margin-top-10 box-width100" id="color_l3">
                                     <img src="/static/images/fullorder/order_buttons/colors/l取り寄せ品/l4.png"
-                                        class="select5 image5_l margin-top-10 box-width100" id="color_l4">
+                                        class="select6 image6_l margin-top-10 box-width100" id="color_l4">
                                     <img src="/static/images/fullorder/order_buttons/colors/l取り寄せ品/l5.png"
-                                        class="select5 image5_l margin-top-10 box-width100" id="color_l5">
+                                        class="select6 image6_l margin-top-10 box-width100" id="color_l5">
                                 </div>
                             </div>
                         </div>
@@ -1224,4 +1357,5 @@
 
     <script src="{% static 'js/fluffy_script.js' %}"></script>
     <script src="{% static 'js/fluffy_preview.js' %}"></script>
+    <script src="{% static 'js/fluffy_floatingItem.js' %}"></script>
     {% endblock main %}

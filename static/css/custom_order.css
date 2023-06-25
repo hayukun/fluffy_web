@@ -81,7 +81,7 @@
 
     .cart_text_title {
 
-        font-size: 15px !important;
+        font-size: 0.78125vw !important;
         color: white;
     }
 
@@ -110,20 +110,20 @@
         overflow: hidden;
     }
 
-    .cart-image5 {
+    .cart-image6 {
         width: 256px !important;
         min-width: 185px;
         overflow: hidden;
     }
 
-    .modal-image5 {
+    .modal-image6 {
         height: 5.208333333333333vw;
     }
 
     /* プレビュー */
     #inputForm-view {
         position: absolute;
-        bottom: 58%;
+        bottom: 68%;
         left: 12%;
         transform: translate(0%, 0%);
         background-color: #FFFFFF;
@@ -208,7 +208,7 @@
 
     .cart_text_title {
 
-        font-size: 20px !important;
+        font-size: 1.0416666666666667vw !important;
         color: white;
     }
 
@@ -242,7 +242,7 @@
         overflow: hidden;
     }
 
-    .cart-image5 {
+    .cart-image6 {
         height: 1.3541666666666667vw;
         padding: 0px !important;
         overflow: hidden;
@@ -251,7 +251,7 @@
     /* プレビュー */
     #inputForm-view {
         position: absolute;
-        bottom: 58%;
+        bottom: 68%;
         left: 12%;
         transform: translate(0%, 0%);
         background-color: #FFFFFF;
@@ -298,13 +298,15 @@
         transform: translate(-50%, 0%);
         padding: 8px;
         height: auto;
-        z-index: 10;
+        z-index: 9;
     }
 
     .materialPalette_text_title {
 
         font-size: 1.0416666666666667vw !important;
-        color: #FF6CC4;
+        color: white;
+        font-weight: bolder;
+        /* -webkit-text-stroke: 0.01px black;  */
 
     }
 
@@ -315,6 +317,9 @@
 
 }
 
+.page_title{
+    width: 36.458333333333336vw;
+}
 .container-fullorder {
     width: 100%;
     background-image: url('/static/images/fullorder/bg/背景.png');
@@ -362,7 +367,7 @@
     padding: 0px !important;
 }
 
-.selected_5 {
+.selected_6 {
     padding: 0px !important;
 }
 
@@ -385,9 +390,9 @@
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #FF6CC4;
-    background-color: rgb(165, 162, 162);
+    background-color: #FFD9E7;
     /*背景色*/
-    border-left: solid 6px #EC59A2;
+    border-left: solid 6px rgb(165, 162, 162);
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
     /*影*/
     border-radius: 20px 0 0 20px;
@@ -493,7 +498,7 @@ input[name="tab_item"] {
     padding: 2.0833333333333335vw 2.0833333333333335vw 0;
     clear: both;
     overflow: hidden;
-    
+
 }
 
 
@@ -523,8 +528,8 @@ input[name="tab_item"] {
     border: solid 2px #FFF3F7;
     border-radius: 20px;
     width: auto;
-    padding: 5px;
-    background-color: #BAFFC6;
+    padding: 5px !important;
+    background-color: #ADDEFF;
 }
 
 

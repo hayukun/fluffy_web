@@ -163,9 +163,12 @@
 /* 画像スライドアニメーション */
 
 .loopSlide {
+    position: absolute;
     display: flex;
     height: 250px;
     overflow: hidden;
+    top: 83.6%;
+    left: 0%;
 }
 
 .loopSlide img {
