@@ -19,16 +19,40 @@ const labelCatchphrase = document.getElementById("label_catchphrase");
 const labelNametitle = document.getElementById("label_nametitle");
 
 const inputFormView = document.getElementById('inputForm-view');
+
 const observ = document.getElementById('observ');
 const warning = document.getElementById('panelCharaWarning');
-const map_inputText = new Map() ;
+const warning2 = document.getElementById('cancelOpeningModal');
+const map_inputText = new Map();
+
+const radio_btns = document.querySelectorAll(`input[type='radio'][name='tab_item']`);
 
 
 // 入力フォームのinputイベントを監視し、入力内容を表示する関数を定義
 function updateDivContentAdjustSize(divElem, inputElem) {
   divElem.textContent = inputElem.value;
   adjustTextSize();
+  copyDivtoAnotherDiv('observ','touchable_text');
 }
+
+function copyDivtoAnotherDiv(fromDivID, toDivID) {
+  var sourceElement = document.getElementById(fromDivID);
+  var destinationElement = document.getElementById(toDivID);
+
+  // コピー先のDiv内の要素をすべて削除する
+  while (destinationElement.firstChild) {
+    destinationElement.firstChild.remove();
+  }
+
+  // 要素をコピーする
+  var clonedElement = sourceElement.cloneNode(true);
+
+  clonedElement.id = 'observ_copied';
+
+  // コピー先のDivにコピーした要素を追加する
+  destinationElement.appendChild(clonedElement);
+}
+
 
 // 入力フォームのinputイベントに関数を登録
 inputExampleNameMain.addEventListener('input', function () {
@@ -57,15 +81,15 @@ inputExampleCatchphrase.addEventListener('input', function () {
 function adjustTextSize() {
   const observ = document.getElementById('observ');
   const inputFormView = document.getElementById('inputForm-view');
-  
+
   labelNametitle.style.display = 'none';
   labelNickname.style.display = 'none';
   labelCatchphrase.style.display = 'none';
 
-  tabCount = 1;
-  cartItem5Name.textContent = "";
-  cartItem5Price.textContent = "";
-  calc_TextPrice=0;
+  tabCount = 2;
+  cartItemCharaName.textContent = "";
+  cartItemCharaPrice.textContent = "";
+  calc_TextPrice = 0;
   temp_Text = '';
   var className = "tab_item";
   var styleElement = document.createElement("style");
@@ -78,44 +102,63 @@ function adjustTextSize() {
   cartCatchphraseForColors_name = document.getElementById('cart_item6-4_name');
   cartCatchphraseForColors_price = document.getElementById('cart_item6-4_price');
   cartCatchphraseForColors_multiple = document.getElementById('cart_item6-4_multiple');
-  
+
+
 
   // 名称に文字を入れて色をカートに入れたあと、名称の文字を空にするとカートから素材は消えるがパレットからは色が消えてない + タブコンテントも残っている
-  if (inputExampleNickname.value.length >= 1){
+  if (inputExampleNickname.value.length >= 1) {
     inputExampleCatchphrase.disabled = true;
     inputExampleNickname.disabled = false;
     warning.style.display = 'block';
     labelNickname.style.display = 'block';
-    tabCount = tabCount + 1; 
-  } else if (inputExampleCatchphrase.value.length >= 1){
+    tabCount = tabCount + 1;
+  } else if (inputExampleCatchphrase.value.length >= 1) {
     inputExampleCatchphrase.disabled = false;
     inputExampleNickname.disabled = true;
     warning.style.display = 'block';
     labelCatchphrase.style.display = 'block';
-    tabCount = tabCount + 1; 
+    tabCount = tabCount + 1;
   } else {
     inputExampleNickname.disabled = false;
     inputExampleCatchphrase.disabled = false;
     warning.style.display = 'none';
   }
 
-  if (inputExampleNickname.value.length == 0){
+  if (inputExampleNametitle.value.length >= 1) {
+    labelNametitle.style.display = 'block';
+    tabCount = tabCount + 1;
+  }
+
+  if (inputExampleNickname.value.length == 0) {
     cartNicknameForColors.innerHTML = '';
     cartNicknameForColors_name.textContent = '';
     cartNicknameForColors_price.textContent = '';
     cartNicknameForColors_multiple.innerHTML = '';
+    for (let target of radio_btns) {
+      if (target.id == 'deco') {
+        target.checked = true;
+      }
+    }
   }
-  if (inputExampleCatchphrase.value.length == 0){
+  if (inputExampleCatchphrase.value.length == 0) {
     cartCatchphraseForColors.innerHTML = '';
     cartCatchphraseForColors_name.textContent = '';
     cartCatchphraseForColors_price.textContent = '';
     cartCatchphraseForColors_multiple.innerHTML = '';
+    for (let target of radio_btns) {
+      if (target.id == 'deco') {
+        target.checked = true;
+      }
+    }
   }
-  
-  if (inputExampleNametitle.value.length >= 1){ 
-    labelNametitle.style.display = 'block';
-    tabCount = tabCount + 1; 
-  } 
+  if (inputExampleNametitle.value.length == 0) {
+    for (let target of radio_btns) {
+      if (target.id == 'deco') {
+        target.checked = true;
+      }
+    }
+  }
+
   styleElement.innerHTML = "." + className + " { width: calc(100%/" + tabCount + "); }";
   document.head.appendChild(styleElement);
 
@@ -129,8 +172,8 @@ function adjustTextSize() {
   for (const [key, value] of map_inputText) {
     temp_Text = temp_Text + key + ':' + value + '/';
   }
-  
-  cartItem5Name.textContent = temp_Text;
+
+  cartItemCharaName.textContent = temp_Text;
 
   // calc price 
   calc_TextPrice = calc_TextPrice + 450 * viewExampleSmallChara.textContent.trim().length;
@@ -138,19 +181,19 @@ function adjustTextSize() {
   calc_TextPrice = calc_TextPrice + 50 * viewExampleNickname.textContent.trim().length;
   calc_TextPrice = calc_TextPrice + 180 * viewExampleCatchphrase.textContent.trim().length;
 
-  cartItem5Price.textContent = calc_TextPrice;
+  cartItemCharaPrice.textContent = calc_TextPrice;
 
-  if (inputExampleNameLeft.value.length > 0 && inputExampleNameLeft.value.length < parseInt(howManySelectElement.value)){
-    inputExampleNameRight.setAttribute('maxlength', String(parseInt(howManySelectElement.value)-inputExampleNameLeft.value.length));
-  } else if (inputExampleNameLeft.value.length > 0 && inputExampleNameLeft.value.length >= parseInt(howManySelectElement.value)){
+  if (inputExampleNameLeft.value.length > 0 && inputExampleNameLeft.value.length < parseInt(howManySelectElement.value)) {
+    inputExampleNameRight.setAttribute('maxlength', String(parseInt(howManySelectElement.value) - inputExampleNameLeft.value.length));
+  } else if (inputExampleNameLeft.value.length > 0 && inputExampleNameLeft.value.length >= parseInt(howManySelectElement.value)) {
     inputExampleNameRight.setAttribute('maxlength', '0');
   } else {
     inputExampleNameRight.setAttribute('maxlength', String(parseInt(howManySelectElement.value)));
   }
 
-  if (inputExampleNameRight.value.length > 0 && inputExampleNameRight.value.length < parseInt(howManySelectElement.value)){
-    inputExampleNameLeft.setAttribute('maxlength', String(parseInt(howManySelectElement.value)-inputExampleNameRight.value.length));
-  } else if (inputExampleNameRight.value.length > 0 && inputExampleNameRight.value.length >= parseInt(howManySelectElement.value)){
+  if (inputExampleNameRight.value.length > 0 && inputExampleNameRight.value.length < parseInt(howManySelectElement.value)) {
+    inputExampleNameLeft.setAttribute('maxlength', String(parseInt(howManySelectElement.value) - inputExampleNameRight.value.length));
+  } else if (inputExampleNameRight.value.length > 0 && inputExampleNameRight.value.length >= parseInt(howManySelectElement.value)) {
     inputExampleNameLeft.setAttribute('maxlength', '0');
   } else {
     inputExampleNameLeft.setAttribute('maxlength', String(parseInt(howManySelectElement.value)));
@@ -158,9 +201,9 @@ function adjustTextSize() {
 
 
   const observHeight = observ.clientHeight;
-  const inputFormViewHeight = inputFormView.clientHeight;
+  const inputFormViewHeight = inputFormView.clientHeight * 0.7;
   const textContent = viewExampleName1.textContent.trim() + viewExampleName2.textContent.trim();
-  const targetFontSizeMain = 5.5;
+  const targetFontSizeMain = 5.0;
   const targetFontSizeSmallChara = 3.5;
   const targetFontSizeNametitle = 1.8;
   const targetFontSizeNickname = 2.5;
@@ -175,7 +218,7 @@ function adjustTextSize() {
     viewExampleNickname.style.fontSize = parseFloat(viewExampleNickname.style.fontSize) * scaleFactor + 'em';
     viewExampleCatchphrase.style.fontSize = parseFloat(viewExampleCatchphrase.style.fontSize) * scaleFactor + 'em';
   } else {
-    if (textContent.length <= 8) {
+    if (textContent.length <= 11) {
       viewExampleName1.style.fontSize = targetFontSizeMain + 'em';
       viewExampleName2.style.fontSize = targetFontSizeMain + 'em';
       viewExampleSmallChara.style.fontSize = targetFontSizeSmallChara + 'em';

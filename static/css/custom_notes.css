@@ -1,0 +1,15 @@
+body {
+    /* background-image: url('/static/images/notes/bg/背景.png') !important; */
+    background-image: url('/static/images/notes/bg/notes_bg.png') !important;
+    
+}
+
+.bg-notes {
+    background-image: url('/static/images/notes/bg/notes_bg.png') !important;
+    
+}
+
+.bg-notes-yellow {
+    background-color: #fefff1 !important;
+    border: 1px solid rgb(60, 60, 60);
+}

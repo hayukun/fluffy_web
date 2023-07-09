@@ -16,6 +16,9 @@ def LogInView(request):
 def HomeView(request):
     return render(request, 'home.html')
 
+def NotesView(request):
+    return render(request, 'notes.html')
+
 def FullOrderView(request):
     form = FullOrderForm()
 
@@ -27,4 +30,3 @@ def FullOrderView(request):
 
 def SemiOrderView(request):
     return render(request, 'semiorder.html')
-

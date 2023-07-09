@@ -45,8 +45,12 @@ h4 {
 }
 
 h5 {
-    font-size: 18px;
+    font-size: 0.9375vw;
     font-weight: 500 !important;
+}
+
+.hidden{
+    display: none;
 }
 
 /* スマートフォン用のスタイル */
@@ -114,6 +118,9 @@ body {
     padding-top: 2rem;
 }
 
+.page_title{
+    width: 107.87486515641855vh;
+}
 
 .coolfont {
     font-family: 'CustomFont2';
@@ -124,7 +131,7 @@ body {
 }
 
 label {
-    margin-bottom: 1rem !important;
+    margin-bottom: 1rem;
 }
 
 input[type="text"] {
@@ -174,6 +181,22 @@ input[type="password"] {
     /* padding: 0 5px 0 5px; */
 }
 
+/* 15px */
+.box-width15 {
+    width: 0.78125vw;
+}
+
+
+/* 24px */
+.box-width24 {
+    width: 1.25vw;
+}
+
+/* 30px */
+.box-width30 {
+    width: 1.5625vw;
+}
+
 /* 40px */
 .box-width40{
     width: 2.0833333333333335vw;
@@ -187,6 +210,10 @@ input[type="password"] {
 /* 60px */
 .box-width60 {
     width: 3.125vw;
+}
+
+.box-width88 {
+    width: 4.625vw;
 }
 
 
@@ -214,6 +241,12 @@ input[type="password"] {
 .box-width200 { 
     width: 10.416666666666666vw;
 }
+
+/* 270px */
+.box-width270 { 
+    width: 14.0625vw;
+}
+
 
 /* 300px */
 .box-width300 { 
@@ -267,7 +300,8 @@ input[type="password"] {
 }
 
 .box-height550 {
-    height: 59.331175836030205vh;
+    /* height: 59.331175836030205vh; */
+    height: 28.645833333333332vw;
 }
 
 .box-height600 {
@@ -275,7 +309,7 @@ input[type="password"] {
 }
 
 .box-height650 {
-    height: 33.854166666666664vw
+    height: 33.854166666666664vw;
 }
 
 .box-height800 {
@@ -299,15 +333,19 @@ input[type="password"] {
 }
 
 .margin-top-200 {
-    margin-top: 200px;
+    margin-top: 11.983223487118035vw;
 }
 
 .margin-top-150 {
-    margin-top: 150px;
+    margin-top: 8.987417615338526vw;
+}
+
+.margin-top-130 {
+    margin-top: 7.789095266626723vw;
 }
 
 .margin-top-100 {
-    margin-top: 100px;
+    margin-top: 5.208333333333333vw;
 }
 
 .margin-top-80 {
@@ -357,8 +395,8 @@ input[type="password"] {
 
 .tag {
     display: inline-block;
-    padding: 0.25em 0.4em;
-    font-size: 75%;
+    padding: 0.10416666666666667vw 0.4em;
+    font-size: 0.833333vw;
     height: 50%;
     font-weight: bold;
     line-height: 1;
@@ -367,8 +405,8 @@ input[type="password"] {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 0.3rem;
+    align-items: center;
     font-family: CustomFont2;
-    height: 21px;
 }
 
 .cute-button {
@@ -534,3 +572,11 @@ a.cute-button:hover {
     -webkit-text-fill-color: transparent;
     font-family: sans-serif;
 } */
+
+.flexColumnFlexStart{
+    display: flex; 
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+}

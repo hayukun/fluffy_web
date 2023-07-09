@@ -22,13 +22,13 @@
 
     .about_frameUpperleft {
         position: absolute;
-        top: 38%;
-        left: -10%;
+        top: 42%;
+        left: 25%;
     }
 
     .about_frameBottomRight {
         position: absolute;
-        top: 95%;
+        top: 98%;
         left: 65%;
     }
 
@@ -60,14 +60,14 @@
 
     .about_frameUpperleft {
         position: absolute;
-        top: 38%;
-        left: -20%;
+        top: 42%;
+        left: 25%;
     }
 
     .about_frameBottomRight {
         position: absolute;
-        top: 95%;
-        left: 85%;
+        top: 98%;
+        left: 65%;
     }
 
 }
@@ -113,11 +113,16 @@
     flex-direction: column;
     justify-content: flex-start;
     position: absolute;
-    top: 42%;
+    top: 0%;
     left: -2%;
+    transform: translateY(-4.2%);
 
 }
 
+.about_number_list img{
+    width: 2.6041666666666665vw;
+
+}
 .about_items {
     background-color: #FFD9E7;
     padding: 10px 30px 5px 30px;
@@ -126,7 +131,7 @@
 
 .about_items_text {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.0416666666666667vw;
     text-decoration: underline;
     text-decoration-color: #FF689D;
 }
