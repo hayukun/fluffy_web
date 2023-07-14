@@ -41,6 +41,14 @@
     transform: translate(-40%, -47%) rotate(15deg);
 }
 
+.absolute {
+    position: fixed;
+    top: 16%;
+    left: 22%;
+    transform: translate(0%, 0%);
+    z-index: 25;
+}
+
 
 .ql-toolbar {
     padding: 10px;
@@ -643,6 +651,11 @@ input[name="tab_item"] {
 .decoPreviewImageLarge {
     /* 33px */
     width: 1.71875vw;
+}
+
+.decoPreviewImageXLarge {
+    /* 42px */
+    width: 2.1875vw;
 }
 
 #komozi_detail_link {

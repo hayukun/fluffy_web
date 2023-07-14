@@ -173,6 +173,17 @@ function adjustTextSize() {
     temp_Text = temp_Text + key + ':' + value + '/';
   }
 
+  if (viewExampleNickname.textContent.trim().length == 0 && viewExampleNametitle.textContent.trim().length == 0){
+    nametitle_frame_Container.classList.add("hidden");
+  } else {
+    nametitle_frame_Container.classList.remove("hidden");
+  }
+  if (viewExampleCatchphrase.textContent.trim().length == 0){
+    catchphrase_frame_Container.classList.add("hidden");
+  } else {
+    catchphrase_frame_Container.classList.remove("hidden");
+  }
+
   cartItemCharaName.textContent = temp_Text;
 
   // calc price 
@@ -203,11 +214,11 @@ function adjustTextSize() {
   const observHeight = observ.clientHeight;
   const inputFormViewHeight = inputFormView.clientHeight * 0.7;
   const textContent = viewExampleName1.textContent.trim() + viewExampleName2.textContent.trim();
-  const targetFontSizeMain = 5.0;
+  const targetFontSizeMain = 5.4;
   const targetFontSizeSmallChara = 3.5;
-  const targetFontSizeNametitle = 1.8;
-  const targetFontSizeNickname = 2.5;
-  const targetFontSizeCatchphrase = 1.8;
+  const targetFontSizeNametitle = 1.2;
+  const targetFontSizeNickname = 1.8;
+  const targetFontSizeCatchphrase = 1.5;
 
   if (observHeight >= inputFormViewHeight) {
     const scaleFactor = inputFormViewHeight / observHeight;

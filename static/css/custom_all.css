@@ -97,6 +97,7 @@ h5 {
 
 html {
     scroll-behavior: smooth;
+    overflow: auto;
 }
 
 body {
@@ -116,6 +117,7 @@ body {
     /* -webkit-font-kerning: normal; */
     -webkit-text-size-adjust: 100%;
     padding-top: 2rem;
+    overflow-x: hidden;
 }
 
 .page_title{
@@ -174,6 +176,13 @@ input[type="password"] {
     width: 60%;
 }
 
+.box-round45 {
+    width: 2.34375vw;
+    height: 2.34375vw;
+    border-radius: 50%;
+    background-color: white;
+}
+
 /* 180px, marginあり */
 .box-width180 {
     width: 9.375vw;
@@ -200,6 +209,11 @@ input[type="password"] {
 /* 40px */
 .box-width40{
     width: 2.0833333333333335vw;
+}
+
+/* 45px */
+.box-width45{
+    width: 2.34375vw;
 }
 
 /* 50px */
@@ -577,6 +591,14 @@ a.cute-button:hover {
     display: flex; 
     justify-content: flex-start; 
     flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+}
+
+.flexRowBetween{
+    display: flex; 
+    justify-content: space-between; 
+    flex-direction: row; 
     align-items: center; 
     text-align: center;
 }

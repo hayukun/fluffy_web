@@ -9,18 +9,21 @@ const buttonDeleteAllColorItems3 = document.getElementById('delete_Allcolors_3')
 const buttonDeleteAllColorItems4 = document.getElementById('delete_Allcolors_4');
 const summary_price = document.getElementById('cart_summary_price');
 const list_cartPriceList = ['cart_item1_price', 'cart_item2_price', 'cart_item3_price', 'cart_itemChara_price', 'cart_item4_price',
-    'cart_item5-1_price', 'cart_item5-2_price', 'cart_item5-3_price', 'cart_item5-4_price', 'cart_item5-5_price', 'cart_item5-6_price',
-    'cart_item5-7_price', 'cart_item5-8_price', 'cart_item5-9_price', 'cart_item5-10_price', 'cart_item5-11_price', 'cart_item5-12_price',
+    'cart_item5-1-1_price', 'cart_item5-1-2_price', 'cart_item5-1-3_price', 'cart_item5-1-4_price', 'cart_item5-1-5_price', 'cart_item5-1-6_price', 'cart_item5-2_price',
+    'cart_item5-3-1_price', 'cart_item5-3-2_price', 'cart_item5-3-3_price', 'cart_item5-10_price', 'cart_item5-11_price', 'cart_item5-12_price',
     'cart_item5-13_price', 'cart_item5-14_price', 'cart_item5-15_price', 'cart_item5-16_price', 'cart_item5-18_price', 'cart_item5-19_price',
     'cart_item5-20_price', 'cart_item6-1_price', 'cart_item6-2_price', 'cart_item6-3_price', 'cart_item6-4_price'];
 
-var container = document.getElementById("touchable_text");
+const container = document.getElementById("touchable_text");
+const container_paletteDecoMain = document.getElementById("palette_DecoMain");
 container.addEventListener("click", placeImage);
-const user_decoList = [];
+var user_decoList = [];
+var user_decoListOnlyOne = [];
+var user_decoALLList = [];
 const cancelPutImage = document.getElementById('cancelPutImage');
 
-const cartPartsName = document.getElementById("cart_item5-6_PartsName");
-const cartPartsSetName = document.getElementById("cart_item5-6_PartsSetName");
+const cartPartsName = document.getElementById("cart_item5-2_PartsName");
+const cartPartsSetName = document.getElementById("cart_item5-2_PartsSetName");
 
 const map_partsName = new Map([
     ['select5_decoParts2-1-1', 'ハート1'],
@@ -72,15 +75,20 @@ const map_partsName = new Map([
 
 // パレットに画像置く
 function placeImage(event) {
-    var container = document.getElementById("touchable_text");
+    
     selectedPaletteImage = '';
+    var isOnlyOne = false;
     images.forEach(function (otherImage) { // すべての画像をループ
         if (otherImage.classList.contains("selected_5_decoParts")) { // 現在選択されているパレットImageを検索
             if (otherImage.classList.contains("onlyOneSelection")) {
                 selectedPaletteImage = '';
             } else {
                 selectedPaletteImage = otherImage;
+                if (otherImage.classList.contains("select5_decoPartsOnlyOneSelectionDivided")) {
+                    isOnlyOne = true;
+                }
             }
+
         }
     });
     if (selectedPaletteImage != '') {
@@ -95,24 +103,56 @@ function placeImage(event) {
         copiedPartsImage.style.top = y + "px";
         copiedPartsImage.style.border = "";
         copiedPartsImage.classList.remove('box-width100');
+        copiedPartsImage.classList.remove('box-width60');
+        copiedPartsImage.classList.remove('box-width45');
         copiedPartsImage.classList.remove('selected_5_decoParts');
         copiedPartsImage.classList.remove('select5_decoParts');
+        copiedPartsImage.classList.remove('select5_decoPartsOnlyOneSelectionDivided');
         copiedPartsImage.classList.add('decoPreviewImageNormal');
         copiedPartsImage.classList.add('decoPreviewImagePosition');
-
-        setID = 'userDecoID_' + (user_decoList.length + 1).toString();
-        if (user_decoList.length <= 7) {
-            user_decoList.push(setID);
-            calcDecoPartsAddPrice(copiedPartsImage, setID);
-            copiedPartsImage.id = setID;
-            container.appendChild(copiedPartsImage);
-            // console.log("x:" + x + ", y:" + y);
-
-        } else {
-            cancelPutImage.style.display = 'block';
+        if (isOnlyOne) {
+            copiedPartsImage.classList.add('isOnlyOne');
         }
+
+        setID = 'userDecoID_' + (user_decoALLList.length + 1).toString();
+        if (!isOnlyOne) {
+            if (window.user_decoList.length <= 7) {
+                window.user_decoList.push(setID);
+                calcDecoPartsAddPrice(copiedPartsImage, setID);
+                copiedPartsImage.id = setID;
+                container.appendChild(copiedPartsImage);
+                // console.log("x:" + x + ", y:" + y);
+
+            } else {
+                cancelPutImage.style.display = 'block';
+            }
+            window.user_decoALLList.push(setID);
+        } else {
+            setID = setID + "_onlyone";
+            if (window.user_decoListOnlyOne.length < currentPartsSetLength) {
+                window.user_decoListOnlyOne.push(setID);
+                copiedPartsImage.id = setID;
+                container.appendChild(copiedPartsImage);
+                window.user_decoALLList.push(setID);
+            }
+        }
+
+
+        if (user_decoList.length > 0) {
+            parts_frame_Container.classList.remove("hidden");
+        }
+        console.log("---------------------");
+        console.log("ALL");
+        console.log(user_decoALLList);
+        console.log("normal");
+        console.log(user_decoList);
+        console.log("Only");
+        console.log(user_decoListOnlyOne);
+        console.log("---------------------");
+
     }
 }
+
 
 function partsTextUpdate(divElem, partsName) {
     var parts_currentText = divElem.textContent;
@@ -125,8 +165,8 @@ function partsTextUpdate(divElem, partsName) {
 
 function calcDecoPartsSubtractPrice(image, imageID) {
     calc_price = 0;
-    if (cartItem5_6Price.textContent != '') {
-        calc_price = parseInt(cartItem5_6Price.textContent);
+    if (cartItem5_2Price.textContent != '') {
+        calc_price = parseInt(cartItem5_2Price.textContent);
     }
     if (image) {
 
@@ -147,7 +187,7 @@ function calcDecoPartsSubtractPrice(image, imageID) {
         } else if (image.classList.contains('decoParts980')) {
             calc_price += -980;
         }
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
 
         cartImage = document.getElementById(imageID);
         cartImage.parentElement.removeChild(cartImage);
@@ -164,82 +204,108 @@ function calcDecoPartsAddPrice(image, setID) {
             selectedPartsName = value;
         }
     }
-    if (cartItem5_6Price.textContent != '') {
-        calc_price = parseInt(cartItem5_6Price.textContent);
+    if (cartItem5_2Price.textContent != '') {
+        calc_price = parseInt(cartItem5_2Price.textContent);
     }
     if (image.classList.contains('decoParts99')) {
         parentImage = document.getElementById('imageDeco_2-1');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 99;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsName, selectedPartsName);
     } else if (image.classList.contains('decoParts120')) {
         parentImage = document.getElementById('imageDeco_2-2');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 120;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsName, selectedPartsName);
     } else if (image.classList.contains('decoParts210')) {
         parentImage = document.getElementById('imageDeco_2-3');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 210;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsName, selectedPartsName);
     } else if (image.classList.contains('decoParts299')) {
         parentImage = document.getElementById('imageDeco_2-4');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 299;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsName, selectedPartsName);
     } else if (image.classList.contains('decoParts399')) {
         parentImage = document.getElementById('imageDeco_2-5');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 399;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsSetName, selectedPartsName);
     } else if (image.classList.contains('decoParts599')) {
         parentImage = document.getElementById('imageDeco_2-6');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 599;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsSetName, selectedPartsName);
     } else if (image.classList.contains('decoParts720')) {
         parentImage = document.getElementById('imageDeco_2-7');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 720;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsSetName, selectedPartsName);
     } else if (image.classList.contains('decoParts980')) {
         parentImage = document.getElementById('imageDeco_2-8');
-        addImageToCart('cart_item5-6', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
+        addImageToCart('cart_item5-2', 'cart_' + setID, 'cart-image5', parentImage, startPosition, animationDuration);
         calc_price += 980;
-        cartItem5_6Price.textContent = calc_price;
+        cartItem5_2Price.textContent = calc_price;
         partsTextUpdate(cartPartsSetName, selectedPartsName);
     }
 }
 
 function customUserImage(image) {
-    lastUserImageID = user_decoList.slice(-1)[0];
+    lastUserImageID = user_decoALLList.slice(-1)[0];
     customImage = document.getElementById(lastUserImageID);
+    if (customImage.classList.contains("isOnlyOne")) {
+        if (image.id == 'changeSize_S') {
+            customImage.classList.remove('decoPreviewImageNormal');
+            customImage.classList.remove('decoPreviewImageSmall');
+            customImage.classList.remove('decoPreviewImageLarge');
+            customImage.classList.remove('decoPreviewImageXLarge');
+            customImage.classList.add('decoPreviewImageNormal');
+        } else if (image.id == 'changeSize_M') {
+            customImage.classList.remove('decoPreviewImageNormal');
+            customImage.classList.remove('decoPreviewImageSmall');
+            customImage.classList.remove('decoPreviewImageLarge');
+            customImage.classList.remove('decoPreviewImageXLarge');
+            customImage.classList.add('decoPreviewImageLarge');
+        } else if (image.id == 'changeSize_L') {
+            customImage.classList.remove('decoPreviewImageNormal');
+            customImage.classList.remove('decoPreviewImageSmall');
+            customImage.classList.remove('decoPreviewImageLarge');
+            customImage.classList.remove('decoPreviewImageXLarge');
+            customImage.classList.add('decoPreviewImageXLarge');
+        } else {
+            ;
+        }
 
-    if (image.id == 'changeSize_S') {
-        customImage.classList.remove('decoPreviewImageNormal');
-        customImage.classList.remove('decoPreviewImageSmall');
-        customImage.classList.remove('decoPreviewImageLarge');
-        customImage.classList.add('decoPreviewImageSmall');
-    } else if (image.id == 'changeSize_M') {
-        customImage.classList.remove('decoPreviewImageNormal');
-        customImage.classList.remove('decoPreviewImageSmall');
-        customImage.classList.remove('decoPreviewImageLarge');
-        customImage.classList.add('decoPreviewImageNormal');
-    } else if (image.id == 'changeSize_L') {
-        customImage.classList.remove('decoPreviewImageNormal');
-        customImage.classList.remove('decoPreviewImageSmall');
-        customImage.classList.remove('decoPreviewImageLarge');
-        customImage.classList.add('decoPreviewImageLarge');
     } else {
-        ;
+        if (image.id == 'changeSize_S') {
+            customImage.classList.remove('decoPreviewImageNormal');
+            customImage.classList.remove('decoPreviewImageSmall');
+            customImage.classList.remove('decoPreviewImageLarge');
+            customImage.classList.add('decoPreviewImageSmall');
+        } else if (image.id == 'changeSize_M') {
+            customImage.classList.remove('decoPreviewImageNormal');
+            customImage.classList.remove('decoPreviewImageSmall');
+            customImage.classList.remove('decoPreviewImageLarge');
+            customImage.classList.add('decoPreviewImageNormal');
+        } else if (image.id == 'changeSize_L') {
+            customImage.classList.remove('decoPreviewImageNormal');
+            customImage.classList.remove('decoPreviewImageSmall');
+            customImage.classList.remove('decoPreviewImageLarge');
+            customImage.classList.add('decoPreviewImageLarge');
+        } else {
+            ;
+        }
+
     }
+
     const currentRotation = parseInt(customImage.dataset.rotation) || 0;
     var newRotation = currentRotation;
     if (image.id == 'changeRotate_right') {
@@ -273,15 +339,15 @@ function updateFloatingVisibility() {
 
     cart.style.display = scrollTop > 100 ? 'block' : 'none';
 
-    if(controll_step == '1st'){
+    if (controll_step == '1st') {
         ;
-    }else{
+    } else {
         const targetElement = document.getElementById('decoPartsContainer');
         const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
         const targetOffset = windowHeight / 5; // 画面の高さの三分の一
-    
+
         materialPalette.style.display = (scrollPosition >= targetPosition - targetOffset) ? 'block' : 'none';
-    
+
         // カーソル追従Image
         document.getElementById('corsor_decoPreview').style.display = (scrollPosition >= targetPosition - targetOffset) ? 'block' : 'none';
     }
@@ -297,8 +363,8 @@ function resetHiddenCart(cartItem, cartItemName, cartItemPrice) {
 }
 
 
-// カートからイメージ削除
-function removeImageFromDiv(contentId, divId) {
+// カートからイメージ削除 引数1 消したい要素ID, 親の要素ID
+function removeElemFromDiv(contentId, divId) {
     const content = document.getElementById(contentId);
     const div = document.getElementById(divId);
 
@@ -459,25 +525,89 @@ function deleteAllColorItems() {
 }
 
 function deleteUserDecoImage() {
-    lastUserImageID = user_decoList.slice(-1)[0];
-    var image = document.getElementById(lastUserImageID);
+
     calc_price = 0;
+    count = 0;
 
-    let arr = cartPartsName.textContent.split(","); // 文字列をカンマで分割し、配列に格納する
-    arr.pop(); // 配列の最後の要素を削除する
-    let arrJoin = arr.join(",");
-    cartPartsName.textContent = arrJoin;
+    var isDeleted = false;
+    do {
+        if (count == user_decoALLList.length) {
+            break;
+        }
+        count += 1;
 
-    if (cartItem5_6Price.textContent != '') {
-        calc_price = parseInt(cartItem5_6Price.textContent);
+        lastUserImageID =  window.user_decoALLList.slice(-1)[0];
+        var image = document.getElementById(lastUserImageID);
+        if (user_decoList.slice(-1)[0] == lastUserImageID) {
+
+            let arr = cartPartsName.textContent.split(","); // 文字列をカンマで分割し、配列に格納する
+            arr.pop(); // 配列の最後の要素を削除する
+            let arrJoin = arr.join(",");
+            cartPartsName.textContent = arrJoin;
+
+            if (cartItem5_2Price.textContent != '') {
+                calc_price = parseInt(cartItem5_2Price.textContent);
+            }
+            if (image) {
+
+                calcDecoPartsSubtractPrice(image, 'cart_' + lastUserImageID);
+                image.parentElement.removeChild(image);
+                window.user_decoList.pop();
+                cancelPutImage.style.display = 'none';
+                isDeleted = true;
+            }
+            window.user_decoALLList.pop();
+        } else {
+            if (image) {
+                image.parentElement.removeChild(image);
+                window.user_decoListOnlyOne.pop();
+                isDeleted = true;
+            }
+            window.user_decoALLList.pop();
+        }
+    } while (!isDeleted);
+
+
+    if (user_decoList.length == 0) {
+        parts_frame_Container.classList.add("hidden");
     }
-    if (image) {
-        calcDecoPartsSubtractPrice(image, 'cart_' + lastUserImageID);
-        image.parentElement.removeChild(image);
-        user_decoList.pop();
-        cancelPutImage.style.display = 'none';
-    }
+
+    console.log("---------------------");
+    console.log("ALL");
+    console.log(user_decoALLList);
+    console.log("normal");
+    console.log(user_decoList);
+    console.log("Only");
+    console.log(user_decoListOnlyOne);
+    console.log("---------------------");
 }
+
+function deleteUserDecoAllImage() {
+
+    for (let image_id of window.user_decoListOnlyOne) {
+
+        var deleteImage = document.getElementById(image_id);
+        if (deleteImage) {
+            deleteImage.parentElement.removeChild(deleteImage);
+            var index = window.user_decoALLList.indexOf(image_id);
+            window.user_decoALLList.splice(index, 1)
+        }
+    }
+
+    window.user_decoListOnlyOne = [];
+    console.log("deleted" + window.user_decoListOnlyOne);
+
+    console.log("---------------------");
+    console.log("ALL");
+    console.log(user_decoALLList);
+    console.log("normal");
+    console.log(user_decoList);
+    console.log("Only");
+    console.log(user_decoListOnlyOne);
+    console.log("---------------------");
+}
+
+
 
 function updateSummaryPrice() {
     let sum = 0;
@@ -498,12 +628,12 @@ function updateSummaryPrice() {
 //     div.style.display = "block";
 //   }
 
-  document.getElementById("komozi_detail_link").addEventListener("click", function(event) {
+document.getElementById("komozi_detail_link").addEventListener("click", function (event) {
     event.preventDefault(); // デフォルトのリンクの挙動をキャンセル
     modalDetailKomozi.style.display = 'block';
-  });
+});
 
-  buttonCloseDetailKomozi.addEventListener('click', function () { modalClose(modalDetailKomozi); });
+buttonCloseDetailKomozi.addEventListener('click', function () { modalClose(modalDetailKomozi); });
 
 buttonDeleteColorItem1.addEventListener('click', deleteColorItem);
 buttonDeleteColorItem2.addEventListener('click', deleteColorItem);
@@ -517,5 +647,4 @@ buttonDeleteAllColorItems3.addEventListener('click', deleteAllColorItems);
 buttonDeleteAllColorItems4.addEventListener('click', deleteAllColorItems);
 
 // 初期化関数を呼び出して画像の選択機能を有効にする
-initializeImageSelection();
 window.addEventListener('scroll', updateFloatingVisibility);
