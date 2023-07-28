@@ -286,6 +286,12 @@ const map_expressDeliveryPriceObject = new Map([
   ['image8_2_3', 1500],
 ]);
 
+const map_saftyDeliveryPriceObject = new Map([
+  ['image8_5_1', 1800],
+  ['image8_5_2', 2400],
+  ['image8_5_3', 3900],
+]);
+
 // 文字タイプクラスリスト
 const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4', 'image3_5', 'image3_6', 'image3_7', 'image3_8', 'image3_9', 'image3_10'];
 // 素材クラスリスト
@@ -331,6 +337,8 @@ const cartItem7_2 = document.getElementById("cart_item7-2");
 const cartItem8_1 = document.getElementById("cart_item8-1");
 const cartItem8_2 = document.getElementById("cart_item8-2");
 const cartItem8_3 = document.getElementById("cart_item8-3");
+const cartItem8_4 = document.getElementById("cart_item8-4");
+const cartItem8_5 = document.getElementById("cart_item8-5");
 
 const cartItem6_1multiple = document.getElementById("cart_item6-1_multiple");
 const cartItem7_1multiple = document.getElementById("cart_item7-1_multiple");
@@ -351,6 +359,8 @@ const cartItem7_2Name = document.getElementById("cart_item7-2_name");
 const cartItem8_1Name = document.getElementById("cart_item8-1_name");
 const cartItem8_2Name = document.getElementById("cart_item8-2_name");
 const cartItem8_3Name = document.getElementById("cart_item8-3_name");
+const cartItem8_4Name = document.getElementById("cart_item8-4_name");
+const cartItem8_5Name = document.getElementById("cart_item8-5_name");
 
 const cartItem1Price = document.getElementById("cart_item1_price");
 const cartItem2Price = document.getElementById("cart_item2_price");
@@ -368,6 +378,8 @@ const cartItem7_2Price = document.getElementById("cart_item7-2_price");
 const cartItem8_1Price = document.getElementById("cart_item8-1_price");
 const cartItem8_2Price = document.getElementById("cart_item8-2_price");
 const cartItem8_3Price = document.getElementById("cart_item8-3_price");
+const cartItem8_4Price = document.getElementById("cart_item8-4_price");
+const cartItem8_5Price = document.getElementById("cart_item8-5_price");
 
 // image1_8選んだ時の入力フォーム(image1_8はサイズ指定)
 const cartItem1ExtText = document.getElementById("cart_item1_extText");
@@ -525,15 +537,15 @@ async function handleImageSelection1(image) {
     image.classList.add("selected_1");
     image.style.border = "2px solid #72F0EC";
 
-    if (image.id == 'image1_1' || image.id == 'image1_3'){
+    if (image.id == 'image1_1' || image.id == 'image1_3') {
       document.getElementById('image8_2_1').classList.remove("hidden");
       document.getElementById('image8_2_2').classList.add("hidden");
       document.getElementById('image8_2_3').classList.add("hidden");
-    } else if (image.id == 'image1_7'){
+    } else if (image.id == 'image1_7') {
       document.getElementById('image8_2_1').classList.add("hidden");
       document.getElementById('image8_2_2').classList.add("hidden");
       document.getElementById('image8_2_3').classList.remove("hidden");
-    } else if (image.id == 'image1_8'){
+    } else if (image.id == 'image1_8') {
       document.getElementById('image8_2_1').classList.add("hidden");
       document.getElementById('image8_2_2').classList.add("hidden");
       document.getElementById('image8_2_3').classList.add("hidden");
@@ -541,6 +553,20 @@ async function handleImageSelection1(image) {
       document.getElementById('image8_2_1').classList.add("hidden");
       document.getElementById('image8_2_2').classList.remove("hidden");
       document.getElementById('image8_2_3').classList.add("hidden");
+    }
+
+    if (image.id == 'image1_1' || image.id == 'image1_3' || image.id == 'image1_4' || image.id == 'image1_5') {
+      document.getElementById('image8_5_1').classList.remove("hidden");
+      document.getElementById('image8_5_2').classList.add("hidden");
+      document.getElementById('image8_5_3').classList.add("hidden");
+    } else if (image.id == 'image1_2' || image.id == 'image1_6') {
+      document.getElementById('image8_5_1').classList.add("hidden");
+      document.getElementById('image8_5_2').classList.remove("hidden");
+      document.getElementById('image8_5_3').classList.add("hidden");
+    } else {
+      document.getElementById('image8_5_1').classList.add("hidden");
+      document.getElementById('image8_5_2').classList.add("hidden");
+      document.getElementById('image8_5_3').classList.remove("hidden");
     }
 
     for (const [key, value] of map_priceObject1) {
@@ -1524,6 +1550,64 @@ function handleImageSelection8_3(image) {
   }
 }
 
+
+//　安心梱包
+function handleImageSelection8_4(image) {
+  if (image.classList.contains("selected_8_4")) { // クリックした画像がすでに選択されている場合
+    // 選択状態を解除し、ボーダーも除去
+    image.classList.remove("selected_8_4");
+    image.style.border = "";
+    // カートからアイテム除去、内部価格情報も初期化
+    resetHiddenCart(cartItem8_4, cartItem8_4Name, cartItem8_4Price);
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select8_4")) {
+        otherImage.classList.remove("selected_8_4");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_8_4");
+    image.style.border = "2px solid #72F0EC";
+
+    removeElemFromDiv('cartImage8_4', 'cart_item8-4');
+    addImageToCart('cart_item8-4', 'cartImage8_4', "cart-image8", image, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem8_4Name.textContent = '安心梱包';
+    cartItem8_4Price.textContent = 210;
+
+  }
+}
+
+
+//　安心サービス
+function handleImageSelection8_5(image) {
+  if (image.classList.contains("selected_8_5")) { // クリックした画像がすでに選択されている場合
+    // 選択状態を解除し、ボーダーも除去
+    image.classList.remove("selected_8_5");
+    image.style.border = "";
+    // カートからアイテム除去、内部価格情報も初期化
+    resetHiddenCart(cartItem8_5, cartItem8_5Name, cartItem8_5Price);
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select8_5")) {
+        otherImage.classList.remove("selected_8_5");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_8_5");
+    image.style.border = "2px solid #72F0EC";
+
+    removeElemFromDiv('cartImage8_5', 'cart_item8-5');
+    addImageToCart('cart_item8-5', 'cartImage8_5', "cart-image8", image, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem8_5Name.textContent = '安心保証';
+    cartItem8_5Price.textContent = map_saftyDeliveryPriceObject.get(image.id);
+
+  }
+}
+
 function initializeImageSelection() {
   // イベントリスナーをセットアップする関数
   function setupEventListener(element, callback) {
@@ -1585,6 +1669,10 @@ function initializeImageSelection() {
         handleImageSelection8_2(image);
       } else if (image.classList.contains("select8_3")) {
         handleImageSelection8_3(image);
+      } else if (image.classList.contains("select8_4")) {
+        handleImageSelection8_4(image);
+      } else if (image.classList.contains("select8_5")) {
+        handleImageSelection8_5(image);
       } else {
         ;
       }
@@ -1598,6 +1686,7 @@ howManySelectElement.addEventListener('change', function () {
   // 変更されたときの処理を記述する
   var selectedValue = parseInt(howManySelectElement.value);
   resetImageSelection3();
+  resetHiddenCart(cartItem8_5, cartItem8_5Name, cartItem8_5Price);
   // UchiwaOrBoardGrayedOut();
   images.forEach(function (image) { // 全イメージ画像ループ
     if (image.classList.contains("select3")) {
@@ -1623,11 +1712,38 @@ howManySelectElement.addEventListener('change', function () {
         } else if (is_BoardGrayed == false && (image.classList.contains("singleBoard") || (image.classList.contains("multipleBoard")))) {
           ;
         }
+
       } else {
         image.classList.add("grayed-out");
       }
     }
   });
+
+  if (selectedValue > 1) {
+    document.getElementById('image8_5_1').classList.add("hidden");
+    document.getElementById('image8_5_2').classList.add("hidden");
+    document.getElementById('image8_5_3').classList.remove("hidden");
+  } else {
+    images.forEach(function (image) { // 全イメージ画像ループ
+      if (image.classList.contains("selected_1")) {
+        if (image.id == 'image1_1' || image.id == 'image1_3' || image.id == 'image1_4' || image.id == 'image1_5') {
+          document.getElementById('image8_5_1').classList.remove("hidden");
+          document.getElementById('image8_5_2').classList.add("hidden");
+          document.getElementById('image8_5_3').classList.add("hidden");
+        } else if (image.id == 'image1_2' || image.id == 'image1_6') {
+          document.getElementById('image8_5_1').classList.add("hidden");
+          document.getElementById('image8_5_2').classList.remove("hidden");
+          document.getElementById('image8_5_3').classList.add("hidden");
+        } else {
+          document.getElementById('image8_5_1').classList.add("hidden");
+          document.getElementById('image8_5_2').classList.add("hidden");
+          document.getElementById('image8_5_3').classList.remove("hidden");
+        }
+      }
+    });
+
+
+  }
   createPreview();
   insertColorsIntoCart();
 });

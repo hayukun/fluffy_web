@@ -12,7 +12,7 @@ const list_cartPriceList = ['cart_item1_price', 'cart_item2_price', 'cart_item3_
     'cart_item5-1-1_price', 'cart_item5-1-2_price', 'cart_item5-1-3_price', 'cart_item5-1-4_price', 'cart_item5-1-5_price', 'cart_item5-1-6_price', 'cart_item5-2_price', 'cart_item5-2_inputUserPartsSet_price',
     'cart_item5-3-1_price', 'cart_item5-3-2_price', 'cart_item5-3-3_price', 'cart_item5-4_price', 'cart_item5-5-1_price', 'cart_item5-5-2_price',
     'cart_item5-5-3_price', 'cart_item5-5-4_price', 'cart_item5-5-5_price', 'cart_item5-5-6_price', 'cart_item5-18_price', 'cart_item5-19_price',
-    'cart_item5-20_price', 'cart_item6-1_price', 'cart_item6-2_price', 'cart_item6-3_price', 'cart_item6-4_price', 'cart_item7-1_price', 'cart_item7-2_price', 'cart_item8-1_price',];
+    'cart_item5-20_price', 'cart_item6-1_price', 'cart_item6-2_price', 'cart_item6-3_price', 'cart_item6-4_price', 'cart_item7-1_price', 'cart_item7-2_price', 'cart_item8-1_price','cart_item8-2_price','cart_item8-3_price','cart_item8-4_price','cart_item8-5_price',];
 
 const container = document.getElementById("touchable_text");
 const container_paletteDecoMain = document.getElementById("palette_DecoMain");
@@ -340,7 +340,7 @@ function updateFloatingVisibility() {
 
     cart.style.display = scrollTop > 100 ? 'block' : 'none';
 
-    if (controll_step == '1st' || controll_step == '4th' ) {
+    if (controll_step == '1st' || controll_step == '4th') {
         materialPalette.style.display = 'none';
     } else {
         const targetElement = document.getElementById('decoPartsContainer');
@@ -484,6 +484,9 @@ function resetAllCartItem() {
     resetHiddenCart(cartItem7_2, cartItem7_2Name, cartItem7_2Price);
     resetHiddenCart(cartItem8_1, cartItem8_1Name, cartItem8_1Price);
     resetHiddenCart(cartItem8_2, cartItem8_2Name, cartItem8_2Price);
+    resetHiddenCart(cartItem8_3, cartItem8_3Name, cartItem8_3Price);
+    resetHiddenCart(cartItem8_4, cartItem8_4Name, cartItem8_4Price);
+    resetHiddenCart(cartItem8_5, cartItem8_5Name, cartItem8_5Price);
 
 
     var divElement = document.getElementById('decoPartsOnlyOneSelectionDiv');
@@ -501,11 +504,11 @@ function resetAllCartItem() {
             image.classList.remove("selected_5_decoParts");
             image.style.border = "";
         } else if (image.classList.contains("selected_5_decoPartsOnlyOneSelection")) { // クリックした画像がすでに選択されている場合
-          if (divElement) {
-            divElement.remove();
-          }
-          image.classList.remove("selected_5_decoPartsOnlyOneSelection");
-          image.style.border = "";
+            if (divElement) {
+                divElement.remove();
+            }
+            image.classList.remove("selected_5_decoPartsOnlyOneSelection");
+            image.style.border = "";
         } else if (image.classList.contains("selected_5_4")) { // クリックした画像がすでに選択されている場合
             image.classList.remove("selected_5_4");
             image.style.border = "";
@@ -556,7 +559,7 @@ function cartMaterials(divname, imageobj1, imageobj2, imageobj3, imageobj4, text
         this.imageobj1 = imageobj1.id;
         for (type of list_materialClassObject) {
             if (imageobj1.classList.contains(type)) {
-                if(is_name){
+                if (is_name) {
                     if (is_half) {
                         this.colorNameImage.push(document.getElementById(type + '_half'));
                     } else {
@@ -578,7 +581,7 @@ function cartMaterials(divname, imageobj1, imageobj2, imageobj3, imageobj4, text
         this.imageobj2 = imageobj2.id;
         for (type of list_materialClassObject) {
             if (imageobj2.classList.contains(type)) {
-                if(is_name){
+                if (is_name) {
                     if (is_half) {
                         this.colorNameImage.push(document.getElementById(type + '_half'));
                     } else {
@@ -598,7 +601,7 @@ function cartMaterials(divname, imageobj1, imageobj2, imageobj3, imageobj4, text
         this.imageobj3 = imageobj3.id;
         for (type of list_materialClassObject) {
             if (imageobj3.classList.contains(type)) {
-                if(is_name){
+                if (is_name) {
                     if (is_half) {
                         this.colorNameImage.push(document.getElementById(type + '_half'));
                     } else {
@@ -618,7 +621,7 @@ function cartMaterials(divname, imageobj1, imageobj2, imageobj3, imageobj4, text
         this.imageobj4 = imageobj4.id;
         for (type of list_materialClassObject) {
             if (imageobj4.classList.contains(type)) {
-                if(is_name){
+                if (is_name) {
                     if (is_half) {
                         this.colorNameImage.push(document.getElementById(type + '_half'));
                     } else {
