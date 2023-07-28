@@ -4,6 +4,10 @@ const title2 = document.getElementById("title2");
 const group1 = document.querySelector(".group1");
 const group2 = document.querySelector(".group2");
 var images = document.querySelectorAll("img");
+const materialTitleNoramlImages = document.querySelectorAll(".normal_Price");
+const materialTitleHalfImages = document.querySelectorAll(".half_Price");
+const materialTitleFreeImages = document.querySelectorAll(".free_Price");
+const onlyNameMaterial = document.querySelectorAll(".onlyNameMaterial");
 const included2Image = document.getElementById("image2_1");
 
 // 選択状況おしらせ表示
@@ -128,10 +132,24 @@ const map_priceObject5 = new Map([
   ['image6_f', 1200],
   ['image6_g', 1200],
   ['image6_h', 1200],
-  ['image6_i', 1200],
+  ['image6_i', 1500],
   ['image6_j', 1980],
   ['image6_k', 1980],
   ['image6_l', 2100],
+]);
+
+const map_priceObject5_half = new Map([
+  ['image6_a_half', 390],
+  ['image6_b_half', 290],
+  ['image6_c_half', 150],
+  ['image6_d_half', 340],
+  ['image6_e_half', 750],
+  ['image6_f_half', 600],
+  ['image6_g_half', 600],
+  ['image6_h_half', 600],
+  ['image6_i_half', 750],
+  ['image6_j_half', 980],
+  ['image6_k_half', 980],
 ]);
 
 const map_paletteNameCart = new Map([
@@ -204,6 +222,69 @@ const map_dividedParts = new Map([
   ['select5_decoParts2-8-10', ['2-6-10-左.png', '2-6-10-右.png', '2-8-8-10尻尾左右.png']],
 ]);
 
+const map_frameDesignedAnimalsName = new Map([
+  ['usagi', 'うさぎ'],
+  ['neko', 'ねこ'],
+  ['inu', 'いぬ'],
+  ['kuma', 'くま'],
+]);
+
+const map_frameDesignedAnimalsPrice = new Map([
+  ['usagi', '2600'],
+  ['neko', '2400'],
+  ['inu', '2100'],
+  ['kuma', '1800'],
+]);
+
+const map_reinforcementNameObject = new Map([
+  ['image7_1_1', '厚紙補強'],
+  ['image7_1_2', 'PP板補強'],
+  ['image7_1_3', 'オリジナル補強板'],
+]);
+
+const map_reinforcementPriceObject = new Map([
+  ['image7_1_1', 490],
+  ['image7_1_2', 610],
+  ['image7_1_3', 720],
+]);
+
+const map_backReinforcementNameObject = new Map([
+  ['image7_2_1', 'パネル裏面ゴム付き'],
+  ['image7_2_2', 'パネル裏面ピン付き'],
+]);
+
+const map_backReinforcementPriceObject = new Map([
+  ['image7_2_1', 120],
+  ['image7_2_2', 210],
+]);
+
+const map_deliveryNameObject = new Map([
+  ['image8_1_1', '即日-24時間以内'],
+  ['image8_1_2', '48時間以内'],
+  ['image8_1_3', '3-5日以内'],
+  ['image8_1_4', '1週間以内'],
+  ['image8_1_5', '2週間以内'],
+]);
+
+const map_deliveryPriceObject = new Map([
+  ['image8_1_1', 2500],
+  ['image8_1_2', 2100],
+  ['image8_1_3', 1800],
+  ['image8_1_4', 1500],
+  ['image8_1_5', 1200],
+]);
+
+const map_expressDeliveryNameObject = new Map([
+  ['image8_2_1', '速達郵便'],
+  ['image8_2_2', '速達郵便'],
+  ['image8_2_3', '速達郵便'],
+]);
+
+const map_expressDeliveryPriceObject = new Map([
+  ['image8_2_1', 720],
+  ['image8_2_2', 1200],
+  ['image8_2_3', 1500],
+]);
 
 // 文字タイプクラスリスト
 const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4', 'image3_5', 'image3_6', 'image3_7', 'image3_8', 'image3_9', 'image3_10'];
@@ -211,7 +292,10 @@ const list_charaTypeClassObject = ['image3_1', 'image3_2', 'image3_3', 'image3_4
 const list_materialClassObject = ['image6_a', 'image6_b', 'image6_c', 'image6_d', 'image6_e', 'image6_f', 'image6_g', 'image6_h', 'image6_i', 'image6_j', 'image6_k', 'image6_l'];
 
 // デフォルトパレット画像
-const default_palette_src = "/static/images/fullorder/order_buttons/colors/hoshi-waku.png";
+const default_palette_mozi_src = "/static/images/fullorder/order_buttons/colors/文字.png";
+const default_palette_frame1_src = "/static/images/fullorder/order_buttons/colors/縁1.png";
+const default_palette_frame2_src = "/static/images/fullorder/order_buttons/colors/縁2.png";
+const default_palette_outframe_src = "/static/images/fullorder/order_buttons/colors/外縁.png";
 
 // うちわ or ボード用　input要素
 const inputBoardSizeTATE = document.getElementById("board_size_TATE");
@@ -238,17 +322,52 @@ const cartItem2 = document.getElementById("cart_item2");
 const cartItem3 = document.getElementById("cart_item3");
 const cartItem4 = document.getElementById("cart_item4");
 const cartItemChara = document.getElementById("cart_itemChara");
+const cartItem6_1 = document.getElementById("cart_item6-1");
+const cartItem6_2 = document.getElementById("cart_item6-2");
+const cartItem6_3 = document.getElementById("cart_item6-3");
+const cartItem6_4 = document.getElementById("cart_item6-4");
+const cartItem7_1 = document.getElementById("cart_item7-1");
+const cartItem7_2 = document.getElementById("cart_item7-2");
+const cartItem8_1 = document.getElementById("cart_item8-1");
+const cartItem8_2 = document.getElementById("cart_item8-2");
+const cartItem8_3 = document.getElementById("cart_item8-3");
+
+const cartItem6_1multiple = document.getElementById("cart_item6-1_multiple");
+const cartItem7_1multiple = document.getElementById("cart_item7-1_multiple");
 const cartItem1Name = document.getElementById("cart_item1_name");
 const cartItem2Name = document.getElementById("cart_item2_name");
 const cartItem3Name = document.getElementById("cart_item3_name");
 const cartItem4Name = document.getElementById("cart_item4_name");
 const cartItemCharaName = document.getElementById("cart_itemChara_name");
+const cartInputPartsName = document.getElementById("cart_item5-2_inputUserParts");
+const cartInputPartsSetName = document.getElementById("cart_item5-2_inputUserPartsSet");
+const cartItem5_4Name = document.getElementById("cart_item5-4_name");
+const cartItem6_1Name = document.getElementById("cart_item6-1_name");
+const cartItem6_2Name = document.getElementById("cart_item6-2_name");
+const cartItem6_3Name = document.getElementById("cart_item6-3_name");
+const cartItem6_4Name = document.getElementById("cart_item6-4_name");
+const cartItem7_1Name = document.getElementById("cart_item7-1_name");
+const cartItem7_2Name = document.getElementById("cart_item7-2_name");
+const cartItem8_1Name = document.getElementById("cart_item8-1_name");
+const cartItem8_2Name = document.getElementById("cart_item8-2_name");
+const cartItem8_3Name = document.getElementById("cart_item8-3_name");
+
 const cartItem1Price = document.getElementById("cart_item1_price");
 const cartItem2Price = document.getElementById("cart_item2_price");
 const cartItem3Price = document.getElementById("cart_item3_price");
 const cartItem4Price = document.getElementById("cart_item4_price");
 const cartItemCharaPrice = document.getElementById("cart_itemChara_price");
-
+const cartInputPartsSetPrice = document.getElementById("cart_item5-2_inputUserPartsSet_price");
+const cartItem5_4Price = document.getElementById("cart_item5-4_price");
+const cartItem6_1Price = document.getElementById("cart_item6-1_price");
+const cartItem6_2Price = document.getElementById("cart_item6-2_price");
+const cartItem6_3Price = document.getElementById("cart_item6-3_price");
+const cartItem6_4Price = document.getElementById("cart_item6-4_price");
+const cartItem7_1Price = document.getElementById("cart_item7-1_price");
+const cartItem7_2Price = document.getElementById("cart_item7-2_price");
+const cartItem8_1Price = document.getElementById("cart_item8-1_price");
+const cartItem8_2Price = document.getElementById("cart_item8-2_price");
+const cartItem8_3Price = document.getElementById("cart_item8-3_price");
 
 // image1_8選んだ時の入力フォーム(image1_8はサイズ指定)
 const cartItem1ExtText = document.getElementById("cart_item1_extText");
@@ -259,10 +378,17 @@ const inputSmallCharaFontElement = document.getElementById("input_SmallChara_fon
 const cartItem4ExtText = document.getElementById("cart_item4_extText");
 const cartItem4SmallFontText = document.getElementById("cart_item4_smallFontText");
 
+//装飾
+const inputPartsName = document.getElementById("partsNameInput");
+const inputSetPartsName = document.getElementById("partsSetNameInput");
+const inputSetPartsExtText = document.getElementById("partsSetExtTextInput");
+const cartInputPartsSetExtText = document.getElementById("cart_item5-2_inputUserPartsSet_extText");
+
 // howManySelect要素を取得
 var howManySelectElement = document.querySelector('select[name="howManySelect"]');
 var is_UchiwaGrayed = true;
 var is_BoardGrayed = true;
+var is_half = false;
 
 // プレビュー画面要素を取得
 const viewBoard = document.getElementById('view_board');
@@ -286,8 +412,10 @@ const buttonOpen3 = document.getElementById('set_colorsToCart_3');
 const buttonOpen4 = document.getElementById('set_colorsToCart_4');
 const modalPalette = document.getElementById('easyModal');
 const modalDetailKomozi = document.getElementById('easyModalofKomoziDetail');
+const modalDetailDakuten = document.getElementById('easyModalofDakutenParts');
 const buttonClose = document.getElementsByClassName('modalClose')[0];
 const buttonCloseDetailKomozi = document.getElementsByClassName('modalClose')[1];
+const buttonCloseDetailDakutenParts = document.getElementsByClassName('modalClose')[2];
 const buttonInsertColorsIntoCart = document.getElementById('btnInsertColorsIntoCart');
 // const buttonOpenColorRanking = document.getElementById('openColorRanking');
 const colorRanking = document.getElementById('colorRanking');
@@ -295,10 +423,7 @@ const colorRank1 = document.getElementById('ranking6-1');
 const colorRank2 = document.getElementById('ranking6-2');
 const colorRank3 = document.getElementById('ranking6-3');
 
-const inputPartsName = document.getElementById("partsNameInput");
-const inputSetPartsName = document.getElementById("partsSetNameInput");
-const cartInputPartsName = document.getElementById("cart_item5-2_inputUserParts");
-const cartInputPartsSetName = document.getElementById("cart_item5-2_inputUserPartsSet");
+
 var currentPartsSetLength = 0;
 
 const cancelInputParts = document.getElementById('cancelInputParts');
@@ -306,10 +431,15 @@ const decoPreview = document.getElementById("decoPreview");
 const fullorder1stStepContainer = document.getElementById("1st-container");
 const fullorder2ndStepContainer = document.getElementById("2nd-container");
 const fullorder3rdStepContainer = document.getElementById("3rd-container");
+const fullorder4thStepContainer = document.getElementById("4th-container");
 const nextStepTo2ndButton = document.getElementById("nextStepTo2ndButton");
 const nextStepTo3rdButton = document.getElementById("nextStepTo3rdButton");
+const nextStepTo4thButton = document.getElementById("nextStepTo4thButton");
 const backStepTo1stButton = document.getElementById("backStepTo1stButton");
 const backStepTo2ndButton = document.getElementById("backStepTo2ndButton");
+const backStepTo3rdButton = document.getElementById("backStepTo3rdButton");
+
+
 
 var wmouse;
 // イメージオブジェクトを作成
@@ -322,10 +452,10 @@ var cartForColors_price;
 var cartForColors_multiple;
 
 var controll_step = '1st';
-
+const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 // うちわ or ボード
-function handleImageSelection1(image) {
+async function handleImageSelection1(image) {
   const isAlreadySelected = image.classList.contains("selected_1");
 
   if (isAlreadySelected) {
@@ -356,6 +486,11 @@ function handleImageSelection1(image) {
       showAllOptions();
     }
     UchiwaOrBoardGrayedOut();
+
+    // 速達
+    document.getElementById('image8_2_1').classList.add("hidden");
+    document.getElementById('image8_2_2').classList.add("hidden");
+    document.getElementById('image8_2_3').classList.add("hidden");
   } else {
     // クリックした画像が未選択状態の場合
     images.forEach(function (otherImage) {
@@ -378,11 +513,39 @@ function handleImageSelection1(image) {
       }
     });
 
+    resetHiddenCart(cartItem6_1, cartItem6_1Name, cartItem6_1Price);
+    resetHiddenCart(cartItem6_2, cartItem6_2Name, cartItem6_2Price);
+    resetHiddenCart(cartItem6_3, cartItem6_3Name, cartItem6_3Price);
+    resetHiddenCart(cartItem6_4, cartItem6_4Name, cartItem6_4Price);
+    cartItem6_1multiple.textContent = '';
+    deleteAllColorItems();
+    resetAllImages();
+    resetAllCartItem();
+
     image.classList.add("selected_1");
     image.style.border = "2px solid #72F0EC";
 
+    if (image.id == 'image1_1' || image.id == 'image1_3'){
+      document.getElementById('image8_2_1').classList.remove("hidden");
+      document.getElementById('image8_2_2').classList.add("hidden");
+      document.getElementById('image8_2_3').classList.add("hidden");
+    } else if (image.id == 'image1_7'){
+      document.getElementById('image8_2_1').classList.add("hidden");
+      document.getElementById('image8_2_2').classList.add("hidden");
+      document.getElementById('image8_2_3').classList.remove("hidden");
+    } else if (image.id == 'image1_8'){
+      document.getElementById('image8_2_1').classList.add("hidden");
+      document.getElementById('image8_2_2').classList.add("hidden");
+      document.getElementById('image8_2_3').classList.add("hidden");
+    } else {
+      document.getElementById('image8_2_1').classList.add("hidden");
+      document.getElementById('image8_2_2').classList.remove("hidden");
+      document.getElementById('image8_2_3').classList.add("hidden");
+    }
+
     for (const [key, value] of map_priceObject1) {
       if (key === image.id) {
+        is_half = false;
         showAllOptions();
 
         cartItem1Price.textContent = value;
@@ -392,8 +555,10 @@ function handleImageSelection1(image) {
           notesText.style.display = "block";
           // selected_1_SizeSpecify.appendChild(inputBoardSizeTATE);
         } else if (key === 'image1_1') {
+          is_half = true;
           removeElemFromDiv('cartImage1', 'cart_item1');
           addImageToCart('cart_item1', 'cartImage1', "cart-image1", image, startPosition, animationDuration);
+          await sleep(1000);
           reduceOptions();
 
           images.forEach(function (otherImage) {
@@ -430,6 +595,9 @@ function handleImageSelection1(image) {
           calcSizePriceText.textContent = "720";
           notesText.style.display = "none";
         } else {
+          if (key === 'image1_3') {
+            is_half = true;
+          }
           removeElemFromDiv('cartImage1', 'cart_item1');
           addImageToCart('cart_item1', 'cartImage1', "cart-image1", image, startPosition, animationDuration);
           cartItem1ExtText.textContent = "";
@@ -441,13 +609,51 @@ function handleImageSelection1(image) {
           UchiwaOrBoardGrayedOut();
         }
 
+        updateMaterialImage();
         break;
       }
     }
   }
 }
 
+function updateMaterialImage() {
+  if (is_half) {
+    materialTitleNoramlImages.forEach(function (titleImage) {
+      titleImage.classList.add("hidden");
+    });
+    materialTitleHalfImages.forEach(function (titleImage) {
+      titleImage.classList.remove("hidden");
+    });
+    document.getElementById("l_material").classList.add("hidden");
+  } else {
+    materialTitleNoramlImages.forEach(function (titleImage) {
+      titleImage.classList.remove("hidden");
+    });
+    materialTitleHalfImages.forEach(function (titleImage) {
+      titleImage.classList.add("hidden");
+    });
+    document.getElementById("l_material").classList.remove("hidden");
+  }
 
+  if (!is_name) {
+    materialTitleNoramlImages.forEach(function (titleImage) {
+      titleImage.classList.add("hidden");
+    });
+    materialTitleHalfImages.forEach(function (titleImage) {
+      titleImage.classList.add("hidden");
+    });
+    materialTitleFreeImages.forEach(function (titleImage) {
+      titleImage.classList.remove("hidden");
+    });
+    document.getElementById("l_material").classList.add("hidden");
+  } else {
+    materialTitleFreeImages.forEach(function (titleImage) {
+      titleImage.classList.add("hidden");
+    });
+    document.getElementById("l_material").classList.remove("hidden");
+  }
+
+}
 
 function calcSizePrice() {
   tate = inputBoardSizeTATE.value;
@@ -462,16 +668,34 @@ function calcSizePrice() {
           document.getElementById("warning_SizeSpecify").textContent = "【警告】横幅3cmより小さくはできません";
         } else if (3 <= yokoFloat && yokoFloat <= 10) {
           calcSizePriceText.textContent = '720';
+          document.getElementById('image8_2_1').classList.remove("hidden");
+          document.getElementById('image8_2_2').classList.add("hidden");
+          document.getElementById('image8_2_3').classList.add("hidden");
         } else if (10 < yokoFloat && yokoFloat <= 20) {
           calcSizePriceText.textContent = '890';
+          document.getElementById('image8_2_1').classList.remove("hidden");
+          document.getElementById('image8_2_2').classList.add("hidden");
+          document.getElementById('image8_2_3').classList.add("hidden");
         } else if (20 < yokoFloat && yokoFloat <= 25) {
           calcSizePriceText.textContent = '990';
+          document.getElementById('image8_2_1').classList.remove("hidden");
+          document.getElementById('image8_2_2').classList.add("hidden");
+          document.getElementById('image8_2_3').classList.add("hidden");
         } else if (25 < yokoFloat && yokoFloat <= 30) {
           calcSizePriceText.textContent = '1500';
+          document.getElementById('image8_2_1').classList.add("hidden");
+          document.getElementById('image8_2_2').classList.remove("hidden");
+          document.getElementById('image8_2_3').classList.add("hidden");
         } else if (30 < yokoFloat && yokoFloat <= 36) {
           calcSizePriceText.textContent = '1800';
+          document.getElementById('image8_2_1').classList.add("hidden");
+          document.getElementById('image8_2_2').classList.remove("hidden");
+          document.getElementById('image8_2_3').classList.add("hidden");
         } else if (36 < yokoFloat && yokoFloat <= 42) {
           calcSizePriceText.textContent = '2100';
+          document.getElementById('image8_2_1').classList.add("hidden");
+          document.getElementById('image8_2_2').classList.add("hidden");
+          document.getElementById('image8_2_3').classList.remove("hidden");
         } else if (42 < yokoFloat && yokoFloat <= 120) {
           var bool_SizeCalc = true;
           var temp_yoko = yokoFloat - 42;
@@ -507,9 +731,14 @@ function calcSizePrice() {
             }
           }
           calcSizePriceText.textContent = priceSum.toString();
-
+          document.getElementById('image8_2_1').classList.add("hidden");
+          document.getElementById('image8_2_2').classList.add("hidden");
+          document.getElementById('image8_2_3').classList.remove("hidden");
         } else {
           document.getElementById("warning_SizeSpecify").textContent = "【警告】横幅は120cm以下で入力してください";
+          document.getElementById('image8_2_1').classList.add("hidden");
+          document.getElementById('image8_2_2').classList.add("hidden");
+          document.getElementById('image8_2_3').classList.add("hidden");
         }
 
         var imageCart = new Image();
@@ -714,24 +943,6 @@ function handleImageSelection4(image) {
   }
 }
 
-// パレット
-function handleImageSelection6_palette(image) {
-  if (image.classList.contains("selected_6_palette")) { // クリックした画像がすでに選択されている場合
-    ;
-  } else {  // クリックした画像が未選択状態の場合
-
-    images.forEach(function (otherImage) {
-      if (otherImage.classList.contains("select6_palette")) {
-        otherImage.classList.remove("selected_6_palette");
-        otherImage.style.border = "";
-      }
-    });
-    image.classList.add("selected_6_palette");
-    image.style.border = "2px solid white";
-
-  }
-}
-
 function nextStepTo2nd(event) {
   event.preventDefault();
   fullorder2ndStepContainer.classList.remove("hidden");
@@ -762,9 +973,26 @@ function nextStepTo3rd(event) {
       otherImage.style.border = "";
     }
   });
+  //images = document.querySelectorAll("img");
   wmouse.src = "";
   location.href = '#fullorderTop';
   controll_step = '3rd';
+}
+
+function nextStepTo4th(event) {
+  event.preventDefault();
+
+  fullorder4thStepContainer.classList.remove("hidden");
+  fullorder4thStepContainer.classList.add("flexColumnFlexStart");
+  fullorder3rdStepContainer.classList.add("hidden");
+  fullorder3rdStepContainer.classList.remove("flexColumnFlexStart");
+
+  nextStepTo4thButton.classList.add("hidden");
+  backStepTo3rdButton.classList.remove("hidden");
+
+  //images = document.querySelectorAll("img");
+  location.href = '#fullorderTop';
+  controll_step = '4th';
 }
 
 function backStepTo1st(event) {
@@ -801,6 +1029,37 @@ function backStepTo2nd(event) {
   controll_step = '2nd';
 }
 
+function backStepTo3rd(event) {
+  event.preventDefault();
+
+  fullorder4thStepContainer.classList.add("hidden");
+  fullorder4thStepContainer.classList.remove("flexColumnFlexStart");
+  fullorder3rdStepContainer.classList.remove("hidden");
+  fullorder3rdStepContainer.classList.add("flexColumnFlexStart");
+
+  nextStepTo4thButton.classList.remove("hidden");
+  backStepTo3rdButton.classList.add("hidden");
+  controll_step = '3rd';
+}
+
+// パレット
+function handleImageSelection6_palette(image) {
+  if (image.classList.contains("selected_6_palette")) { // クリックした画像がすでに選択されている場合
+    ;
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select6_palette")) {
+        otherImage.classList.remove("selected_6_palette");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_6_palette");
+    image.style.border = "2px solid white";
+
+  }
+}
+
 //　素材
 function handleImageSelection6(image) {
   // クリックした画像が未選択状態の場合
@@ -818,7 +1077,16 @@ function handleImageSelection6(image) {
   if (selectedPaletteImage != '') {
 
     map_paletteImage.set(selectedPaletteImage.id, image);
-    if (selectedPaletteImage.id === 'select6_palette6_3') {
+
+    if (selectedPaletteImage.id === 'select6_palette6_2') {
+      if (!check_nametitle_frame) {
+        map_paletteImage.set('select6_palette6_6', image);
+        map_paletteImage.set('select6_palette6_10', image);
+      }
+      if (!check_catchphrase_frame) {
+        map_paletteImage.set('select6_palette6_14', image);
+      }
+    } else if (selectedPaletteImage.id === 'select6_palette6_3') {
       map_paletteImage.set('select6_palette6_7', image);
       map_paletteImage.set('select6_palette6_11', image);
       map_paletteImage.set('select6_palette6_15', image);
@@ -836,7 +1104,15 @@ function handleImageSelection6(image) {
     }
 
     selectedPaletteImage.src = sourcePath;
-    if (selectedPaletteImage.id === 'select6_palette6_3') {
+    if (selectedPaletteImage.id === 'select6_palette6_2') {
+      if (!check_nametitle_frame) {
+        document.getElementById('select6_palette6_6').src = sourcePath;
+        document.getElementById('select6_palette6_10').src = sourcePath;
+      }
+      if (!check_catchphrase_frame) {
+        document.getElementById('select6_palette6_14').src = sourcePath;
+      }
+    } else if (selectedPaletteImage.id === 'select6_palette6_3') {
       document.getElementById('select6_palette6_7').src = sourcePath;
       document.getElementById('select6_palette6_11').src = sourcePath;
       document.getElementById('select6_palette6_15').src = sourcePath;
@@ -876,26 +1152,22 @@ function handleImageSelection5OnlyOneSelection(image5) {
     if (divElement) {
       divElement.remove();
     }
-    images.forEach(function (otherImage) {
-      if (otherImage.classList.contains("select5_decoPartsOnlyOneSelection")) {
-        otherImage.classList.remove("selected_5_decoPartsOnlyOneSelection");
-        otherImage.style.border = "";
-      }
-    });
     deleteUserDecoAllImage();
     cancelPartsSet();
   } else {  // クリックした画像が未選択状態の場合
+    inputSetPartsName.value = '';
+    cartInputPartsSetName.textContent = '';
+    cartInputPartsSetPrice.textContent = '';
+    cartInputPartsSetExtText.textContent = '';
+    inputSetPartsExtText.style.display = 'none';
+    removeElemFromDiv('cartImage5-2-9', 'cart_item5-2');
+
     deleteUserDecoAllImage();
     cancelPartsSet();
     if (divElement) {
       divElement.remove();
     }
-    images.forEach(function (otherImage) {
-      if (otherImage.classList.contains("select5_decoPartsOnlyOneSelection")) {
-        otherImage.classList.remove("selected_5_decoPartsOnlyOneSelection");
-        otherImage.style.border = "";
-      }
-    });
+
     image5.classList.add("selected_5_decoPartsOnlyOneSelection");
     image5.style.border = "2px solid #72F0EC";
     var divParentElem = document.createElement("div");
@@ -904,7 +1176,6 @@ function handleImageSelection5OnlyOneSelection(image5) {
     for (const [key, value] of map_dividedParts) {
       if (key == image5.id) {
         currentPartsSetLength = value.length;
-        console.log("nowLen:" + currentPartsSetLength);
         for (let str of value) {
           var divImage = createDivRoundImage('/static/images/fullorder/order_buttons/deco/sample/parts_divided/' + str);
           divParentElem.appendChild(divImage);
@@ -957,15 +1228,9 @@ function handleImageSelection5OnlyOneSelectionDivided(image) {
     wmouse.src = image.src;
     wmouse.style.zIndex = '20';
 
-    // var checkExistElement = document.getElementById('cart_userDecoID_OnlyOneSelection');
-    // if (checkExistElement != null) {
-    //   cartPartsSetName.textContent = '';
-    //   calcDecoPartsSubtractPrice(checkExistElement, 'cart_userDecoID_OnlyOneSelection');
-    //   removeElemFromDiv('cart_userDecoID_OnlyOneSelection', 'cart_item5-2');
-    // }
-    // calcDecoPartsAddPrice(image, 'userDecoID_OnlyOneSelection');
   }
 }
+
 
 function createDivRoundImage(imageURL) {
   // 新しいプルダウンメニューを作成します
@@ -982,24 +1247,27 @@ function createDivRoundImage(imageURL) {
   return divElem;
 }
 
-function createPulldownMenu(id_name) {
+function createPulldownMenu(id_name, array) {
   // 新しいプルダウンメニューを作成します
   var selectMenu = document.createElement("select");
 
   selectMenu.id = id_name;
-  // プルダウンメニューにオプションを追加します
-  var option1 = document.createElement("option");
-  option1.text = "オプション1";
-  selectMenu.add(option1);
 
-  var option2 = document.createElement("option");
-  option2.text = "オプション2";
-  selectMenu.add(option2);
+  var option0 = document.createElement("option");
+  option0.text = "選択してください";
+  option0.value = '';
+  selectMenu.add(option0);
 
+  for (item of array) {
+    var option = document.createElement("option");
+    option.text = item;
+    option.value = item;
+    selectMenu.add(option);
+  }
   return selectMenu;
 }
 
-// function cancelPartsSet(event) {
+
 function cancelPartsSet() {
   wmouse.src = "";
   images.forEach(function (otherImage) {
@@ -1055,6 +1323,207 @@ function MouseRelease() {
   wmouse.src = "";
 }
 
+function handleImageSelection5_4(image) {
+  if (image.classList.contains("selected_5_4")) { // クリックした画像がすでに選択されている場合
+    image.classList.remove("selected_5_4");
+    image.style.border = "";
+    cartItem5_4Name.textContent = "";
+    cartItem5_4Price.textContent = "";
+    removeElemFromDiv('cartImage5_4', 'cart_item5-4');
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("selected_5_4")) {
+        otherImage.classList.remove("selected_5_4");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_5_4");
+    image.style.border = "2px solid #72F0EC";
+
+    var imageCart = new Image();
+    imageCart.id =
+      imageCart.classList.add("cart-image5");
+    imageCart.src = '/static/images/fullorder/order_buttons/deco/small_items/外枠デザイン加工/5_4_' + image.id + '.png';
+
+    removeElemFromDiv('cartImage5_4', 'cart_item5-4');
+    addImageToCart('cart_item5-4', 'cartImage5_4', "cart-image5", imageCart, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem5_4Name.textContent = map_frameDesignedAnimalsName.get(image.id);
+    cartItem5_4Price.textContent = map_frameDesignedAnimalsPrice.get(image.id);
+  }
+}
+
+
+//　文字パネル補強 
+function handleImageSelection7_1(image) {
+  if (image.classList.contains("selected_7_1")) { // クリックした画像がすでに選択されている場合
+    // 選択状態を解除し、ボーダーも除去
+    image.classList.remove("selected_7_1");
+    image.style.border = "";
+    // カートからアイテム除去、内部価格情報も初期化
+    resetHiddenCart(cartItem7_1, cartItem7_1Name, cartItem7_1Price);
+    cartItem7_1multiple.textContent = '';
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select7_1")) {
+        otherImage.classList.remove("selected_7_1");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_7_1");
+    image.style.border = "2px solid #72F0EC";
+
+    removeElemFromDiv('cartImage7_1', 'cart_item7-1');
+    addImageToCart('cart_item7-1', 'cartImage7_1', "cart-image7", image, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem7_1Name.textContent = map_reinforcementNameObject.get(image.id);
+
+    if (howManySelectElement.value != '') {
+      numOfBoards = parseInt(howManySelectElement.value);
+    } else {
+      numOfBoards = 1;
+    }
+
+    cartItem7_1Price.textContent = map_reinforcementPriceObject.get(image.id) * numOfBoards;
+
+    var imgElement = document.createElement('img');
+
+    if (howManySelectElement.value === "1") {
+      imgElement.src = '/static/images/fullorder/materials/multiple_number/かける1.png';
+    } else if (howManySelectElement.value === "2") {
+      imgElement.src = '/static/images/fullorder/materials/multiple_number/かける2.png';
+    } else if (howManySelectElement.value === "3") {
+      imgElement.src = '/static/images/fullorder/materials/multiple_number/かける3.png';
+    } else if (howManySelectElement.value === "4") {
+      imgElement.src = '/static/images/fullorder/materials/multiple_number/かける4.png';
+    } else {
+      imgElement.src = '/static/images/fullorder/materials/multiple_number/かける1.png';
+    }
+    imgElement.alt = 'Image';
+    imgElement.id = 'cartImage7_1Multiple';
+    imgElement.classList.add('cart-image7');
+    removeElemFromDiv('cartImage7_1Multiple', 'cart_item7-1_multiple');
+
+    cartItem7_1multiple.appendChild(imgElement);
+
+  }
+}
+
+//　パネル裏面加工
+function handleImageSelection7_2(image) {
+  if (image.classList.contains("selected_7_2")) { // クリックした画像がすでに選択されている場合
+    // 選択状態を解除し、ボーダーも除去
+    image.classList.remove("selected_7_2");
+    image.style.border = "";
+    // カートからアイテム除去、内部価格情報も初期化
+    resetHiddenCart(cartItem7_2, cartItem7_2Name, cartItem7_2Price);
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select7_2")) {
+        otherImage.classList.remove("selected_7_2");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_7_2");
+    image.style.border = "2px solid #72F0EC";
+
+    removeElemFromDiv('cartImage7_2', 'cart_item7-2');
+    addImageToCart('cart_item7-2', 'cartImage7_2', "cart-image7", image, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem7_2Name.textContent = map_backReinforcementNameObject.get(image.id);
+    cartItem7_2Price.textContent = map_backReinforcementPriceObject.get(image.id);
+
+  }
+}
+
+//　お急ぎ作成
+function handleImageSelection8_1(image) {
+  if (image.classList.contains("selected_8_1")) { // クリックした画像がすでに選択されている場合
+    // 選択状態を解除し、ボーダーも除去
+    image.classList.remove("selected_8_1");
+    image.style.border = "";
+    // カートからアイテム除去、内部価格情報も初期化
+    resetHiddenCart(cartItem8_1, cartItem8_1Name, cartItem8_1Price);
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select8_1")) {
+        otherImage.classList.remove("selected_8_1");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_8_1");
+    image.style.border = "2px solid #72F0EC";
+
+    removeElemFromDiv('cartImage8_1', 'cart_item8-1');
+    addImageToCart('cart_item8-1', 'cartImage8_1', "cart-image8", image, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem8_1Name.textContent = map_deliveryNameObject.get(image.id);
+    cartItem8_1Price.textContent = map_deliveryPriceObject.get(image.id);
+
+  }
+}
+
+
+//　速達郵便
+function handleImageSelection8_2(image) {
+  if (image.classList.contains("selected_8_2")) { // クリックした画像がすでに選択されている場合
+    // 選択状態を解除し、ボーダーも除去
+    image.classList.remove("selected_8_2");
+    image.style.border = "";
+    // カートからアイテム除去、内部価格情報も初期化
+    resetHiddenCart(cartItem8_2, cartItem8_2Name, cartItem8_2Price);
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select8_2")) {
+        otherImage.classList.remove("selected_8_2");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_8_2");
+    image.style.border = "2px solid #72F0EC";
+
+    removeElemFromDiv('cartImage8_2', 'cart_item8-2');
+    addImageToCart('cart_item8-2', 'cartImage8_2', "cart-image8", image, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem8_2Name.textContent = map_expressDeliveryNameObject.get(image.id);
+    cartItem8_2Price.textContent = map_expressDeliveryPriceObject.get(image.id);
+
+  }
+}
+
+//　郵便追跡
+function handleImageSelection8_3(image) {
+  if (image.classList.contains("selected_8_3")) { // クリックした画像がすでに選択されている場合
+    // 選択状態を解除し、ボーダーも除去
+    image.classList.remove("selected_8_3");
+    image.style.border = "";
+    // カートからアイテム除去、内部価格情報も初期化
+    resetHiddenCart(cartItem8_3, cartItem8_3Name, cartItem8_3Price);
+  } else {  // クリックした画像が未選択状態の場合
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select8_3")) {
+        otherImage.classList.remove("selected_8_3");
+        otherImage.style.border = "";
+      }
+    });
+    image.classList.add("selected_8_3");
+    image.style.border = "2px solid #72F0EC";
+
+    removeElemFromDiv('cartImage8_3', 'cart_item8-3');
+    addImageToCart('cart_item8-3', 'cartImage8_3', "cart-image8", image, startPosition, animationDuration);
+    // フォントに金額つけるならここに追記
+    cartItem8_3Name.textContent = '追跡番号発行';
+    cartItem8_3Price.textContent = 390;
+
+  }
+}
+
 function initializeImageSelection() {
   // イベントリスナーをセットアップする関数
   function setupEventListener(element, callback) {
@@ -1104,6 +1573,18 @@ function initializeImageSelection() {
         handleImageSelection5OnlyOneSelection(image);
       } else if (image.classList.contains("select5_customParts")) {
         customUserImage(image);
+      } else if (image.classList.contains("select5_4")) {
+        handleImageSelection5_4(image);
+      } else if (image.classList.contains("select7_1")) {
+        handleImageSelection7_1(image);
+      } else if (image.classList.contains("select7_2")) {
+        handleImageSelection7_2(image);
+      } else if (image.classList.contains("select8_1")) {
+        handleImageSelection8_1(image);
+      } else if (image.classList.contains("select8_2")) {
+        handleImageSelection8_2(image);
+      } else if (image.classList.contains("select8_3")) {
+        handleImageSelection8_3(image);
       } else {
         ;
       }
@@ -1164,7 +1645,7 @@ function reduceOptions() {
   howManySelectElement.value = '1';
   UchiwaOrBoardGrayedOut();
   createPreview();
-  insertColorsIntoCart();
+  // insertColorsIntoCart();
 }
 
 // オプションを再表示する関数
@@ -1231,6 +1712,10 @@ function resetImageSelection3combo() {
   resetHiddenCart(cartItem1, cartItem1Name, cartItem1Price);
   resetHiddenCart(cartItem2, cartItem2Name, cartItem2Price);
   resetHiddenCart(cartItem3, cartItem3Name, cartItem3Price);
+  resetHiddenCart(cartItem6_1, cartItem6_1Name, cartItem6_1Price);
+  resetHiddenCart(cartItem6_2, cartItem6_2Name, cartItem6_2Price);
+  resetHiddenCart(cartItem6_3, cartItem6_3Name, cartItem6_3Price);
+  resetHiddenCart(cartItem6_4, cartItem6_4Name, cartItem6_4Price);
   showAllOptions();
   howManySelectElement.value = '';
   images.forEach(function (image) { // 全イメージ画像ループ
@@ -1343,32 +1828,29 @@ function updateDivContent(divElem, inputElem) {
   }
 
   if (divElem.textContent.trim().length > 0 && divElem.id == 'cart_item5-2_inputUserPartsSet') {
-    inputFontImage = document.getElementById('imageDeco_5-9');
-    removeElemFromDiv('cartImage5-9', 'cart_item5-2');
-    addImageToCart('cart_item5-2', 'cartImage5-9', "cart-image5", inputFontImage, startPosition, animationDuration);
-    // フォントに金額つけるならここに追記
-    // var divElement = document.getElementById('decoPartsOnlyOneSelectionDiv');
 
-    // if (divElement) {
-    //   divElement.remove();
-    // }
-    // images.forEach(function (otherImage) {
-    //   if (otherImage.classList.contains("select5_decoPartsOnlyOneSelection")) {
-    //     otherImage.classList.remove("selected_5_decoPartsOnlyOneSelection");
-    //     otherImage.style.border = "";
-    //   }
-    // });
+    // パーツセット情報クリア
+    inputFontImage = document.getElementById('imageDeco_5-2-9');
+    divElement = document.getElementById('decoPartsOnlyOneSelectionDiv');
 
-    // var checkExistElement = document.getElementById('cart_userDecoID_OnlyOneSelection');
-    // if (checkExistElement != null) {
-    //   cartPartsSetName.textContent = '';
-    //   calcDecoPartsSubtractPrice(checkExistElement, 'cart_userDecoID_OnlyOneSelection');
-    //   removeElemFromDiv('cart_userDecoID_OnlyOneSelection', 'cart_item5-2');
-    // }
-    // calcDecoPartsAddPrice(image5, 'userDecoID_OnlyOneSelection');
+    if (divElement) {
+      divElement.remove();
+      deleteUserDecoAllImage();
+      cancelPartsSet();
+    }
+
+
+    removeElemFromDiv('cartImage5-2-9', 'cart_item5-2');
+    addImageToCart('cart_item5-2', 'cartImage5-2-9', "cart-image5", inputFontImage, startPosition, animationDuration);
+    cartInputPartsSetPrice.textContent = '1200';
+
+    inputSetPartsExtText.style.display = 'flex';
 
   } else if (divElem.textContent.trim().length === 0 && divElem.id == 'cart_item5-2_inputUserPartsSet') {
-    ;
+    removeElemFromDiv('cartImage5-2-9', 'cart_item5-2');
+    cartInputPartsSetPrice.textContent = '';
+    cartInputPartsSetExtText.textContent = '';
+    inputSetPartsExtText.style.display = 'none';
   }
 }
 
@@ -1392,7 +1874,17 @@ function insertColorsIntoCart() {
 
     for (img of map_insertCart.colorNameImage) {
       copiedImage = img.cloneNode(true);
-      calc_price = calc_price + map_priceObject5.get(img.id);
+      if (is_name) {
+        if (is_half) {
+          calc_price = calc_price + map_priceObject5_half.get(img.id);
+        } else {
+          calc_price = calc_price + map_priceObject5.get(img.id);
+        }
+      } else {
+        calc_price = calc_price;
+      }
+
+
       copiedImage.removeAttribute('id');
       copiedImage.classList.remove('box-width350');
       copiedImage.classList.add('cart-image6');
@@ -1493,6 +1985,10 @@ addEventListener('click', outsideClose);
 function outsideClose(e) {
   if (e.target == modalPalette) {
     modalPalette.style.display = 'none';
+  } else if (e.target == modalDetailKomozi) {
+    modalDetailKomozi.style.display = 'none';
+  } else if (e.target == modalDetailDakuten) {
+    modalDetailDakuten.style.display = 'none';
   }
 }
 
@@ -1517,7 +2013,16 @@ function rankingApplyPalette(rankingDiv) {
 
     if (paletteElement != '') {
       map_paletteImage.set(paletteElement.id, imgElement);
-      if (paletteElement.id === 'select6_palette6_3') {
+      if (paletteElement.id === 'select6_palette6_2') {
+        if (!check_nametitle_frame) {
+          map_paletteImage.set('select6_palette6_6', imgElement);
+          map_paletteImage.set('select6_palette6_10', imgElement);
+        }
+        if (!check_catchphrase_frame) {
+          map_paletteImage.set('select6_palette6_14', imgElement);
+        }
+
+      } else if (paletteElement.id === 'select6_palette6_3') {
         map_paletteImage.set('select6_palette6_7', imgElement);
         map_paletteImage.set('select6_palette6_11', imgElement);
         map_paletteImage.set('select6_palette6_15', imgElement);
@@ -1534,8 +2039,15 @@ function rankingApplyPalette(rankingDiv) {
           break;
         }
       }
-
-      if (paletteElement.id === 'select6_palette6_3') {
+      if (paletteElement.id === 'select6_palette6_2') {
+        if (!check_nametitle_frame) {
+          document.getElementById('select6_palette6_6').src = sourcePath;
+          document.getElementById('select6_palette6_10').src = sourcePath;
+        }
+        if (!check_catchphrase_frame) {
+          document.getElementById('select6_palette6_14').src = sourcePath;
+        }
+      } else if (paletteElement.id === 'select6_palette6_3') {
         document.getElementById('select6_palette6_7').src = sourcePath;
         document.getElementById('select6_palette6_11').src = sourcePath;
         document.getElementById('select6_palette6_15').src = sourcePath;
@@ -1581,10 +2093,11 @@ function inputParts(event) {
 inputFontElement.addEventListener('input', function () { updateDivContent(cartItem4ExtText, inputFontElement) });
 inputSmallCharaFontElement.addEventListener('input', function () { updateDivContent(cartItem4SmallFontText, inputSmallCharaFontElement) });
 inputPartsName.addEventListener('input', function () { updateDivContent(cartInputPartsName, inputPartsName) });
+inputSetPartsExtText.addEventListener('input', function () { updateDivContent(cartInputPartsSetExtText, inputSetPartsExtText) });
 buttonInsertColorsIntoCart.addEventListener('click', function () {
   insertColorsIntoCart();
 });
-inputSetPartsName.addEventListener('input', function () { updateDivContent(cartInputPartsSetName, inputSetPartsName) })
+inputSetPartsName.addEventListener('input', function () { updateDivContent(cartInputPartsSetName, inputSetPartsName) });
 
 // buttonOpenColorRanking.addEventListener('click', openColorRanking);
 colorRank1.addEventListener('click', function () { rankingApplyPalette("ranking6-1") });

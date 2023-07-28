@@ -266,6 +266,18 @@
         overflow: hidden;
     }
 
+    .cart-image7 {
+        height: 1.3541666666666667vw;
+        padding: 0px !important;
+        overflow: hidden;
+    }
+
+    .cart-image8 {
+        height: 1.3541666666666667vw;
+        padding: 0px !important;
+        overflow: hidden;
+    }
+
     /* プレビュー */
     #inputForm-view {
         position: absolute;
@@ -346,6 +358,11 @@
     border: 2px solid transparent;
 }
 
+.tabs img {
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+
 .color_title {
     width: 380px;
 }
@@ -399,6 +416,10 @@
     padding: 0px !important;
 }
 
+.select6_palette:hover {
+    border: 2px solid #FF6CC4;
+}
+
 .grayed-out {
     filter: grayscale(100%) !important;
     text-shadow: 2.5px 2.5px 0 #FFF, -2.5px -2.5px 0 #FFF,
@@ -409,8 +430,36 @@
 
 .BaraRenketsuImage {
     position: absolute;
-    top: -32%;
+    top: -45%;
     left: -6%;
+    transform: translate(0%, 0%);
+}
+
+.oritatamiDesign1 {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+}
+
+.oritatamiDesign2 {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+}
+
+.PartsDispImage1{
+    position: absolute;
+    top: 20%;
+    left: -20%;
+    transform: translate(0%, 0%);
+}
+
+.PartsDispImage2{
+    position: absolute;
+    top: 20%;
+    left: -36%;
     transform: translate(0%, 0%);
 }
 
@@ -658,6 +707,10 @@ input[name="tab_item"] {
     width: 2.1875vw;
 }
 
+.deliveryOption label {
+    margin-bottom: 0 !important;
+}
+
 #komozi_detail_link {
     padding: 2px 0 0 10px;
     color:#515151;
@@ -669,3 +722,28 @@ input[name="tab_item"] {
     color: #FF689D;
     text-decoration: underline;
 }
+
+#dakutenParts_detail_link {
+    padding: 2px 0 0 10px;
+    color:#515151;
+    text-decoration: underline;
+}
+
+#dakutenParts_detail_link:hover{
+    padding: 2px 0 0 10px;
+    color: #FF689D;
+    text-decoration: underline;
+}
+
+.purupuru {
+    animation: purupuru 0.8s linear 0s 1;
+  }
+  
+  @keyframes purupuru {
+    0%   { transform: scale(1.0, 1.0) translate(0%, 0%); }
+    20%  { transform: scale(1.0, 1.06) translate(-5%, -4%) skew(6deg, 0deg); }
+    50%  { transform: scale(1.0, 0.94) translate(5%, 4%) skew(-6deg, 0deg); }
+    65%  { transform: scale(1.0, 1.03) translate(2%, -2%) skew(-3deg, 0deg); }
+    80%  { transform: scale(1.0, 0.97) translate(-2%, 2%) skew(3deg, 0deg); }
+    100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
+  }

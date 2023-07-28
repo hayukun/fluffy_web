@@ -50,7 +50,7 @@ h5 {
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 /* スマートフォン用のスタイル */
@@ -160,6 +160,18 @@ input[type="password"] {
     /* font-size: large; */
     font-family: 'Arial', sans-serif;
 
+}
+
+textarea {
+    outline: none;
+    /* padding: 5px; */
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 5px #FF6CC4;
+    /* font-size: large; */
+    font-family: 'Arial', sans-serif;
 }
 
 .box-white {
@@ -281,14 +293,33 @@ input[type="password"] {
     width: 20.833333333333332vw;
 }
 
+/* 450px */
+.box-width450 {
+    width: 23.4375vw;
+}
+
 /* 500px */
 .box-width500 {
     width: 26.041666666666668vw;
 }
 
+/* 570px */
+.box-width570 {
+    width: 29.6875vw;
+}
+
 /* 600px */
 .box-width600 {
     width: 31.25vw;
+}
+/* 660px */
+.box-width660 {
+    width: 34.375vw;
+}
+
+/* 720px */
+.box-width720 {
+    width: 37.5vw;
 }
 
 .box-width850 {
@@ -363,7 +394,7 @@ input[type="password"] {
 }
 
 .margin-top-80 {
-    margin-top: 80px;
+    margin-top: 4.166666666666667vw;
 }
 
 .margin-top-70 {
@@ -371,7 +402,7 @@ input[type="password"] {
 }
 
 .margin-top-60 {
-    margin-top: 60px;
+    margin-top: 3.125vw;
 }
 
 .margin-top-50 {
@@ -379,11 +410,11 @@ input[type="password"] {
 }
 
 .margin-top-40 {
-    margin-top: 40px;
+    margin-top: 2.0833333333333335vw;
 }
 
 .margin-top-30 {
-    margin-top: 30px;
+    margin-top: 1.5625vw;
 }
 
 .margin-top-20 {
@@ -398,6 +429,10 @@ input[type="password"] {
     margin-top: 2%;
 }
 
+.margin-left-option {
+    margin-left: 7.8125vw;
+}
+
 .padding-2 {
     padding: 2px;
 }
@@ -409,7 +444,7 @@ input[type="password"] {
 
 .tag {
     display: inline-block;
-    padding: 0.10416666666666667vw 0.4em;
+    padding: 0.052083333333333336vw 0.4em;
     font-size: 0.833333vw;
     height: 50%;
     font-weight: bold;
@@ -532,6 +567,34 @@ a.cute-button:hover {
     display: flex;
     flex-flow: column;
     justify-content: center;
+    /* margin: 0 0 5px 0; */
+}
+
+.wrap_tate_flexStart {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    /* margin: 0 0 5px 0; */
+}
+
+.wrap_tate_flexEnd {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    /* margin: 0 0 5px 0; */
+}
+
+.wrap_tate_SpaceBetween {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    /* margin: 0 0 5px 0; */
+}
+
+.wrap_tate_SpaceAround {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
     /* margin: 0 0 5px 0; */
 }
 

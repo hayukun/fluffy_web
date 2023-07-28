@@ -175,11 +175,13 @@ function adjustTextSize() {
 
   if (viewExampleNickname.textContent.trim().length == 0 && viewExampleNametitle.textContent.trim().length == 0){
     nametitle_frame_Container.classList.add("hidden");
+    check_nametitle_frame = false;
   } else {
     nametitle_frame_Container.classList.remove("hidden");
   }
   if (viewExampleCatchphrase.textContent.trim().length == 0){
     catchphrase_frame_Container.classList.add("hidden");
+    check_catchphrase_frame = false;
   } else {
     catchphrase_frame_Container.classList.remove("hidden");
   }
