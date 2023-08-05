@@ -13,6 +13,7 @@ urlpatterns = [
     path('login/', views.LogInView, name='login'),
     path('order/FullOrder', views.FullOrderView, name='fullorder'),
     path('order/SemiOrder', views.SemiOrderView, name='semiorder'),
+    path('notes/', views.NotesView, name='notes'),
     
     path('', include("django.contrib.auth.urls")),
     path('signin/', views.SignInView.as_view(), name="signin"),

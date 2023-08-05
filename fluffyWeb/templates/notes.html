@@ -1,0 +1,71 @@
+<!-- templates/notes.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/custom_notes.css' %}">
+{% endblock script %}
+{% block main %}
+<div class="container-main">
+    <div style="text-align: center;">
+        <!-- ノートトップ -->
+        <div class="margin-top-100">
+            <div>
+                <img src="/static/images/notes/title/main_title/NOTES.png" class="margin-top-100 page_title">
+            </div>
+            <div class="bg-notes-yellow margin-top-100"
+                style="display: flex; justify-content: center; flex-direction: row; align-items: center; text-align: center; margin-left:15%; margin-right: 15%; margin-bottom: 5.208333333333333vw;">
+                <div class=" margin-top-50" style="display: flex; justify-content: flex-start; flex-direction: column; text-align: left; margin-bottom: 2.6041666666666668vw;">
+                    <div style="display: flex; flex-direction: row; justify-content: center;">
+                        <h3 class="coolfont" style="text-align: center; border-bottom: 2px solid rgb(60, 60, 60);">ご利用にあたっての注意事項</h3>
+                    </div>
+                    <h4 class="jkfont margin-top-70" style="font-weight: bold;">＜はじめに＞</h4>
+                    <h4 class="jkfont margin-top-10">注文確定後の無言キャンセルは大変迷惑ですので<br>最後まで責任をもって取引できる方のみオーダーをお願いします。<br>
+                        気になる点がございましたら必ずオーダー前にお申し付けください。<br>
+                        一つ一つ丁寧に心を込めて製作をしていますが<br>あくまでハンドメイドですので完璧を求める方や神経質である方は<br>
+                        トラブルにつながる可能性がありますので<br>恐れ入りますが購入を控えて頂くようお願い致します。
+                    </h4>
+
+                    <h4 class="jkfont margin-top-30" style="font-weight: bold;">＜付属品＞</h4>
+                    <h4 class="jkfont margin-top-10">文字パネル本体<br>
+                        ※うちわ・ボード本体は付属品ではありませんので各自ご用意お願い致します。
+                    </h4>
+                    <h4 class="jkfont margin-top-30" style="font-weight: bold;">＜作品＞</h4>
+                    <h4 class="jkfont margin-top-10">プロ用カッティングマシンを使用しています。<br>
+                        貼り付けは全て手作業で行いますので<br>素材によっては多少の不具合が見受けられる場合がございます。<br>
+                        細心の注意を払うよう努めていますが<br>気になる方は画用紙選択をおすすめします。<br>
+                        パネルサイズによってはシートを繋ぎ合わせて使用する場合がございますが予めご了承ください。
+                    </h4>
+                    <h4 class="jkfont margin-top-30" style="font-weight: bold;">＜文字パネル＞</h4>
+                    <h4 class="jkfont margin-top-10">連結パネルの場合、画用紙選択不可＋文字パネル補強必須<br>
+                        横幅30cm以上の場合、折りたたみ加工有で仕上げますので<br>加工無し希望の方は必ず“ご注文確定前”にお伝えください。
+                    </h4>
+                    <h4 class="jkfont margin-top-30" style="font-weight: bold;">＜デザインの変更＞</h4>
+                    <h4 class="jkfont margin-top-10">製作ミスに繋がる恐れのあるものはトラブル防止のため購入後の内容変更不可
+                    </h4>
+                    <h4 class="jkfont margin-top-30" style="font-weight: bold;">＜素材＞</h4>
+                    <h4 class="jkfont margin-top-10">画用紙以外全てヨレ・キズ・気泡が入りやすい素材となりますので予めご了承ください。<br>
+                        ホログラム等特殊な素材に関しては生産される段階にて<br>ライン線が入る場合がございますがこちらは不良品ではありません。<br>
+                        色サンプルはなるべく肉眼で見た時と近づけるよう心がけましたが<br>光の反射等により実際と見え方に誤差が生じる場合や<br>
+                        お持ちのスマートフォンやパソコンによっても多少の誤差が生じる場合が御座います。<br>
+                        予めご了承ください。
+                    </h4>
+                    <h4 class="jkfont margin-top-30" style="font-weight: bold;">＜納品発送＞</h4>
+                    <h4 class="jkfont margin-top-10">通常⇒入金確認から発送されるまでの期間は約3週間～1ヶ月となります。<br>
+                        お急ぎ作成を利用される方は最短即日発送可能です。<br>
+                        即日～48時間以内⇒速達項目必須です。<br>
+                        お急ぎ作成はあくまで納品期間を確約するものでありお届け日を確約するものではございません。<br>
+                        不安な方は“速達郵便”を選択お願いします。
+                    </h4>
+                    <h4 class="jkfont margin-top-30" style="font-weight: bold;">＜サンプル＞</h4>
+                    <h4 class="jkfont margin-top-10">入金確認後順次サンプルをお渡しさせて頂きます。
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock main %}
