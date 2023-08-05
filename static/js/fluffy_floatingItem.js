@@ -1,3 +1,18 @@
+const cartNicknameForColors = document.getElementById('cart_item6-2');
+const cartNicknameForColors_name = document.getElementById('cart_item6-2_name');
+const cartNicknameForColors_price = document.getElementById('cart_item6-2_price');
+const cartNicknameForColors_multiple = document.getElementById('cart_item6-2_multiple');
+
+const cartNametitleForColors = document.getElementById('cart_item6-3');
+const cartNametitleForColors_name = document.getElementById('cart_item6-3_name');
+const cartNametitleForColors_price = document.getElementById('cart_item6-3_price');
+const cartNametitleForColors_multiple = document.getElementById('cart_item6-3_multiple');
+
+const cartCatchphraseForColors = document.getElementById('cart_item6-4');
+const cartCatchphraseForColors_name = document.getElementById('cart_item6-4_name');
+const cartCatchphraseForColors_price = document.getElementById('cart_item6-4_price');
+const cartCatchphraseForColors_multiple = document.getElementById('cart_item6-4_multiple');
+
 const buttonDeleteColorItem1 = document.getElementById('delete_color_1');
 const buttonDeleteColorItem2 = document.getElementById('delete_color_2');
 const buttonDeleteColorItem3 = document.getElementById('delete_color_3');
@@ -11,14 +26,15 @@ const summary_price = document.getElementById('cart_summary_price');
 const list_cartPriceList = ['cart_item1_price', 'cart_item2_price', 'cart_item3_price', 'cart_itemChara_price', 'cart_item4_price',
     'cart_item5-1-1_price', 'cart_item5-1-2_price', 'cart_item5-1-3_price', 'cart_item5-1-4_price', 'cart_item5-1-5_price', 'cart_item5-1-6_price', 'cart_item5-2_price', 'cart_item5-2_inputUserPartsSet_price',
     'cart_item5-3-1_price', 'cart_item5-3-2_price', 'cart_item5-3-3_price', 'cart_item5-4_price', 'cart_item5-5-1_price', 'cart_item5-5-2_price',
-    'cart_item5-5-3_price', 'cart_item5-5-4_price', 'cart_item5-5-5_price', 'cart_item5-5-6_price', 'cart_item5-18_price', 'cart_item5-19_price',
-    'cart_item5-20_price', 'cart_item6-1_price', 'cart_item6-2_price', 'cart_item6-3_price', 'cart_item6-4_price', 'cart_item7-1_price', 'cart_item7-2_price', 'cart_item8-1_price','cart_item8-2_price','cart_item8-3_price','cart_item8-4_price','cart_item8-5_price',];
+    'cart_item5-5-3_price', 'cart_item5-5-4_price', 'cart_item5-5-5_price', 'cart_item5-5-6_price',
+    'cart_item6-1_price', 'cart_item6-2_price', 'cart_item6-3_price', 'cart_item6-4_price', 'cart_item7-1_price', 'cart_item7-2_price', 'cart_item8-1_price', 'cart_item8-2_price', 'cart_item8-3_price', 'cart_item8-4_price', 'cart_item8-5_price'];
 
 const container = document.getElementById("touchable_text");
 const container_paletteDecoMain = document.getElementById("palette_DecoMain");
 container.addEventListener("click", placeImage);
 var user_decoList = [];
 var user_decoListOnlyOne = [];
+var user_docoListOnlyOneControllMap = new Map([]);
 var user_decoALLList = [];
 const cancelPutImage = document.getElementById('cancelPutImage');
 
@@ -72,11 +88,50 @@ const map_partsName = new Map([
     ['select5_decoParts2-8-10', 'クマ耳セット3'],
 ]);
 
+const list_cartNameAndPrice = [
+    ['cart_item1_name', 'cart_item1_price', 'cart_item1_extText'],
+    ['cart_item2_name', 'cart_item2_price'],
+    ['cart_item3_name', 'cart_item3_price'],
+    ['cart_itemChara_name', 'cart_itemChara_price'],
+    ['cart_item4_name', 'cart_item4_price', 'cart_item4_smallFontText', 'cart_item4_extText'],
+    ['cart_item5-1-1_name', 'cart_item5-1-1_price'],
+    ['cart_item5-1-2_name', 'cart_item5-1-2_price', 'cart_item5-1-2_extText'],
+    ['cart_item5-1-3_name', 'cart_item5-1-3_price', 'cart_item5-1-3_extText'],
+    ['cart_item5-1-4_name', 'cart_item5-1-4_price', 'cart_item5-1-4_extText'],
+    ['cart_item5-1-5_name', 'cart_item5-1-5_price', 'cart_item5-1-5_extText'],
+    ['cart_item5-1-6_name', 'cart_item5-1-6_price'],
+    ['cart_item5-2_PartsName', 'cart_item5-2_PartsSetName', 'cart_item5-2_price'],
+    ['cart_item5-2_inputUserParts'],
+    ['cart_item5-2_inputUserPartsSet', 'cart_item5-2_inputUserPartsSet_extText', 'cart_item5-2_inputUserPartsSet_price'],
+    ['cart_item5-3-1_name', 'cart_item5-3-1_price'],
+    ['cart_item5-3-2_name', 'cart_item5-3-2_price'],
+    ['cart_item5-3-3_name', 'cart_item5-3-3_price'],
+    ['cart_item5-4_name', 'cart_item5-4_price'],
+    ['cart_item5-5-1_name', 'cart_item5-5-1_price', 'cart_item5-5-1_extText'],
+    ['cart_item5-5-2_name', 'cart_item5-5-2_price', 'cart_item5-5-2_extText'],
+    ['cart_item5-5-3_name', 'cart_item5-5-3_price', 'cart_item5-5-3_extText'],
+    ['cart_item5-5-4_name', 'cart_item5-5-4_price'],
+    ['cart_item5-5-5_name', 'cart_item5-5-5_price'],
+    ['cart_item5-5-6_name', 'cart_item5-5-6_price', 'cart_item5-5-6_extText'],
+    ['cart_item6-1_name', 'cart_item6-1_price'],
+    ['cart_item6-2_name', 'cart_item6-2_price'],
+    ['cart_item6-3_name', 'cart_item6-3_price'],
+    ['cart_item6-4_name', 'cart_item6-4_price'],
+    ['cart_item7-1_name', 'cart_item7-1_price'],
+    ['cart_item7-2_name', 'cart_item7-2_price'],
+    ['cart_item8-1_name', 'cart_item8-1_price'],
+    ['cart_item8-2_name', 'cart_item8-2_price'],
+    ['cart_item8-3_name', 'cart_item8-3_price'],
+    ['cart_item8-4_name', 'cart_item8-4_price'],
+    ['cart_item8-5_name', 'cart_item8-5_price'],
+    ['cart_summary_price'],
+];
 
 // パレットに画像置く
 function placeImage(event) {
 
     selectedPaletteImage = '';
+    parentDivID = '';
     var isOnlyOne = false;
     images.forEach(function (otherImage) { // すべての画像をループ
         if (otherImage.classList.contains("selected_5_decoParts")) { // 現在選択されているパレットImageを検索
@@ -85,6 +140,7 @@ function placeImage(event) {
             } else {
                 selectedPaletteImage = otherImage;
                 if (otherImage.classList.contains("select5_decoPartsOnlyOneSelectionDivided")) {
+                    parentDivID = otherImage.parentElement.id;
                     isOnlyOne = true;
                 }
             }
@@ -121,7 +177,6 @@ function placeImage(event) {
                 calcDecoPartsAddPrice(copiedPartsImage, setID);
                 copiedPartsImage.id = setID;
                 container.appendChild(copiedPartsImage);
-                // console.log("x:" + x + ", y:" + y);
 
             } else {
                 cancelPutImage.style.display = 'block';
@@ -134,6 +189,13 @@ function placeImage(event) {
                 copiedPartsImage.id = setID;
                 container.appendChild(copiedPartsImage);
                 window.user_decoALLList.push(setID);
+                window.user_docoListOnlyOneControllMap.set(setID, parentDivID);
+                selectedPaletteImage.classList.remove('select5_decoPartsOnlyOneSelectionDivided');
+                selectedPaletteImage.classList.remove('selected_5_decoParts');
+                selectedPaletteImage.style.border = "";
+                selectedPaletteImage.parentElement.classList.remove("box-round45");
+                selectedPaletteImage.parentElement.classList.add("box-round45-grayed-out");
+                wmouse.src = "";
             }
         }
 
@@ -148,6 +210,8 @@ function placeImage(event) {
         console.log(user_decoList);
         console.log("Only");
         console.log(user_decoListOnlyOne);
+        console.log("OnlyMap");
+        console.log(user_docoListOnlyOneControllMap);
         console.log("---------------------");
 
     }
@@ -261,73 +325,76 @@ function calcDecoPartsAddPrice(image, setID) {
 
 function customUserImage(image) {
     lastUserImageID = user_decoALLList.slice(-1)[0];
-    customImage = document.getElementById(lastUserImageID);
-    if (customImage.classList.contains("isOnlyOne")) {
-        if (image.id == 'changeSize_S') {
-            customImage.classList.remove('decoPreviewImageNormal');
-            customImage.classList.remove('decoPreviewImageSmall');
-            customImage.classList.remove('decoPreviewImageLarge');
-            customImage.classList.remove('decoPreviewImageXLarge');
-            customImage.classList.add('decoPreviewImageNormal');
-        } else if (image.id == 'changeSize_M') {
-            customImage.classList.remove('decoPreviewImageNormal');
-            customImage.classList.remove('decoPreviewImageSmall');
-            customImage.classList.remove('decoPreviewImageLarge');
-            customImage.classList.remove('decoPreviewImageXLarge');
-            customImage.classList.add('decoPreviewImageLarge');
-        } else if (image.id == 'changeSize_L') {
-            customImage.classList.remove('decoPreviewImageNormal');
-            customImage.classList.remove('decoPreviewImageSmall');
-            customImage.classList.remove('decoPreviewImageLarge');
-            customImage.classList.remove('decoPreviewImageXLarge');
-            customImage.classList.add('decoPreviewImageXLarge');
+    if (lastUserImageID !== undefined){
+        customImage = document.getElementById(lastUserImageID);
+        if (customImage.classList.contains("isOnlyOne")) {
+            if (image.id == 'changeSize_S') {
+                customImage.classList.remove('decoPreviewImageNormal');
+                customImage.classList.remove('decoPreviewImageSmall');
+                customImage.classList.remove('decoPreviewImageLarge');
+                customImage.classList.remove('decoPreviewImageXLarge');
+                customImage.classList.add('decoPreviewImageNormal');
+            } else if (image.id == 'changeSize_M') {
+                customImage.classList.remove('decoPreviewImageNormal');
+                customImage.classList.remove('decoPreviewImageSmall');
+                customImage.classList.remove('decoPreviewImageLarge');
+                customImage.classList.remove('decoPreviewImageXLarge');
+                customImage.classList.add('decoPreviewImageLarge');
+            } else if (image.id == 'changeSize_L') {
+                customImage.classList.remove('decoPreviewImageNormal');
+                customImage.classList.remove('decoPreviewImageSmall');
+                customImage.classList.remove('decoPreviewImageLarge');
+                customImage.classList.remove('decoPreviewImageXLarge');
+                customImage.classList.add('decoPreviewImageXLarge');
+            } else {
+                ;
+            }
+
+        } else {
+            if (image.id == 'changeSize_S') {
+                customImage.classList.remove('decoPreviewImageNormal');
+                customImage.classList.remove('decoPreviewImageSmall');
+                customImage.classList.remove('decoPreviewImageLarge');
+                customImage.classList.add('decoPreviewImageSmall');
+            } else if (image.id == 'changeSize_M') {
+                customImage.classList.remove('decoPreviewImageNormal');
+                customImage.classList.remove('decoPreviewImageSmall');
+                customImage.classList.remove('decoPreviewImageLarge');
+                customImage.classList.add('decoPreviewImageNormal');
+            } else if (image.id == 'changeSize_L') {
+                customImage.classList.remove('decoPreviewImageNormal');
+                customImage.classList.remove('decoPreviewImageSmall');
+                customImage.classList.remove('decoPreviewImageLarge');
+                customImage.classList.add('decoPreviewImageLarge');
+            } else {
+                ;
+            }
+
+        }
+
+        const currentRotation = parseInt(customImage.dataset.rotation) || 0;
+        var newRotation = currentRotation;
+        if (image.id == 'changeRotate_right') {
+            newRotation += 15;
+            if (newRotation == 360) {
+                newRotation = 0;
+            }
+
+            customImage.dataset.rotation = newRotation;
+            customImage.style.transform = `rotate(${newRotation}deg) translate(-50%, -50%)`;
+        } else if (image.id == 'changeRotate_left') {
+            newRotation += -15;
+            if (newRotation == -360) {
+                newRotation = 0;
+            }
+
+            customImage.dataset.rotation = newRotation;
+            customImage.style.transform = `rotate(${newRotation}deg) translate(-50%, -50%)`;
         } else {
             ;
         }
-
-    } else {
-        if (image.id == 'changeSize_S') {
-            customImage.classList.remove('decoPreviewImageNormal');
-            customImage.classList.remove('decoPreviewImageSmall');
-            customImage.classList.remove('decoPreviewImageLarge');
-            customImage.classList.add('decoPreviewImageSmall');
-        } else if (image.id == 'changeSize_M') {
-            customImage.classList.remove('decoPreviewImageNormal');
-            customImage.classList.remove('decoPreviewImageSmall');
-            customImage.classList.remove('decoPreviewImageLarge');
-            customImage.classList.add('decoPreviewImageNormal');
-        } else if (image.id == 'changeSize_L') {
-            customImage.classList.remove('decoPreviewImageNormal');
-            customImage.classList.remove('decoPreviewImageSmall');
-            customImage.classList.remove('decoPreviewImageLarge');
-            customImage.classList.add('decoPreviewImageLarge');
-        } else {
-            ;
-        }
-
     }
-
-    const currentRotation = parseInt(customImage.dataset.rotation) || 0;
-    var newRotation = currentRotation;
-    if (image.id == 'changeRotate_right') {
-        newRotation += 15;
-        if (newRotation == 360) {
-            newRotation = 0;
-        }
-
-        customImage.dataset.rotation = newRotation;
-        customImage.style.transform = `rotate(${newRotation}deg) translate(-50%, -50%)`;
-    } else if (image.id == 'changeRotate_left') {
-        newRotation += -15;
-        if (newRotation == -360) {
-            newRotation = 0;
-        }
-
-        customImage.dataset.rotation = newRotation;
-        customImage.style.transform = `rotate(${newRotation}deg) translate(-50%, -50%)`;
-    } else {
-        ;
-    }
+        
 }
 
 // フロート機能(カート、パレットなど)
@@ -479,6 +546,12 @@ function resetAllCartItem() {
     document.getElementById("cart_item5-5-6_name").textContent = "";
     document.getElementById("cart_item5-5-6_price").textContent = "";
     document.getElementById('fuwadeco_on').checked = false;
+
+    resetHiddenCart(cartItem6_1, cartItem6_1Name, cartItem6_1Price);
+    resetHiddenCart(cartItem6_2, cartItem6_2Name, cartItem6_2Price);
+    resetHiddenCart(cartItem6_3, cartItem6_3Name, cartItem6_3Price);
+    resetHiddenCart(cartItem6_4, cartItem6_4Name, cartItem6_4Price);
+    cartItem6_1multiple.textContent = '';
 
     resetHiddenCart(cartItem7_1, cartItem7_1Name, cartItem7_1Price);
     resetHiddenCart(cartItem7_2, cartItem7_2Name, cartItem7_2Price);
@@ -689,6 +762,27 @@ function addImageToPalette(paletteObj, addImageClass, image) {
     paletteObj.appendChild(copiedImage);
 }
 
+// モーダル画像追加関数 (オブジェクト, 追加クラス名, 画像)
+function addImageToModal(modalObj, addImageClass, image) {
+    const copiedImage = image.cloneNode(true);
+
+    for (const [key, value] of map_nightSingleImage) {
+        if (key === copiedImage.id) {
+            copiedImage.src = value;
+            copiedImage.classList.remove("box-width200");
+            copiedImage.classList.add("box-width100");
+            break;
+        }
+    }
+    copiedImage.removeAttribute('id');
+    copiedImage.classList.add(addImageClass);
+    copiedImage.classList.remove("margin-top-10");
+    copiedImage.classList.remove("select6");
+    copiedImage.style.border = "";
+    copiedImage.style.display = "block";
+    modalObj.appendChild(copiedImage);
+}
+
 
 function deleteColorItem() {
     images.forEach(function (image) { // 全イメージ画像ループ
@@ -803,6 +897,12 @@ function deleteUserDecoImage() {
         } else {
             if (image) {
                 image.parentElement.removeChild(image);
+                revivalDiv = document.getElementById(window.user_docoListOnlyOneControllMap.get(user_decoListOnlyOne.slice(-1)[0]));
+                revivalDiv.classList.remove("box-round45-grayed-out");
+                revivalDiv.classList.add("box-round45");
+                revivalImg = revivalDiv.getElementsByTagName('img')[0];
+                revivalImg.classList.add('select5_decoPartsOnlyOneSelectionDivided');
+                window.user_docoListOnlyOneControllMap.delete(user_decoListOnlyOne.slice(-1)[0]);
                 window.user_decoListOnlyOne.pop();
                 isDeleted = true;
             }
@@ -838,6 +938,14 @@ function deleteUserDecoAllImage() {
     }
 
     window.user_decoListOnlyOne = [];
+    for (const [key, value] of window.user_docoListOnlyOneControllMap) {
+        revivalDiv = document.getElementById(value);
+        revivalDiv.classList.remove("box-round45-grayed-out");
+        revivalDiv.classList.add("box-round45");
+        revivalImg = revivalDiv.getElementsByTagName('img')[0];
+        revivalImg.classList.add('select5_decoPartsOnlyOneSelectionDivided');
+    }
+    window.user_docoListOnlyOneControllMap.clear();
     console.log("deleted" + window.user_decoListOnlyOne);
 
     console.log("---------------------");
@@ -867,9 +975,18 @@ function resetAllImages() {
         }
     }
 
+    for (const [key, value] of window.user_docoListOnlyOneControllMap) {
+        revivalDiv = document.getElementById(value);
+        revivalDiv.classList.remove("box-round45-grayed-out");
+        revivalDiv.classList.add("box-round45");
+        revivalImg = revivalDiv.getElementsByTagName('img')[0];
+        revivalImg.classList.add('select5_decoPartsOnlyOneSelectionDivided');
+    }
+
     window.user_decoListOnlyOne = [];
     window.user_decoALLList = [];
     window.user_decoList = [];
+    window.user_docoListOnlyOneControllMap.clear();
 }
 
 
@@ -877,6 +994,7 @@ function resetAllImages() {
 function updateSummaryPrice() {
     let sum = 0;
     list_cartPriceList.forEach(function (priceDivID) {
+        console.log(priceDivID);
         let price = document.getElementById(priceDivID).textContent;
         if (price != '') {
             sum += parseInt(document.getElementById(priceDivID).textContent);
@@ -905,6 +1023,7 @@ document.getElementById("dakutenParts_detail_link").addEventListener("click", fu
 
 buttonCloseDetailKomozi.addEventListener('click', function () { modalClose(modalDetailKomozi); });
 buttonCloseDetailDakutenParts.addEventListener('click', function () { modalClose(modalDetailDakuten); });
+buttonCloseOrderConfirm.addEventListener('click', function () { modalClose(modalOrderConfirm); });
 
 buttonDeleteColorItem1.addEventListener('click', deleteColorItem);
 buttonDeleteColorItem2.addEventListener('click', deleteColorItem);

@@ -425,9 +425,11 @@ const buttonOpen4 = document.getElementById('set_colorsToCart_4');
 const modalPalette = document.getElementById('easyModal');
 const modalDetailKomozi = document.getElementById('easyModalofKomoziDetail');
 const modalDetailDakuten = document.getElementById('easyModalofDakutenParts');
+const modalOrderConfirm = document.getElementById('easyModalofOrderConfirm');
 const buttonClose = document.getElementsByClassName('modalClose')[0];
 const buttonCloseDetailKomozi = document.getElementsByClassName('modalClose')[1];
 const buttonCloseDetailDakutenParts = document.getElementsByClassName('modalClose')[2];
+const buttonCloseOrderConfirm = document.getElementsByClassName('modalClose')[3];
 const buttonInsertColorsIntoCart = document.getElementById('btnInsertColorsIntoCart');
 // const buttonOpenColorRanking = document.getElementById('openColorRanking');
 const colorRanking = document.getElementById('colorRanking');
@@ -525,11 +527,6 @@ async function handleImageSelection1(image) {
       }
     });
 
-    resetHiddenCart(cartItem6_1, cartItem6_1Name, cartItem6_1Price);
-    resetHiddenCart(cartItem6_2, cartItem6_2Name, cartItem6_2Price);
-    resetHiddenCart(cartItem6_3, cartItem6_3Name, cartItem6_3Price);
-    resetHiddenCart(cartItem6_4, cartItem6_4Name, cartItem6_4Price);
-    cartItem6_1multiple.textContent = '';
     deleteAllColorItems();
     resetAllImages();
     resetAllCartItem();
@@ -935,6 +932,7 @@ function initializeCharactorSet() {
   smallCharaInputForm.style.display = 'none';
   cartItemCharaName.textContent = "";
   cartItemCharaPrice.textContent = "";
+  adjustTextSize();
 }
 
 //　フォント
@@ -969,29 +967,165 @@ function handleImageSelection4(image) {
   }
 }
 
+function scrollToDiv(elementId) {
+  const targetElement = document.getElementById(elementId);
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function isDivEmpty(elementId) {
+  const divElement = document.getElementById(elementId);
+  if (divElement && divElement.innerHTML.trim() === '') {
+    return true; // div要素が空の場合
+  } else {
+    return false; // div要素が空でない場合
+  }
+}
+
 function nextStepTo2nd(event) {
   event.preventDefault();
-  fullorder2ndStepContainer.classList.remove("hidden");
-  fullorder2ndStepContainer.classList.add("flexColumnFlexStart");
-  fullorder1stStepContainer.classList.add("hidden");
-  fullorder1stStepContainer.classList.remove("flexColumnFlexStart");
+  var scrollDiv = 'fullorderTop';
+  isNextPage = true;
 
-  nextStepTo2ndButton.classList.add("hidden");
-  backStepTo1stButton.classList.remove("hidden");
-  location.href = '#fullorderTop';
-  controll_step = '2nd';
+  if (isDivEmpty('cart_item3')) {
+    scrollDiv = 'step3';
+    document.getElementById('step3Warning').classList.remove("hidden");
+    isNextPage = false;
+  } else {
+    document.getElementById('step3Warning').classList.add("hidden");
+  }
+
+  if (isDivEmpty('cart_item2')) {
+    scrollDiv = 'step2';
+    document.getElementById('step2Warning').classList.remove("hidden");
+    isNextPage = false;
+  } else {
+    document.getElementById('step2Warning').classList.add("hidden");
+  }
+
+  if (isDivEmpty('cart_item1')) {
+    scrollDiv = 'step1';
+    document.getElementById('step1Warning').classList.remove("hidden");
+    isNextPage = false;
+  } else {
+    document.getElementById('step1Warning').classList.add("hidden");
+  }
+
+  if (isNextPage) {
+    fullorder2ndStepContainer.classList.remove("hidden");
+    fullorder2ndStepContainer.classList.add("flexColumnFlexStart");
+    fullorder1stStepContainer.classList.add("hidden");
+    fullorder1stStepContainer.classList.remove("flexColumnFlexStart");
+
+    nextStepTo2ndButton.classList.add("hidden");
+    backStepTo1stButton.classList.remove("hidden");
+
+    scrollDiv = 'fullorderTop';
+    controll_step = '2nd';
+
+  }
+  scrollToDiv(scrollDiv);
 }
 
 function nextStepTo3rd(event) {
   event.preventDefault();
+  var scrollDiv = 'fullorderTop';
+  isNextPage = true;
+  
+  if (window.user_decoListOnlyOne.length < currentPartsSetLength) {
+    scrollDiv = 'step5_Parts';
+    document.getElementById('step5_PartsWarning').classList.remove("hidden");
+    isNextPage = false;
+  } else {
+    document.getElementById('step5_PartsWarning').classList.add("hidden");
+  }
+  if (document.getElementById('dakutenSelectionMenu')) {
+    if (document.getElementById('dakutenSelectionMenu').value == ''){
+      scrollDiv = 'step5';
+      document.getElementById('step5Warning').classList.remove("hidden");
+      isNextPage = false;
+    } else {
+      if (isNextPage){
+        document.getElementById('step5Warning').classList.add("hidden");
+      }
+    }
+  } else {
+    ;
+  }
 
-  fullorder3rdStepContainer.classList.remove("hidden");
-  fullorder3rdStepContainer.classList.add("flexColumnFlexStart");
-  fullorder2ndStepContainer.classList.add("hidden");
-  fullorder2ndStepContainer.classList.remove("flexColumnFlexStart");
+  if (document.getElementById('maruKatanukiSelectionMenu')) {
+    if (document.getElementById('maruKatanukiSelectionMenu').value == ''){
+      scrollDiv = 'step5';
+      document.getElementById('step5Warning').classList.remove("hidden");
+      isNextPage = false;
+    } else {
+      if (isNextPage){
+        document.getElementById('step5Warning').classList.add("hidden");
+      }
+    }
+  } else {
+    ;
+  }
 
-  nextStepTo3rdButton.classList.add("hidden");
-  backStepTo2ndButton.classList.remove("hidden");
+  if (partsKatanukiDecoDiv.classList.contains('hidden')) {
+    ;
+  } else {
+    if (input_partsKatanuki.value == ''){
+      scrollDiv = 'step5';
+      document.getElementById('step5Warning').classList.remove("hidden");
+      isNextPage = false;
+    } else {
+      if (isNextPage){
+        document.getElementById('step5Warning').classList.add("hidden");
+      }
+    }
+  }
+
+  if (charaKatanukiDecoDiv.classList.contains('hidden')) {
+    ;
+  } else {
+    if (input_charaKatanuki.value == ''){
+      scrollDiv = 'step5';
+      document.getElementById('step5Warning').classList.remove("hidden");
+      isNextPage = false;
+    } else {
+      if (isNextPage){
+        document.getElementById('step5Warning').classList.add("hidden");
+      }
+    }
+  }
+
+  if (isDivEmpty('cart_item4')) {
+    scrollDiv = 'step4';
+    document.getElementById('step4Warning').classList.remove("hidden");
+    isNextPage = false;
+  } else {
+    document.getElementById('step4Warning').classList.add("hidden");
+  }
+
+  if (viewExampleName1.textContent == '') {
+    scrollDiv = 'stepChara';
+    document.getElementById('stepCharaWarning').classList.remove("hidden");
+    isNextPage = false;
+  } else {
+    document.getElementById('stepCharaWarning').classList.add("hidden");
+  }
+
+
+  if (isNextPage) {
+    fullorder3rdStepContainer.classList.remove("hidden");
+    fullorder3rdStepContainer.classList.add("flexColumnFlexStart");
+    fullorder2ndStepContainer.classList.add("hidden");
+    fullorder2ndStepContainer.classList.remove("flexColumnFlexStart");
+
+    nextStepTo3rdButton.classList.add("hidden");
+    backStepTo2ndButton.classList.remove("hidden");
+
+    scrollDiv = 'fullorderTop';
+    controll_step = '3rd';
+
+  }
 
   images.forEach(function (otherImage) {
     if (otherImage.classList.contains("select5_decoParts")) {
@@ -1001,24 +1135,77 @@ function nextStepTo3rd(event) {
   });
   //images = document.querySelectorAll("img");
   wmouse.src = "";
-  location.href = '#fullorderTop';
-  controll_step = '3rd';
+
+  // console.log(scrollDiv);
+  scrollToDiv(scrollDiv);
 }
 
 function nextStepTo4th(event) {
   event.preventDefault();
 
-  fullorder4thStepContainer.classList.remove("hidden");
-  fullorder4thStepContainer.classList.add("flexColumnFlexStart");
-  fullorder3rdStepContainer.classList.add("hidden");
-  fullorder3rdStepContainer.classList.remove("flexColumnFlexStart");
+  var scrollDiv = 'fullorderTop';
+  isNextPage = true;
 
-  nextStepTo4thButton.classList.add("hidden");
-  backStepTo3rdButton.classList.remove("hidden");
+  if(document.getElementById('cart_item6-1').querySelector('img')){
+    document.getElementById('step6WarningName').classList.add("hidden");
+  } else {
+    console.log("名前の色を選択してません");
+    document.getElementById('step6WarningName').classList.remove("hidden");
+    isNextPage = false;
+  }
+
+  if (labelNickname.style.display == 'none'){
+    ;
+  } else {
+    if(document.getElementById('cart_item6-2').querySelector('img')){
+      document.getElementById('step6WarningNickname').classList.add("hidden");
+    } else {
+      console.log("名称の色を選択してません");
+      document.getElementById('step6WarningNickname').classList.remove("hidden");
+      isNextPage = false;
+    }
+  }
+
+  if (labelNametitle.style.display == 'none'){
+    ;
+  } else {
+    if(document.getElementById('cart_item6-3').querySelector('img')){
+      document.getElementById('step6WarningNametitle').classList.add("hidden");
+    } else {
+      console.log("敬称の色を選択してません");
+      document.getElementById('step6WarningNametitle').classList.remove("hidden");
+      isNextPage = false;
+    }
+  }
+
+  if (labelCatchphrase.style.display == 'none'){
+    ;
+  } else {
+    if(document.getElementById('cart_item6-4').querySelector('img')){
+      document.getElementById('step6WarningCatchphrase').classList.add("hidden");
+    } else {
+      console.log("キャッチフレーズの色を選択してません");
+      document.getElementById('step6WarningCatchphrase').classList.remove("hidden");
+      isNextPage = false;
+    }
+  }
 
   //images = document.querySelectorAll("img");
-  location.href = '#fullorderTop';
-  controll_step = '4th';
+  if (isNextPage) {
+    fullorder4thStepContainer.classList.remove("hidden");
+    fullorder4thStepContainer.classList.add("flexColumnFlexStart");
+    fullorder3rdStepContainer.classList.add("hidden");
+    fullorder3rdStepContainer.classList.remove("flexColumnFlexStart");
+  
+    nextStepTo4thButton.classList.add("hidden");
+    backStepTo3rdButton.classList.remove("hidden");
+
+    scrollDiv = 'fullorderTop';
+    controll_step = '4th';
+  }
+
+  scrollToDiv(scrollDiv);
+  
 }
 
 function backStepTo1st(event) {
@@ -1068,6 +1255,31 @@ function backStepTo3rd(event) {
   controll_step = '3rd';
 }
 
+const modalOrderDetails = document.getElementById('modal-order-details');
+function orderConfirm(event) {
+  event.preventDefault();
+  modalOrderDetails.textContent = '';
+  modalOrderConfirm.style.display = 'block';
+
+  updateSummaryPrice();
+  for (cartlist of list_cartNameAndPrice) {
+    newParagraph = document.createElement('p');
+    insert_string = '';
+    for (cartContent of cartlist){
+      if (insert_string == ''){
+        insert_string = document.getElementById(cartContent).textContent;
+      } else {
+        insert_string = insert_string + ' ' + document.getElementById(cartContent).textContent;
+      }
+    }
+    if (insert_string != ''){
+      newParagraph.textContent = insert_string;
+      modalOrderDetails.appendChild(newParagraph);
+    }
+  }
+
+}
+
 // パレット
 function handleImageSelection6_palette(image) {
   if (image.classList.contains("selected_6_palette")) { // クリックした画像がすでに選択されている場合
@@ -1099,6 +1311,7 @@ function handleImageSelection6(image) {
     }
   });
 
+  // CHECK 20230802
   sourcePath = image.src;
   if (selectedPaletteImage != '') {
 
@@ -1178,6 +1391,7 @@ function handleImageSelection5OnlyOneSelection(image5) {
     if (divElement) {
       divElement.remove();
     }
+    currentPartsSetLength = 0;
     deleteUserDecoAllImage();
     cancelPartsSet();
   } else {  // クリックした画像が未選択状態の場合
@@ -1199,12 +1413,15 @@ function handleImageSelection5OnlyOneSelection(image5) {
     var divParentElem = document.createElement("div");
     divParentElem.id = 'decoPartsOnlyOneSelectionDiv';
 
+    var count = 0;
     for (const [key, value] of map_dividedParts) {
       if (key == image5.id) {
         currentPartsSetLength = value.length;
         for (let str of value) {
           var divImage = createDivRoundImage('/static/images/fullorder/order_buttons/deco/sample/parts_divided/' + str);
+          divImage.id = 'select5_decoPartsOnlyOneSelectionDivided_' + count;
           divParentElem.appendChild(divImage);
+          count = count + 1;
         }
       }
     }
@@ -1623,7 +1840,9 @@ function initializeImageSelection() {
       title2.classList.toggle("selected_1", element === title2);
 
       initializeCharactorSet();
-      resetImageSelection3combo();
+      deleteAllColorItems();
+      resetAllImages();
+      resetAllCartItem();
       UchiwaOrBoardGrayedOut();
       createPreview();
       callback();
@@ -2052,12 +2271,15 @@ function modalOpen(start_mapAttr, end_mapAttr, cartID) {
     if (key === start_mapAttr) {
       is_Insert = true;
       if (value == '') {
-        warning2.style.display = 'block';
+        warning_palette1.style.display = 'block';
+        warning_palette2.style.display = 'block';
+        warning_palette3.style.display = 'block';
+        warning_palette4.style.display = 'block';
         is_gotoModal = false;
       }
     } else if (key === end_mapAttr) {
       if (value != '') {
-        addImageToPalette(modalImages, "modal-image6", value);
+        addImageToModal(modalImages, "modal-image6", value);
         arrayImagelist.push(value);
         images_text = images_text + "→" + value.id;
 
@@ -2071,7 +2293,7 @@ function modalOpen(start_mapAttr, end_mapAttr, cartID) {
     }
 
     if (is_Insert && value != '') {
-      addImageToPalette(modalImages, "modal-image6", value);
+      addImageToModal(modalImages, "modal-image6", value);
       if (images_text === '') {
         images_text = value.id;
       } else {
@@ -2085,7 +2307,10 @@ function modalOpen(start_mapAttr, end_mapAttr, cartID) {
   }
   if (is_gotoModal) {
     modalPalette.style.display = 'block';
-    warning2.style.display = 'none';
+    warning_palette1.style.display = 'none';
+    warning_palette2.style.display = 'none';
+    warning_palette3.style.display = 'none';
+    warning_palette4.style.display = 'none';
   }
 }
 
@@ -2093,7 +2318,6 @@ buttonClose.addEventListener('click', function () { modalClose(modalPalette); })
 
 function modalClose(modalElem) {
   modalElem.style.display = 'none';
-  updateSummaryPrice();
 }
 
 // モーダルコンテンツ以外がクリックされた時
@@ -2108,14 +2332,6 @@ function outsideClose(e) {
   }
 }
 
-// function openColorRanking() {
-//   if (colorRanking.style.display == "block") {
-//     colorRanking.style.display = "none";
-//   } else {
-//     colorRanking.style.display = "block";
-//   }
-
-// }
 
 function rankingApplyPalette(rankingDiv) {
   this.rankingDiv = document.getElementById(rankingDiv);

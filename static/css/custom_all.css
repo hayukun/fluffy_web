@@ -195,6 +195,13 @@ textarea {
     background-color: white;
 }
 
+.box-round45-grayed-out {
+    width: 2.34375vw;
+    height: 2.34375vw;
+    border-radius: 50%;
+    background-color: gray;
+}
+
 /* 180px, marginあり */
 .box-width180 {
     width: 9.375vw;

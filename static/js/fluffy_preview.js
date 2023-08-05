@@ -22,7 +22,10 @@ const inputFormView = document.getElementById('inputForm-view');
 
 const observ = document.getElementById('observ');
 const warning = document.getElementById('panelCharaWarning');
-const warning2 = document.getElementById('cancelOpeningModal');
+const warning_palette1 = document.getElementById('cancelOpeningModal1');
+const warning_palette2 = document.getElementById('cancelOpeningModal2');
+const warning_palette3 = document.getElementById('cancelOpeningModal3');
+const warning_palette4 = document.getElementById('cancelOpeningModal4');
 const map_inputText = new Map();
 
 const radio_btns = document.querySelectorAll(`input[type='radio'][name='tab_item']`);
@@ -94,14 +97,6 @@ function adjustTextSize() {
   var className = "tab_item";
   var styleElement = document.createElement("style");
 
-  cartNicknameForColors = document.getElementById('cart_item6-2');
-  cartNicknameForColors_name = document.getElementById('cart_item6-2_name');
-  cartNicknameForColors_price = document.getElementById('cart_item6-2_price');
-  cartNicknameForColors_multiple = document.getElementById('cart_item6-2_multiple');
-  cartCatchphraseForColors = document.getElementById('cart_item6-4');
-  cartCatchphraseForColors_name = document.getElementById('cart_item6-4_name');
-  cartCatchphraseForColors_price = document.getElementById('cart_item6-4_price');
-  cartCatchphraseForColors_multiple = document.getElementById('cart_item6-4_multiple');
 
 
 
@@ -145,6 +140,26 @@ function adjustTextSize() {
     cartCatchphraseForColors_name.textContent = '';
     cartCatchphraseForColors_price.textContent = '';
     cartCatchphraseForColors_multiple.innerHTML = '';
+    
+    removeElemFromDiv('cartImageCatchphrase', 'cart_item5-3-2');
+    cartItem5_3_2Name.textContent = '';
+    cartItem5_3_2Price.textContent = '';
+    check_catchphrase_frame = false;
+
+    // ここに追記必須
+
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select6_palette")) {
+        otherImage.classList.remove("selected_6_palette");
+        otherImage.style.border = "";
+      }
+    });
+    document.getElementById("select6_palette6_14").classList.remove("select6_palette");
+    document.getElementById("select6_palette6_14").src = document.getElementById("select6_palette6_2").src;
+    
+    radio_btn_catchphrase_frameON.checked = false;
+    radio_btn_catchphrase_frameOFF.checked = true;
+
     for (let target of radio_btns) {
       if (target.id == 'deco') {
         target.checked = true;
@@ -152,11 +167,36 @@ function adjustTextSize() {
     }
   }
   if (inputExampleNametitle.value.length == 0) {
+    cartNametitleForColors.innerHTML = '';
+    cartNametitleForColors_name.textContent = '';
+    cartNametitleForColors_price.textContent = '';
+    cartNametitleForColors_multiple.innerHTML = '';
     for (let target of radio_btns) {
       if (target.id == 'deco') {
         target.checked = true;
       }
     }
+  }
+
+  if (inputExampleNametitle.value.length == 0 && inputExampleNickname.value.length ==0){
+    removeElemFromDiv('cartImagenametitle', 'cart_item5-3-1');
+    cartItem5_3_1Name.textContent = '';
+    cartItem5_3_1Price.textContent = '';
+    check_nametitle_frame = false;
+
+    
+    images.forEach(function (otherImage) {
+      if (otherImage.classList.contains("select6_palette")) {
+        otherImage.classList.remove("selected_6_palette");
+        otherImage.style.border = "";
+      }
+    });
+    document.getElementById("select6_palette6_6").classList.remove("select6_palette");
+    document.getElementById("select6_palette6_10").classList.remove("select6_palette");
+    document.getElementById("select6_palette6_6").src = document.getElementById("select6_palette6_2").src;
+    document.getElementById("select6_palette6_10").src = document.getElementById("select6_palette6_2").src;
+    radio_btn_nametitle_frameON.checked = false;
+    radio_btn_nametitle_frameOFF.checked = true;
   }
 
   styleElement.innerHTML = "." + className + " { width: calc(100%/" + tabCount + "); }";

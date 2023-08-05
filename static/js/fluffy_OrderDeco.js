@@ -109,10 +109,23 @@ radio_btn_nametitle_frameON.addEventListener('change', function () {
 radio_btn_nametitle_frameOFF.addEventListener('change', function () {
   if (this.checked) {
     // "なし"が選択された場合の処理
+    cartNicknameForColors.innerHTML = '';
+    cartNicknameForColors_name.textContent = '';
+    cartNicknameForColors_price.textContent = '';
+    cartNicknameForColors_multiple.innerHTML = '';
+
+    cartNametitleForColors.innerHTML = '';
+    cartNametitleForColors_name.textContent = '';
+    cartNametitleForColors_price.textContent = '';
+    cartNametitleForColors_multiple.innerHTML = '';
+
     removeElemFromDiv('cartImagenametitle', 'cart_item5-3-1');
     cartItem5_3_1Name.textContent = '';
     cartItem5_3_1Price.textContent = '';
     check_nametitle_frame = false;
+
+    // ここに追記必須
+
     images.forEach(function (otherImage) {
       if (otherImage.classList.contains("select6_palette")) {
         otherImage.classList.remove("selected_6_palette");
@@ -123,6 +136,8 @@ radio_btn_nametitle_frameOFF.addEventListener('change', function () {
     document.getElementById("select6_palette6_10").classList.remove("select6_palette");
     document.getElementById("select6_palette6_6").src = document.getElementById("select6_palette6_2").src;
     document.getElementById("select6_palette6_10").src = document.getElementById("select6_palette6_2").src;
+    map_paletteImage.set('select6_palette6_6', map_paletteImage.get('select6_palette6_2'));
+    map_paletteImage.set('select6_palette6_10', map_paletteImage.get('select6_palette6_2'));
   }
 });
 
@@ -146,10 +161,17 @@ radio_btn_catchphrase_frameON.addEventListener('change', function () {
 radio_btn_catchphrase_frameOFF.addEventListener('change', function () {
   if (this.checked) {
     // "なし"が選択された場合の処理
+    cartCatchphraseForColors.innerHTML = '';
+    cartCatchphraseForColors_name.textContent = '';
+    cartCatchphraseForColors_price.textContent = '';
+    cartCatchphraseForColors_multiple.innerHTML = '';
+
     removeElemFromDiv('cartImageCatchphrase', 'cart_item5-3-2');
     cartItem5_3_2Name.textContent = '';
     cartItem5_3_2Price.textContent = '';
     check_catchphrase_frame = false;
+
+    
     images.forEach(function (otherImage) {
       if (otherImage.classList.contains("select6_palette")) {
         otherImage.classList.remove("selected_6_palette");
@@ -158,6 +180,7 @@ radio_btn_catchphrase_frameOFF.addEventListener('change', function () {
     });
     document.getElementById("select6_palette6_14").classList.remove("select6_palette");
     document.getElementById("select6_palette6_14").src = document.getElementById("select6_palette6_2").src;
+    map_paletteImage.set('select6_palette6_14', map_paletteImage.get('select6_palette6_2'));
   }
 });
 
@@ -276,6 +299,9 @@ radio_btn_maruKatanuki_decoON.addEventListener('change', function () {
 
     maruKatanukiDecoDiv.appendChild(maruKatanukiMenu);
 
+    maruKatanukiDecoDiv.classList.remove('hidden');
+    maruKatanukiDecoDiv.classList.add('wrap_yoko');
+
     // EventListenerを追加する
     maruKatanukiMenu.addEventListener('change', function () {
       var image = new Image();
@@ -296,6 +322,10 @@ radio_btn_maruKatanuki_decoOFF.addEventListener('change', function () {
   if (this.checked) {
     // "なし"が選択された場合の処理
     maruKatanukiDecoDiv.removeChild(document.getElementById('maruKatanukiSelectionMenu'));
+
+    maruKatanukiDecoDiv.classList.remove('wrap_yoko');
+    maruKatanukiDecoDiv.classList.add('hidden');
+
     removeElemFromDiv('cartImagemaruKatanuki', 'cart_item5-1-4');
     cartItem5_1_4Name.textContent = '';
     cartItem5_1_4Price.textContent = '';
@@ -311,6 +341,9 @@ radio_btn_dakuten_decoON.addEventListener('change', function () {
     var dakutenMenu = createPulldownMenu('dakutenSelectionMenu', ["星", "ハート", "王冠", "肉球"]);
 
     dakutenDecoDiv.appendChild(dakutenMenu);
+
+    dakutenDecoDiv.classList.remove('hidden');
+    dakutenDecoDiv.classList.add('wrap_yoko');
 
     // EventListenerを追加する
     dakutenMenu.addEventListener('change', function () {
@@ -333,6 +366,8 @@ radio_btn_dakuten_decoOFF.addEventListener('change', function () {
   if (this.checked) {
     // "なし"が選択された場合の処理
     dakutenDecoDiv.removeChild(document.getElementById('dakutenSelectionMenu'));
+    dakutenDecoDiv.classList.remove('wrap_yoko');
+    dakutenDecoDiv.classList.add('hidden');
     removeElemFromDiv('cartImagedakute', 'cart_item5-1-5');
     cartItem5_1_5Name.textContent = '';
     cartItem5_1_5Price.textContent = '';

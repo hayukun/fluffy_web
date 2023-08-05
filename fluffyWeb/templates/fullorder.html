@@ -35,8 +35,8 @@
                 <div id="cart_item3_name" class="noneobj"></div>
                 <div id="cart_item3_price" class="noneobj"></div>
             </div>
-            <p class="jkfont cart_text margin-top-20" style="color:white;">パネル文字</p>
-            <div class="wrap_yoko margin-top-10" style="height:auto;">
+            <!-- <p class="jkfont cart_text margin-top-20" style="color:white;">パネル文字</p> -->
+            <div class="wrap_yoko" style="height:auto;">
                 <div id="cart_itemChara"></div>
                 <div id="cart_itemChara_name" class="noneobj"></div>
                 <div id="cart_itemChara_price" class="noneobj"></div>
@@ -118,11 +118,15 @@
                 <div id="cart_item5-5-6_extText" class="noneobj"></div>
             </div>
             <p class="jkfont cart_text margin-top-20" style="color:white;">素材</p>
-            <div class="wrap_yoko margin-top-10" style="height:auto;">
+            <p class="jkfont cart_text margin-top-10"
+                style="color:#FF6CC4; font-size: 0.625vw; margin-left: 0.46875vw;">名前</p>
+            <div class="wrap_yoko" style="height:auto;">
                 <div id="cart_item6-1"></div>
                 <div id="cart_item6-1_name" class="noneobj"></div>
                 <div id="cart_item6-1_price" class="noneobj"></div>
             </div>
+            <p class="jkfont cart_text margin-top-10"
+                style="color:#FF6CC4; font-size: 0.625vw; margin-left: 0.46875vw;">名称</p>
             <div class="wrap_yoko" style="height:auto;">
                 <div id="cart_item6-2"></div>
                 <div style="display: none;">
@@ -131,6 +135,8 @@
                 <div id="cart_item6-2_name" class="noneobj"></div>
                 <div id="cart_item6-2_price" class="noneobj"></div>
             </div>
+            <p class="jkfont cart_text margin-top-10"
+                style="color:#FF6CC4; font-size: 0.625vw; margin-left: 0.46875vw;">敬称</p>
             <div class="wrap_yoko" style="height:auto;">
                 <div id="cart_item6-3"></div>
                 <div style="display: none;">
@@ -139,6 +145,8 @@
                 <div id="cart_item6-3_name" class="noneobj"></div>
                 <div id="cart_item6-3_price" class="noneobj"></div>
             </div>
+            <p class="jkfont cart_text margin-top-10"
+                style="color:#FF6CC4; font-size: 0.625vw; margin-left: 0.46875vw;">キャッチフレーズ</p>
             <div class="wrap_yoko" style="height:auto;">
                 <div id="cart_item6-4"></div>
                 <div style="display: none;">
@@ -147,7 +155,7 @@
                 <div id="cart_item6-4_name" class="noneobj"></div>
                 <div id="cart_item6-4_price" class="noneobj"></div>
             </div>
-            <div style="display: flex; flex-direction: column; justify-content: flex-start;">
+            <div style="display: flex; flex-direction: column; justify-content: flex-start;" class="margin-top-20">
                 <div id="cart_item6-1_multiple"></div>
             </div>
             <p class="jkfont cart_text margin-top-20" style="color:white;">オプション</p>
@@ -190,7 +198,7 @@
             </div>
             <div class="wrap_yoko" style="height:auto;">
                 <div id="cart_summary"></div>
-                <div id="cart_summary_price"></div>
+                <div id="cart_summary_price" class="noneobj"></div>
             </div>
         </div>
     </div>
@@ -269,7 +277,7 @@
                                                     src="/static/images/fullorder/order_buttons/deco/パレット/パーツ解除.png">
                                             </div>
                                             <div class="imagehover-container">
-                                                <img id="delete_Alldeco" class="box-width60"
+                                                <img id="delete_Alldeco" class="box-width60" onclick="resetAllImages()"
                                                     src="/static/images/fullorder/order_buttons/colors/パレット/最初から.png">
                                             </div>
                                         </div>
@@ -288,7 +296,7 @@
                             style="display: flex; flex-direction: column; text-align: center; width: 100%; height: 100%;">
                             <p class="materialPalette_text_title" style="color:white; ">【名前】素材パレット
                             </p>
-                            <h4 id=cancelOpeningModal style="display: none; font-size: 0.78125vw;">文字の色を入力してください</h4>
+                            <h4 id="cancelOpeningModal1" style="display: none; font-size: 0.78125vw;">文字の色を入力してください</h4>
                             <div
                                 style="display: flex; flex-direction: column; justify-content: center;margin: 2%; height: 100%;">
                                 <div class="paletteInner"
@@ -362,6 +370,7 @@
                             style="display: flex; flex-direction: column; text-align: center; width: 100%; height: 100%;">
                             <p class="materialPalette_text_title" style="color:white; ">【名称】素材パレット
                             </p>
+                            <h4 id="cancelOpeningModal2" style="display: none; font-size: 0.78125vw;">文字の色を入力してください</h4>
                             <div
                                 style="display: flex; flex-direction: column; justify-content: center;margin: 2%; height: 100%;">
                                 <div class="paletteInner"
@@ -426,6 +435,7 @@
                             style="display: flex; flex-direction: column; text-align: center; width: 100%; height: 100%;">
                             <p class="materialPalette_text_title" style="color:white; ">【敬称】素材パレット
                             </p>
+                            <h4 id="cancelOpeningModal3" style="display: none; font-size: 0.78125vw;">文字の色を入力してください</h4>
                             <div
                                 style="display: flex; flex-direction: column; justify-content: center;margin: 2%; height: 100%;">
                                 <div class="paletteInner"
@@ -489,6 +499,7 @@
                             style="display: flex; flex-direction: column; text-align: center; width: 100%; height: 100%;">
                             <p class="materialPalette_text_title" style="color:white; ">
                                 【キャッチフレーズ】素材パレット</p>
+                            <h4 id="cancelOpeningModal4" style="display: none; font-size: 0.78125vw;">文字の色を入力してください</h4>
                             <div
                                 style="display: flex; flex-direction: column; justify-content: center;margin: 2%; height: 100%;">
                                 <div class="paletteInner"
@@ -612,6 +623,26 @@
             </div>
         </div>
 
+        <!-- 注文確定 -->
+        <div id="easyModalofOrderConfirm" class="modal">
+            <div class="modal-order-confirm-content">
+                <div class="modal-header">
+                    <h3 style="text-decoration: underline;">ご注文内容確認</h3>
+                    <span class="modalClose">×</span>
+                </div>
+                <div id="modal-text" class="modal-body">
+                    <p class="jkfont">オーダー内容を確認してください。</p>
+                </div>
+                <div id="modal-order-details" class="modal-body"
+                    style="display: flex; flex-direction: column; justify-content: center; overflow-y: scroll;">
+                </div>
+                <div class="modal-body" style="display: flex; flex-direction: row; justify-content: center;">
+                    <input id="btnConfirm" type="button" class="cute-button" value="決定！">
+                </div>
+
+            </div>
+        </div>
+
         <!-- フルオーダートップ -->
         <div id="fullorderTop" class="margin-top-100">
             <img src="/static/images/fullorder/title/main_title/Fullorder.png" class="margin-top-100 page_title">
@@ -620,7 +651,7 @@
                 <div style="display: flex; justify-content: flex-start; flex-direction: column; text-align: left;">
                     <h4 class="fuchidori_shiro coolfont">あなただけのオリジナル文字パネルを制作</h4>
                     <p class="jkfont margin-top-20">こちらのページはフルオーダーでご依頼される方向けのページとなります。<br>
-                        ご希望に合わせて<span style="color:red">上から順に</span>選択してください。<br>
+                        ご希望に合わせて<span style="color: rgb(255, 97, 147);">上から順に</span>選択してください。<br>
                     </p>
                 </div>
             </div>
@@ -628,7 +659,7 @@
         <div id="1st-container" class="margin-top-100 container-fullorder flexColumnFlexStart">
 
             <!-- うちわ or ボード -->
-            <div class="box-pink"
+            <div id="step1" class="box-pink"
                 style="display: flex; justify-content: center; flex-direction: column; text-align: center; height: auto; position: relative;">
                 <!-- <div class="set_hart_position">
                     <div class="fuwafuwa"></div>
@@ -645,6 +676,7 @@
                 </div>
                 <div class="box-white" style="display: flex; justify-content: center; flex-direction: row;">
                     <div style="display: flex; flex-direction: column;">
+                        <p id="step1Warning" class="hidden" style="color: rgb(255, 97, 147);">※必ず選択してください。</p>
                         <div class="wrap_yoko">
                             <div class="wrap_tate_no_centering" style="width: 21.875vw; align-items: center;">
                                 <img src="/static/images/fullorder/order_buttons/main/うちわ1.png"
@@ -730,13 +762,14 @@
             </div>
 
             <!-- 文字サイズ -->
-            <div class="box-pink margin-top-100"
+            <div id="step2" class="box-pink margin-top-100"
                 style="display: flex; justify-content: center; flex-direction: column; text-align: center; height: auto;">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
                     <img src="/static/images/fullorder/title/main_title/文字サイズ.png" class="image-title">
                 </div>
                 <div class="box-white" style="display: flex; flex-direction: row; justify-content: center;">
                     <div class="wrap_tate">
+                        <p id="step2Warning" class="hidden" style="color: rgb(255, 97, 147);">※必ず選択してください。</p>
                         <div style="display: flex; flex-direction: row; justify-content: space-between;">
                             <img src="/static/images/fullorder/title/size_title/ボードS.png" class="box-width180">
                             <img src="/static/images/fullorder/title/size_title/ボードM.png"
@@ -785,13 +818,14 @@
             </div>
 
             <!-- 文字タイプ -->
-            <div class="box-pink margin-top-100"
+            <div id="step3" class="box-pink margin-top-100"
                 style="display: flex; justify-content: center; flex-direction: column; text-align: center; height: auto;">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
                     <img src="/static/images/fullorder/title/main_title/文字タイプ.png" class="image-title">
                 </div>
                 <div class="charaType box-white"
                     style="display: flex; flex-direction: column; justify-content: flex-start;">
+                    <p id="step3Warning" class="hidden" style="color: rgb(255, 97, 147);">※必ず選択してください。</p>
                     <div style="display: flex; justify-content: center; flex-direction: row;">
                         <div style="display: flex; justify-content: flex-start;width: 400px;">
                             <span class="tag"
@@ -960,12 +994,13 @@
                     onclick="backStepTo1st(event)">
             </div>
             <!-- 文字パネル入力 -->
-            <div class="box-pink wrap_tate margin-top-100" style="position:relative;">
+            <div id="stepChara" class="box-pink wrap_tate margin-top-100" style="position:relative;">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
                     <img src="/static/images/fullorder/title/main_title/パネル文字.png" class="image-title">
                 </div>
 
                 <div class="box-white box-height550" style="margin-top: 12.5vw;">
+                    <p id="stepCharaWarning" class="hidden" style="color: rgb(255, 97, 147);">※名前を入力してください。</p>
                     <h3 class="jkfont changeTextOnPC" style="font-weight: bold;">パネルに入れたい文字を入力してね</h3>
                     <h4 class="jkfont changeTextOnPC" style="font-size: 0.7291666666666666vw;color: #FFD9E7;">
                         【名称・敬称:¥50／キャッチフレーズ:¥180／中文字:¥450 】 ※1文字</h4>
@@ -1098,12 +1133,13 @@
             </div>
 
             <!-- フォント -->
-            <div class="box-pink margin-top-100 wrap_tate">
+            <div id="step4" class="box-pink margin-top-100 wrap_tate">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
                     <img src="/static/images/fullorder/title/main_title/フォント.png" class="image-title">
                 </div>
                 <div class="box-white margin-top-70"
                     style="display: flex; flex-direction: column; justify-content: center; width: auto;">
+                    <p id="step4Warning" class="hidden" style="color: rgb(255, 97, 147);">※必ず選択してください。</p>
                     <div style="display: flex; flex-direction: row; justify-content: center;">
                         <div class="wrap_tate" style="position: relative;">
                             <img src="/static/images/fullorder/order_buttons/fonts/ランキング/王冠1.png" class="box-width50"
@@ -1224,7 +1260,8 @@
             </div> -->
 
             <!-- 装飾 -->
-            <div class="box-pink margin-top-100" style="display: flex; flex-direction: row; justify-content: center; ">
+            <div id="step5" class="box-pink margin-top-100"
+                style="display: flex; flex-direction: row; justify-content: center; ">
                 <div class="wrap_tate" style="width: 100%;">
                     <div style="display: flex; flex-direction: row; justify-content: center;">
                         <img src="/static/images/fullorder/title/main_title/装飾.png" class="image-title">
@@ -1241,6 +1278,8 @@
                                             class="box-width350">
                                     </div>
                                 </div>
+                                <p id="step5Warning" class="hidden" style="color: rgb(255, 97, 147);">※必須項目を入力してください。
+                                </p>
                                 <div style="display: flex; flex-direction: column; justify-content: flex-start;">
                                     <div class="margin-top-50"
                                         style="display:flex; justify-content:flex-start; flex-direction:row">
@@ -1408,9 +1447,9 @@
                                     <div class="margin-top-10"
                                         style="display:flex; justify-content:center; flex-direction:row">
                                         <div style="display: flex; flex-direction: column; justify-content: center;">
-                                            <div id="maruKatanukiDecoDiv"
-                                                style="display: flex; justify-content: flex-start; flex-direction: row;"
-                                                class="box-width500"></div>
+                                            <div id="maruKatanukiDecoDiv" class="box-width500 hidden"><span class="tag"
+                                                    style="color: rgb(255, 255, 255); background-color: rgb(244, 67, 54); margin-right: 0.46875vw; height: 80% !important;">必須</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="margin-top-50"
@@ -1457,9 +1496,9 @@
                                     <div class="margin-top-10"
                                         style="display:flex; justify-content:center; flex-direction:row">
                                         <div style="display: flex; flex-direction: column; justify-content: center;">
-                                            <div id="dakutenDecoDiv"
-                                                style="display: flex; justify-content: flex-start; flex-direction: row;"
-                                                class="box-width500"></div>
+                                            <div id="dakutenDecoDiv" class="box-width500 hidden"><span class="tag"
+                                                    style="color: rgb(255, 255, 255); background-color: rgb(244, 67, 54); margin-right: 0.46875vw; height: 80% !important;">必須</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="margin-top-50"
@@ -1496,6 +1535,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="step5_Parts"></div>
                             </div>
                             <div class="box-white wrap_tate" style="width: auto;">
                                 <!-- 装飾パーツ -->
@@ -1505,7 +1545,9 @@
                                             class="box-width350">
                                     </div>
                                 </div>
-
+                                <p id="step5_PartsWarning" class="hidden" style="color: rgb(255, 97, 147);">
+                                    ※パーツセットのパーツをパレットに配置してください。
+                                </p>
                                 <div
                                     style="display: flex; flex-direction: column; justify-content: flex-start; position: relative;">
                                     <div class="margin-top-50"
@@ -1613,7 +1655,7 @@
                                     </div>
                                     <h3 class="jkfont changeTextOnPC margin-top-50" style="font-weight: bold;">
                                         上記以外のパーツをご希望の方は、入力フォームにパーツ名を記載してね</h3>
-                                    <p id=cancelInputParts style="display: none; color: #FF6CC4;">パーツが選択されていません</p>
+                                    <p id='cancelInputParts' style="display: none; color: #FF6CC4;">パーツが選択されていません</p>
                                     <form class="" action="">
                                         <input type="file" name="partsInput" id="partsInput" accept=”image/*”>
                                         <input type="submit" class="cute-button" value="決定" onclick="inputParts(event)">
@@ -2307,6 +2349,14 @@
                     <div style="display: flex; flex-direction: row; justify-content: center;">
                         <img src="/static/images/fullorder/title/main_title/素材.png" class="image-title">
                     </div>
+                    <p id="step6WarningName" class="hidden" style="color: rgb(255, 97, 147);">
+                        ※名前の文字色をパレットからカートに登録してください。</p>
+                    <p id="step6WarningNickname" class="hidden" style="color: rgb(255, 97, 147);">
+                        ※名称の文字色をパレットからカートに登録してください。</p>
+                    <p id="step6WarningNametitle" class="hidden" style="color: rgb(255, 97, 147);">
+                        ※敬称の文字色をパレットからカートに登録してください。</p>
+                    <p id="step6WarningCatchphrase" class="hidden" style="color: rgb(255, 97, 147);">
+                        ※キャッチフレーズの文字色をパレットからカートに登録してください。</p>
 
                     <div class="margin-top-70"
                         style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
@@ -2970,6 +3020,10 @@
                     </div>
 
                 </div>
+            </div>
+            <div class="margin-top-100" style="display:flex; justify-content:center; flex-direction:row">
+                <input id="orderConfirmButton" type="button" class="cute-button" value="これで注文する"
+                    onclick="orderConfirm(event)">
             </div>
             <div class="margin-container"></div>
 
