@@ -99,8 +99,6 @@ function adjustTextSize() {
 
 
 
-
-  // 名称に文字を入れて色をカートに入れたあと、名称の文字を空にするとカートから素材は消えるがパレットからは色が消えてない + タブコンテントも残っている
   if (inputExampleNickname.value.length >= 1) {
     inputExampleCatchphrase.disabled = true;
     inputExampleNickname.disabled = false;

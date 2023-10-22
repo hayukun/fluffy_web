@@ -672,3 +672,9 @@ a.cute-button:hover {
     align-items: center; 
     text-align: center;
 }
+
+.flexRowSpaceEvenly{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-evenly;
+}

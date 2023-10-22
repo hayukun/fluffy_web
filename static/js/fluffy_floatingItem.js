@@ -127,6 +127,7 @@ const list_cartNameAndPrice = [
     ['cart_summary_price'],
 ];
 
+
 // パレットに画像置く
 function placeImage(event) {
 
@@ -166,6 +167,7 @@ function placeImage(event) {
         copiedPartsImage.classList.remove('select5_decoPartsOnlyOneSelectionDivided');
         copiedPartsImage.classList.add('decoPreviewImageNormal');
         copiedPartsImage.classList.add('decoPreviewImagePosition');
+        copiedPartsImage.classList.add('decoSelectImage');
         if (isOnlyOne) {
             copiedPartsImage.classList.add('isOnlyOne');
         }
@@ -325,7 +327,7 @@ function calcDecoPartsAddPrice(image, setID) {
 
 function customUserImage(image) {
     lastUserImageID = user_decoALLList.slice(-1)[0];
-    if (lastUserImageID !== undefined){
+    if (lastUserImageID !== undefined) {
         customImage = document.getElementById(lastUserImageID);
         if (customImage.classList.contains("isOnlyOne")) {
             if (image.id == 'changeSize_S') {
@@ -394,7 +396,7 @@ function customUserImage(image) {
             ;
         }
     }
-        
+
 }
 
 // フロート機能(カート、パレットなど)
@@ -1054,25 +1056,34 @@ function loopAnime(id, animationClassName, loopSec) {
 
 // ラジオボタンの要素を取得
 const radioButtons = document.querySelectorAll('input[name="tab_item"]');
-var is_name = true;
+var is_name = false;
+
 // ラジオボタンの変更イベントに対してリスナーを登録
 radioButtons.forEach((radioButton) => {
     radioButton.addEventListener('change', function () {
         if (this.checked) {
             // チェックされたラジオボタンの処理
-            const selectedTab = this.id;
+            window.selectedTab = this.id;
             console.log(`選択されたタブ: ${selectedTab}`);
             if (selectedTab == 'nickname' || selectedTab == 'nametitle' || selectedTab == 'catchphrase') {
+                applyMaterialToParts.textContent = '';
                 onlyNameMaterial.forEach(function (material) {
                     material.classList.add("hidden");
                 });
                 is_name = false;
                 updateMaterialImage();
-            } else {
+            } else if (selectedTab == 'name') {
+                applyMaterialToParts.textContent = '';
                 onlyNameMaterial.forEach(function (material) {
                     material.classList.remove("hidden");
                 });
                 is_name = true;
+                updateMaterialImage();
+            } else {
+                onlyNameMaterial.forEach(function (material) {
+                    material.classList.add("hidden");
+                });
+                is_name = false;
                 updateMaterialImage();
             }
         }

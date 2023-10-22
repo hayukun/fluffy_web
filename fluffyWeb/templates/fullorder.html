@@ -233,8 +233,8 @@
                             <div id="palette_DecoMain"
                                 style="display: flex; flex-direction: column; justify-content: center;margin: 0% 2% 2% 2%; height: 100%;">
                                 <div class="paletteInner"
-                                    style="display: flex; flex-direction: row; justify-content: space-between;">
-                                    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                                    style="display: flex; flex-direction: row;">
+                                    <div id="decoCustomBtns1" class="flexRowSpaceEvenly">
                                         <div style="display: flex; flex-direction: column; justify-content:center">
                                             <div class="imagehover-container">
                                                 <img id="changeSize_S" class="box-width40 select5_customParts"
@@ -251,6 +251,16 @@
 
                                         </div>
                                     </div>
+                                    <div id="applyMaterialToParts-Container" class="hidden">
+                                        <div class="flexColumnFlexStart">
+                                            <p class="jkfont cart_text margin-top-10"
+                                                style="color:#FF6CC4; font-size: 0.625vw; margin-left: 0.46875vw;">
+                                                パーツを選択して、<br>素材を選んでね
+                                            </p>
+                                            <div id="applyMaterialToParts">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- 装飾プレビュー -->
                                     <div id="decoPreview"
                                         style="display: flex; flex-direction: row; justify-content: center;width:45vw; height:95%; cursor: default;">
@@ -260,7 +270,7 @@
                                         </div>
                                     </div>
 
-                                    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                                    <div id="decoCustomBtns2" class="flexRowSpaceEvenly">
                                         <div style="display: flex; flex-direction: column; justify-content:center">
                                             <div class="imagehover-container">
                                                 <img id="changeRotate_right" class="box-width60 select5_customParts"
@@ -503,7 +513,7 @@
                             <div
                                 style="display: flex; flex-direction: column; justify-content: center;margin: 2%; height: 100%;">
                                 <div class="paletteInner"
-                                    style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                                    style="display: flex; flex-direction: row;">
                                     <div
                                         style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
                                         <div
@@ -1239,7 +1249,8 @@
                                 <p style="color: #FF6CC4; padding: 2px 0 0 10px;">小文字のフォントを指定</p>
                                 <a id="komozi_detail_link" class="jkfont">小文字とは</a>
                             </div>
-                            <input type="text" placeholder="フォント番号" maxlength="2" id="input_SmallChara_font" style="width: 100%;">
+                            <input type="text" placeholder="フォント番号" maxlength="2" id="input_SmallChara_font"
+                                style="width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -1404,8 +1415,8 @@
                                                     style="display:flex; justify-content:flex-start; flex-direction:row">
                                                     <span class="tag"
                                                         style="color: rgb(255, 255, 255); background-color: rgb(244, 67, 54);">必須</span>
-                                                    <input type="text" id="input_partsKatanuki" maxlength="30" placeholder="パーツ名を入力してね"
-                                                        style="margin: 0 0 4px 10px;">
+                                                    <input type="text" id="input_partsKatanuki" maxlength="30"
+                                                        placeholder="パーツ名を入力してね" style="margin: 0 0 4px 10px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -1984,8 +1995,8 @@
                                             <div style="display:flex; justify-content:center; flex-direction:row">
                                                 <span class="tag text-center"
                                                     style="color: rgb(255, 255, 255); background-color: rgb(96, 125, 139); height: 100%;">任意</span>
-                                                <input type="text" placeholder="パーツセット名" id="partsSetNameInput" maxlength="30"
-                                                    style="width: 100%; margin: 2px 0 0 10px;">
+                                                <input type="text" placeholder="パーツセット名" id="partsSetNameInput"
+                                                    maxlength="30" style="width: 100%; margin: 2px 0 0 10px;">
                                                 <img src="/static/images/fullorder/order_buttons/deco/small_items/parts/9指定.png"
                                                     id="imageDeco_5-2-9" style="display: none;">
                                             </div>
@@ -2349,6 +2360,8 @@
                     <div style="display: flex; flex-direction: row; justify-content: center;">
                         <img src="/static/images/fullorder/title/main_title/素材.png" class="image-title">
                     </div>
+                    <p id="step6WarningPartsMaterial" class="hidden" style="color: rgb(255, 97, 147);">
+                        ※色が設定されていないパーツがあります。パーツパーツの色をパレットから設定してください。</p>
                     <p id="step6WarningName" class="hidden" style="color: rgb(255, 97, 147);">
                         ※名前の文字色をパレットからカートに登録してください。</p>
                     <p id="step6WarningNickname" class="hidden" style="color: rgb(255, 97, 147);">
@@ -2550,7 +2563,7 @@
                                 </div>
                             </div>
 
-                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial">
+                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial hidden">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/normal/e蓄光シート.png"
                                         class="box-width350 normal_Price" id="image6_e">
@@ -2682,7 +2695,7 @@
                                         class="select6 image6_h margin-top-10 box-width100" id="color_h9">
                                 </div>
                             </div>
-                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial">
+                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial hidden">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/normal/iホログラム.png"
                                         class="box-width350 normal_Price" id="image6_i">
@@ -2700,7 +2713,7 @@
                                         class="select6 image6_i margin-top-10 box-width100" id="color_i3">
                                 </div>
                             </div>
-                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial">
+                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial hidden">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/normal/j反射シート.png"
                                         class="box-width350 normal_Price" id="image6_j">
@@ -2724,7 +2737,7 @@
                                         class="select6 image6_j margin-top-10 box-width200" id="color_j6">
                                 </div>
                             </div>
-                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial">
+                            <div class="box-white wrap_tate margin-top-50 onlyNameMaterial hidden">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/normal/kアニマル.png"
                                         class="box-width350 normal_Price" id="image6_k">
@@ -2742,7 +2755,7 @@
                                         class="select6 image6_k margin-top-10 box-width100" id="color_k4">
                                 </div>
                             </div>
-                            <div id="l_material" class="box-white wrap_tate margin-top-50 onlyNameMaterial">
+                            <div id="l_material" class="box-white wrap_tate margin-top-50 onlyNameMaterial hidden">
                                 <div style="display: flex; flex-direction: row; justify-content: center;">
                                     <img src="/static/images/fullorder/title/color_title/normal/l取り寄せ品.png"
                                         class="box-width350" id="image6_l">
@@ -3033,4 +3046,5 @@
         <script src="{% static 'js/fluffy_preview.js' %}"></script>
         <script src="{% static 'js/fluffy_floatingItem.js' %}"></script>
         <script src="{% static 'js/fluffy_OrderDeco.js' %}"></script>
+        <script src="{% static 'js/fluffy_OrderForm.js' %}"></script>
         {% endblock main %}
