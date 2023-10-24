@@ -30,3 +30,19 @@ def FullOrderView(request):
 
 def SemiOrderView(request):
     return render(request, 'semiorder.html')
+
+def recieveOrder(request):
+    fullorder_flag = request.GET["fullorder_flag"]
+    if (fullorder_flag == '1'):
+        is_fullorder = True
+    else:
+        is_fullorder = False
+    
+    username = request.GET["username"]
+    email = request.GET["email"]
+
+    # username, emailからuser情報をDB検索
+
+    
+
+    return render(request, 'order_request_done.html')

@@ -10,6 +10,8 @@ const materialTitleFreeImages = document.querySelectorAll(".free_Price");
 const onlyNameMaterial = document.querySelectorAll(".onlyNameMaterial");
 const included2Image = document.getElementById("image2_1");
 
+window.selectedTab = 'deco';
+
 // 選択状況おしらせ表示
 // うちわorボード
 const selected_1_SizeSpecify = document.getElementById("selected_1_SizeSpecify");
@@ -453,7 +455,11 @@ const backStepTo1stButton = document.getElementById("backStepTo1stButton");
 const backStepTo2ndButton = document.getElementById("backStepTo2ndButton");
 const backStepTo3rdButton = document.getElementById("backStepTo3rdButton");
 
-
+const decoCustomBtns1 = document.getElementById("decoCustomBtns1");
+const decoCustomBtns2 = document.getElementById("decoCustomBtns2");
+const applyMaterialToPartsContainer = document.getElementById("applyMaterialToParts-Container");
+const applyMaterialToParts = document.getElementById("applyMaterialToParts");
+const map_PartsMaterial = new Map([]);
 
 var wmouse;
 // イメージオブジェクトを作成
@@ -1032,7 +1038,7 @@ function nextStepTo3rd(event) {
   event.preventDefault();
   var scrollDiv = 'fullorderTop';
   isNextPage = true;
-  
+
   if (window.user_decoListOnlyOne.length < currentPartsSetLength) {
     scrollDiv = 'step5_Parts';
     document.getElementById('step5_PartsWarning').classList.remove("hidden");
@@ -1041,12 +1047,12 @@ function nextStepTo3rd(event) {
     document.getElementById('step5_PartsWarning').classList.add("hidden");
   }
   if (document.getElementById('dakutenSelectionMenu')) {
-    if (document.getElementById('dakutenSelectionMenu').value == ''){
+    if (document.getElementById('dakutenSelectionMenu').value == '') {
       scrollDiv = 'step5';
       document.getElementById('step5Warning').classList.remove("hidden");
       isNextPage = false;
     } else {
-      if (isNextPage){
+      if (isNextPage) {
         document.getElementById('step5Warning').classList.add("hidden");
       }
     }
@@ -1055,12 +1061,12 @@ function nextStepTo3rd(event) {
   }
 
   if (document.getElementById('maruKatanukiSelectionMenu')) {
-    if (document.getElementById('maruKatanukiSelectionMenu').value == ''){
+    if (document.getElementById('maruKatanukiSelectionMenu').value == '') {
       scrollDiv = 'step5';
       document.getElementById('step5Warning').classList.remove("hidden");
       isNextPage = false;
     } else {
-      if (isNextPage){
+      if (isNextPage) {
         document.getElementById('step5Warning').classList.add("hidden");
       }
     }
@@ -1071,12 +1077,12 @@ function nextStepTo3rd(event) {
   if (partsKatanukiDecoDiv.classList.contains('hidden')) {
     ;
   } else {
-    if (input_partsKatanuki.value == ''){
+    if (input_partsKatanuki.value == '') {
       scrollDiv = 'step5';
       document.getElementById('step5Warning').classList.remove("hidden");
       isNextPage = false;
     } else {
-      if (isNextPage){
+      if (isNextPage) {
         document.getElementById('step5Warning').classList.add("hidden");
       }
     }
@@ -1085,12 +1091,12 @@ function nextStepTo3rd(event) {
   if (charaKatanukiDecoDiv.classList.contains('hidden')) {
     ;
   } else {
-    if (input_charaKatanuki.value == ''){
+    if (input_charaKatanuki.value == '') {
       scrollDiv = 'step5';
       document.getElementById('step5Warning').classList.remove("hidden");
       isNextPage = false;
     } else {
-      if (isNextPage){
+      if (isNextPage) {
         document.getElementById('step5Warning').classList.add("hidden");
       }
     }
@@ -1112,6 +1118,12 @@ function nextStepTo3rd(event) {
     document.getElementById('stepCharaWarning').classList.add("hidden");
   }
 
+  images.forEach(function (otherImage) {
+    if (otherImage.classList.contains("select5_decoParts")) {
+      otherImage.classList.remove("selected_5_decoParts");
+      otherImage.style.border = "";
+    }
+  });
 
   if (isNextPage) {
     fullorder3rdStepContainer.classList.remove("hidden");
@@ -1122,21 +1134,33 @@ function nextStepTo3rd(event) {
     nextStepTo3rdButton.classList.add("hidden");
     backStepTo2ndButton.classList.remove("hidden");
 
+    decoCustomBtns1.classList.remove("flexRowSpaceEvenly");
+    decoCustomBtns1.classList.add("hidden");
+    decoCustomBtns2.classList.remove("flexRowSpaceEvenly");
+    decoCustomBtns2.classList.add("hidden");
+    applyMaterialToPartsContainer.classList.remove("hidden");
+    applyMaterialToPartsContainer.classList.add("flexRowSpaceEvenly");
+
+    images = document.querySelectorAll("img");
+
+    images.forEach(function (image) {
+      image.addEventListener("click", function () {
+        if (image.classList.contains("decoSelectImage")) {
+          handleImageSelectionDecoImage(image);
+        } else {
+          ;
+        }
+      });
+
+    });
+
     scrollDiv = 'fullorderTop';
     controll_step = '3rd';
 
   }
 
-  images.forEach(function (otherImage) {
-    if (otherImage.classList.contains("select5_decoParts")) {
-      otherImage.classList.remove("selected_5_decoParts");
-      otherImage.style.border = "";
-    }
-  });
-  //images = document.querySelectorAll("img");
   wmouse.src = "";
 
-  // console.log(scrollDiv);
   scrollToDiv(scrollDiv);
 }
 
@@ -1146,7 +1170,7 @@ function nextStepTo4th(event) {
   var scrollDiv = 'fullorderTop';
   isNextPage = true;
 
-  if(document.getElementById('cart_item6-1').querySelector('img')){
+  if (document.getElementById('cart_item6-1').querySelector('img')) {
     document.getElementById('step6WarningName').classList.add("hidden");
   } else {
     console.log("名前の色を選択してません");
@@ -1154,10 +1178,10 @@ function nextStepTo4th(event) {
     isNextPage = false;
   }
 
-  if (labelNickname.style.display == 'none'){
+  if (labelNickname.style.display == 'none') {
     ;
   } else {
-    if(document.getElementById('cart_item6-2').querySelector('img')){
+    if (document.getElementById('cart_item6-2').querySelector('img')) {
       document.getElementById('step6WarningNickname').classList.add("hidden");
     } else {
       console.log("名称の色を選択してません");
@@ -1166,10 +1190,10 @@ function nextStepTo4th(event) {
     }
   }
 
-  if (labelNametitle.style.display == 'none'){
+  if (labelNametitle.style.display == 'none') {
     ;
   } else {
-    if(document.getElementById('cart_item6-3').querySelector('img')){
+    if (document.getElementById('cart_item6-3').querySelector('img')) {
       document.getElementById('step6WarningNametitle').classList.add("hidden");
     } else {
       console.log("敬称の色を選択してません");
@@ -1178,10 +1202,10 @@ function nextStepTo4th(event) {
     }
   }
 
-  if (labelCatchphrase.style.display == 'none'){
+  if (labelCatchphrase.style.display == 'none') {
     ;
   } else {
-    if(document.getElementById('cart_item6-4').querySelector('img')){
+    if (document.getElementById('cart_item6-4').querySelector('img')) {
       document.getElementById('step6WarningCatchphrase').classList.add("hidden");
     } else {
       console.log("キャッチフレーズの色を選択してません");
@@ -1190,13 +1214,23 @@ function nextStepTo4th(event) {
     }
   }
 
+  console.log(window.user_decoALLList.length);
+  console.log(map_PartsMaterial.size);
+
+  if (window.user_decoALLList.length == map_PartsMaterial.size) {
+    document.getElementById('step6WarningPartsMaterial').classList.add("hidden");
+  } else {
+    document.getElementById('step6WarningPartsMaterial').classList.remove("hidden");
+    isNextPage = false;
+  }
+
   //images = document.querySelectorAll("img");
   if (isNextPage) {
     fullorder4thStepContainer.classList.remove("hidden");
     fullorder4thStepContainer.classList.add("flexColumnFlexStart");
     fullorder3rdStepContainer.classList.add("hidden");
     fullorder3rdStepContainer.classList.remove("flexColumnFlexStart");
-  
+
     nextStepTo4thButton.classList.add("hidden");
     backStepTo3rdButton.classList.remove("hidden");
 
@@ -1205,7 +1239,7 @@ function nextStepTo4th(event) {
   }
 
   scrollToDiv(scrollDiv);
-  
+
 }
 
 function backStepTo1st(event) {
@@ -1239,6 +1273,13 @@ function backStepTo2nd(event) {
     }
   });
   wmouse.src = "";
+  decoCustomBtns1.classList.add("flexRowSpaceEvenly");
+  decoCustomBtns1.classList.remove("hidden");
+  decoCustomBtns2.classList.add("flexRowSpaceEvenly");
+  decoCustomBtns2.classList.remove("hidden");
+  applyMaterialToPartsContainer.classList.remove("flexRowSpaceEvenly");
+  applyMaterialToPartsContainer.classList.add("hidden");
+
   controll_step = '2nd';
 }
 
@@ -1252,6 +1293,7 @@ function backStepTo3rd(event) {
 
   nextStepTo4thButton.classList.remove("hidden");
   backStepTo3rdButton.classList.add("hidden");
+
   controll_step = '3rd';
 }
 
@@ -1265,14 +1307,14 @@ function orderConfirm(event) {
   for (cartlist of list_cartNameAndPrice) {
     newParagraph = document.createElement('p');
     insert_string = '';
-    for (cartContent of cartlist){
-      if (insert_string == ''){
+    for (cartContent of cartlist) {
+      if (insert_string == '') {
         insert_string = document.getElementById(cartContent).textContent;
       } else {
         insert_string = insert_string + ' ' + document.getElementById(cartContent).textContent;
       }
     }
-    if (insert_string != ''){
+    if (insert_string != '') {
       newParagraph.textContent = insert_string;
       modalOrderDetails.appendChild(newParagraph);
     }
@@ -1304,63 +1346,75 @@ function handleImageSelection6(image) {
 
   // パレットのImage格納用変数
   selectedPaletteImage = '';
-
-  images.forEach(function (otherImage) { // すべての画像をループ
-    if (otherImage.classList.contains("selected_6_palette")) { // 現在選択されているパレットImageを検索
-      selectedPaletteImage = otherImage;
+  console.log(window.selectedTab);
+  if (window.selectedTab == 'deco') {
+    selectedPaletteImage = document.querySelectorAll(".selected_partsMaterial")[0];
+    console.log(document.querySelectorAll(".selected_partsMaterial"));
+    if (selectedPaletteImage != '') {
+      sourcePath = image.src;
+      sourceImage = image;
+      selectedPaletteImage.src = sourcePath;
+      map_PartsMaterial.set(selectedPaletteImage.id, sourceImage);
     }
-  });
-
-  // CHECK 20230802
-  sourcePath = image.src;
-  if (selectedPaletteImage != '') {
-
-    map_paletteImage.set(selectedPaletteImage.id, image);
-
-    if (selectedPaletteImage.id === 'select6_palette6_2') {
-      if (!check_nametitle_frame) {
-        map_paletteImage.set('select6_palette6_6', image);
-        map_paletteImage.set('select6_palette6_10', image);
+  } else {
+    images.forEach(function (otherImage) { // すべての画像をループ
+      if (otherImage.classList.contains("selected_6_palette")) { // 現在選択されているパレットImageを検索
+        selectedPaletteImage = otherImage;
       }
-      if (!check_catchphrase_frame) {
-        map_paletteImage.set('select6_palette6_14', image);
-      }
-    } else if (selectedPaletteImage.id === 'select6_palette6_3') {
-      map_paletteImage.set('select6_palette6_7', image);
-      map_paletteImage.set('select6_palette6_11', image);
-      map_paletteImage.set('select6_palette6_15', image);
-    } else if (selectedPaletteImage.id === 'select6_palette6_4') {
-      map_paletteImage.set('select6_palette6_8', image);
-      map_paletteImage.set('select6_palette6_12', image);
-      map_paletteImage.set('select6_palette6_16', image);
-    }
+    });
 
-    for (const [key, value] of map_nightSingleImage) {
-      if (key === image.id) {
-        sourcePath = value;
-        break;
-      }
-    }
+    // CHECK 20230802
+    sourcePath = image.src;
+    if (selectedPaletteImage != '') {
 
-    selectedPaletteImage.src = sourcePath;
-    if (selectedPaletteImage.id === 'select6_palette6_2') {
-      if (!check_nametitle_frame) {
-        document.getElementById('select6_palette6_6').src = sourcePath;
-        document.getElementById('select6_palette6_10').src = sourcePath;
+      map_paletteImage.set(selectedPaletteImage.id, image);
+
+      if (selectedPaletteImage.id === 'select6_palette6_2') {
+        if (!check_nametitle_frame) {
+          map_paletteImage.set('select6_palette6_6', image);
+          map_paletteImage.set('select6_palette6_10', image);
+        }
+        if (!check_catchphrase_frame) {
+          map_paletteImage.set('select6_palette6_14', image);
+        }
+      } else if (selectedPaletteImage.id === 'select6_palette6_3') {
+        map_paletteImage.set('select6_palette6_7', image);
+        map_paletteImage.set('select6_palette6_11', image);
+        map_paletteImage.set('select6_palette6_15', image);
+      } else if (selectedPaletteImage.id === 'select6_palette6_4') {
+        map_paletteImage.set('select6_palette6_8', image);
+        map_paletteImage.set('select6_palette6_12', image);
+        map_paletteImage.set('select6_palette6_16', image);
       }
-      if (!check_catchphrase_frame) {
-        document.getElementById('select6_palette6_14').src = sourcePath;
+
+      for (const [key, value] of map_nightSingleImage) {
+        if (key === image.id) {
+          sourcePath = value;
+          break;
+        }
       }
-    } else if (selectedPaletteImage.id === 'select6_palette6_3') {
-      document.getElementById('select6_palette6_7').src = sourcePath;
-      document.getElementById('select6_palette6_11').src = sourcePath;
-      document.getElementById('select6_palette6_15').src = sourcePath;
-    } else if (selectedPaletteImage.id === 'select6_palette6_4') {
-      document.getElementById('select6_palette6_8').src = sourcePath;
-      document.getElementById('select6_palette6_12').src = sourcePath;
-      document.getElementById('select6_palette6_16').src = sourcePath;
+
+      selectedPaletteImage.src = sourcePath;
+      if (selectedPaletteImage.id === 'select6_palette6_2') {
+        if (!check_nametitle_frame) {
+          document.getElementById('select6_palette6_6').src = sourcePath;
+          document.getElementById('select6_palette6_10').src = sourcePath;
+        }
+        if (!check_catchphrase_frame) {
+          document.getElementById('select6_palette6_14').src = sourcePath;
+        }
+      } else if (selectedPaletteImage.id === 'select6_palette6_3') {
+        document.getElementById('select6_palette6_7').src = sourcePath;
+        document.getElementById('select6_palette6_11').src = sourcePath;
+        document.getElementById('select6_palette6_15').src = sourcePath;
+      } else if (selectedPaletteImage.id === 'select6_palette6_4') {
+        document.getElementById('select6_palette6_8').src = sourcePath;
+        document.getElementById('select6_palette6_12').src = sourcePath;
+        document.getElementById('select6_palette6_16').src = sourcePath;
+      }
     }
   }
+
 }
 
 function handleImageSelection5(image) {
@@ -1564,6 +1618,30 @@ function MouseMove(e) {
 function MouseRelease() {
   if (!wmouse) return;
   wmouse.src = "";
+}
+
+function handleImageSelectionDecoImage(image) {
+  current_Material = map_PartsMaterial.get(image.id + '_material');
+  applyMaterialToParts.textContent = '';
+  var partsImgElement = document.createElement('img');
+  partsImgElement.classList.add('box-width100');
+  partsImgElement.style.border = "2px solid #72F0EC";
+  partsImgElement.classList.add('selected_partsMaterial');
+  partsImgElement.id = image.id + '_material';
+
+  images.forEach(function (otherImage) {
+    if (otherImage.classList.contains("select6_palette")) {
+      otherImage.classList.remove("selected_6_palette");
+      otherImage.style.border = "";
+    }
+  });
+
+  if (current_Material) {
+    partsImgElement.src = current_Material.src;
+  } else {
+    partsImgElement.src = "/static/images/fullorder/order_buttons/colors/文字.png";
+  }
+  applyMaterialToParts.appendChild(partsImgElement);
 }
 
 function handleImageSelection5_4(image) {
